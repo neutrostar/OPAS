@@ -1,0 +1,14 @@
+{
+  "name": "opas",
+  "version": "0.0.1",
+  "description": "An online judge for college use",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Apoorv Shrivastav",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.8.4"
+  }
+}
