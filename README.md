@@ -10,7 +10,7 @@ For any query, issue a new PR.
 
 The team would love to hear your comments.
 
-The OPAS team is
+The OPAS team is<br>
 O misha Sharma<br>
 P urnendu Shukla<br>
 A poorv Shrivastav<br>
