@@ -11,7 +11,7 @@ For any query, issue a new PR.
 The team would love to hear your comments.
 
 The OPAS team is
-O misha Sharma
-P urnendu Shukla
-A poorv Shrivastav
-S iddhant Srivastava
+O misha Sharma<br>
+P urnendu Shukla<br>
+A poorv Shrivastav<br>
+S iddhant Srivastava<br>
