@@ -4,7 +4,7 @@
   "description": "An online judge for college use",
   "main": "main.js",
   "scripts": {
-    "start" : "electron ."
+    "start": "electron ."
   },
   "author": "Apoorv Shrivastav",
   "license": "ISC",
