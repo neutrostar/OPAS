@@ -9,6 +9,7 @@
   "author": "Apoorv Shrivastav",
   "license": "ISC",
   "dependencies": {
-    "electron": "^1.8.4"
+    "electron": "^1.8.4",
+    "jquery": "^3.3.1"
   }
 }
