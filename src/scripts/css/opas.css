@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,600,700");
+
 /*body{*/
     /*background-color: black;*/
 /*}*/
@@ -26,7 +28,7 @@ li a:hover {
 
     background-color: black;
 }
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,600,700");
+
 * {
     outline-width: 0;
     font-family: 'Raleway' !important;
@@ -35,7 +37,7 @@ li a:hover {
 #pageContainer {
     width: 100%;
     height: 100vh;
-    background: url("https://pixabay.com/get/eb33b30f29f5093ed1584d05fb1d4e97e07ee3d21cac104497f3c571a5efb0b1_340.jpg") center fixed;
+    background: url("https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg") center fixed;
     background-size: cover;
     display: flex;
     align-items: center;
@@ -81,7 +83,7 @@ li a:hover {
 }
 #forms:before {
     content: "";
-    background: url("https://pixabay.com/get/eb33b30f29f5093ed1584d05fb1d4e97e07ee3d21cac104497f3c571a5efb0b1_340.jpg") center fixed;
+    background: url("https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg") center fixed;
     background-size: cover;
     position: absolute;
     display: block;
