@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="UTF-8">
     <title>OPAS</title>
 	<script>window.$ = window.jQuery = require('jquery');</script>
-	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.3.4/css/font-awesome.min.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/form.css">
 	<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
-
-
+	<script src = "src/scripts/js/menubar.js"></script>
 </head>
-
 <body>
 	<nav class = "navbar navbar-inverse navbar-fixed-top">
 			<ul class = "nav navbar-nav">
@@ -21,8 +18,8 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
-						<li><a href="#">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
+						<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
+						<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
 					</ul>
 				</li>
 				<li class = "dropdown">
@@ -38,8 +35,8 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
+						<li><a href="src/scripts/html/student_page.html">Student Module</a></li>
+						<li><a href="src/scripts/html/faculty_page.html">Teacher Module</a></li>
 						<li><a href="#">Item 3</a></li>
 					</ul>
 				</li>
@@ -48,16 +45,15 @@
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Updates</a></li>
+						<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
+						<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
 					</ul>
 				</li>
-				
 			</ul>
+		<ul class = "nav navbar-nav navbar-right control-options">
+			<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
+		</ul>
 	</nav>
-	
-	
-	
 	<div id="pageContainer">
 		<div id="formContainer">
 			<div id="logo"><img src="res/img/logo.png"/></div>
