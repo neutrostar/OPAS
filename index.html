@@ -5,31 +5,62 @@
     <meta charset="UTF-8">
     <title>OPAS</title>
 	<script>window.$ = window.jQuery = require('jquery');</script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.3.4/css/font-awesome.min.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/form.css">
+	<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
 
 
 </head>
 
 <body>
-	<nav>
-		<ul>
-			<div id="left-nav">
-				<li>OPAS</li>
-				<li>Student</li>
-			</div>
-			<div id="right-nav">
-				<li>About Us</li>
-				<li>Support</li>
-			</div>
-		</ul>
+	<nav class = "navbar navbar-inverse navbar-fixed-top">
+			<ul class = "nav navbar-nav">
+				<li class = "dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
+						<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
+						<li><a href="#">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
+					</ul>
+				</li>
+				<li class = "dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
+						<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Cut</a></li>
+						<li><a href="#">Copy</a></li>
+						<li><a href="#">Paste</a></li>
+					</ul>
+				</li>
+				<li class = "dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
+						<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+					</ul>
+				</li>
+				<li class = "dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
+						<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Updates</a></li>
+					</ul>
+				</li>
+				
+			</ul>
 	</nav>
 	
- 
+	
+	
 	<div id="pageContainer">
 		<div id="formContainer">
-			<div id="logo"><img src="https://pixabay.com/get/ea37b90f2cf4033ed1584d05fb1d4e97e07ee3d21cac104497f3c571a5eeb4b0_340.jpg"/></div>
+			<div id="logo"><img src="res/img/logo.png"/></div>
 			<div id="forms">
 				<form id="forgot">
 					<div class="fadeUp">
