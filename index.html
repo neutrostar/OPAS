@@ -5,22 +5,28 @@
     <meta charset="UTF-8">
     <title>OPAS</title>
 	<script>window.$ = window.jQuery = require('jquery');</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/form.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
 
 
 </head>
 
 <body>
-
-    <div>
-        <ul>
-
-            <li><a href="#some_stuff">Stuff can be added here</a></li>
-            <li><a href="#nav_bar">Nav Bar</a></li>
-        </ul>
-    </div>
-    <h1>Welcome to OPAS</h1>
+	<nav>
+		<ul>
+			<div id="left-nav">
+				<li>OPAS</li>
+				<li>Student</li>
+			</div>
+			<div id="right-nav">
+				<li>About Us</li>
+				<li>Support</li>
+			</div>
+		</ul>
+	</nav>
 	
+ 
 	<div id="pageContainer">
 		<div id="formContainer">
 			<div id="logo"><img src="https://pixabay.com/get/ea37b90f2cf4033ed1584d05fb1d4e97e07ee3d21cac104497f3c571a5eeb4b0_340.jpg"/></div>
@@ -46,7 +52,7 @@
 						<p>Login to continue</p>
 					</div>
 					<div class="formDiv">
-						<input type="text" placeholder="Username" name="username"/>
+						<input type="text" placeholder="Roll Number" name="rollnumber"/>
 					</div>
 					<div class="formDiv">
 						<input type="password" placeholder="Password" name="password"/>
@@ -58,23 +64,23 @@
 				</form>
 				<form id="register">
 					<div class="formHead">
-						<h1>BECOME A BRO</h1>
+						<h1>SIGN UP FOR OPAS</h1>
 						<p>Register to gain full access</p>
 					</div>
 					<div class="formDiv">
-						<input type="text" placeholder="Username" name="username"/>
+						<input type="text" placeholder="Full Name" name="fullname"/>
 					</div>
 					<div class="formDiv">
 						<input type="email" placeholder="Email" name="email"/>
 					</div>
 					<div class="formDiv">
-						<input type="text" placeholder="Roll Number" name="email"/>
+						<input type="text" placeholder="Roll Number" name="rollnumber"/>
 					</div>
 					<div class="formDiv">
 						<input type="password" placeholder="Password" name="password"/>
 					</div>
 					<div class="formDiv">
-						<input type="password" placeholder="Re-enter Password" name="password"/>
+						<input type="password" placeholder="Re-enter Password" name="repassword"/>
 					</div>
 					<div class="formDiv">
 						<input type="submit" value="REGISTER"/>

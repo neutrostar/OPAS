@@ -8,6 +8,8 @@ let mainWindow
 
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600
 
     });
     mainWindow.loadURL(url.format({
@@ -15,6 +17,9 @@ app.on('ready', function(){
         protocol: 'file',
         slashes: true
     }));
+    // mainWindow.webContents.on('did-finish-load', function() {
+    //     mainWindow.show();
+    // });
     mainWindow.on('closed', function(){
         app.quit();
     })
