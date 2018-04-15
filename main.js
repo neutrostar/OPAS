@@ -8,10 +8,9 @@ let mainWindow;
 
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
         frame: false,
-        backgroundColor: "#ff00aa"
+        backgroundColor: "#ff00aa",
+        isResizable: false
     });
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),

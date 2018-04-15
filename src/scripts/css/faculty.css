@@ -1,0 +1,31 @@
+.info{
+    padding-top: 40px;
+    text-align: center;
+    border-right: 1px solid #444444;
+    height: 100%;
+}
+.info .professor-name{
+    text-align: center;
+    align-content: center;
+    font-size: 18px;
+    width: 50%;
+    alignment: center;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.leftmenu{
+    padding-top: 200px;
+
+    padding-right: 10px;
+    align-content: center;
+}
+.leftmenu ul{
+    align-content: center;
+}
+.leftmenu ul li{
+    list-style-type: none;
+    padding-top: 20px;
+    align-content: center;
+    text-align: center;
+
+}

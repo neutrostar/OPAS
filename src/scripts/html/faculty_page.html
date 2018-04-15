@@ -4,11 +4,11 @@
 		<meta charset="UTF-8">
 		<title>Faculty Home</title>
 		<script>window.$ = window.jQuery = require('jquery');</script>
-		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src = "../js/menubar.js"></script>
-		<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
+		<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel = "stylesheet" type ="text/css" href ="../css/opas.css">
+		<link rel = "stylesheet" type ="text/css" href ="../css/faculty.css">
 	</head>
 	<body>
 		<nav class = "navbar navbar-inverse navbar-fixed-top">
@@ -18,6 +18,7 @@
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
+						<li><a href="../../../index.html">Logout  <span class = "shortcut">(Ctrl+L)</span></a></li>
 						<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
 					</ul>
 				</li>
@@ -53,6 +54,33 @@
 				<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
 			</ul>
 		</nav>
-		<h4>This is the faculty home page</h4>
+		<div id = "container" style="padding-top: 50px">
+			
+			<div class = "col-lg-2 info "  >
+				
+				<div class ="row">
+					<div class = "professor-name  container">
+						<span id ="professor-name">Dr. C. Xavier</span>
+					</div>
+					<div class = "leftmenu container-fluid">
+						<ul>
+							<li><a href = "#">Discussions</a></li>
+							<li><a href = "#">Assignment</a></li>
+							<li><a href = "#">Quizzes</a></li>
+							<li><a href = "#">Add new members</a></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class = "col-lg-8 wall" >
+				Feed comes here
+			</div>
+			<div class = "col-lg-2 events" >
+				Events come here
+			</div>
+		</div>
+		
 	</body>
 </html>

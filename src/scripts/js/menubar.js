@@ -16,11 +16,11 @@ function CreateAboutWindow(){
         modal: true,
         show: false
     });
-    var theUrl = 'file://' + __dirname + '/src/scripts/html/about.html'
+    var theUrl = 'file://' + __dirname + '/src/scripts/html/about.html';
     AboutWindow.loadURL(theUrl);
     AboutWindow.once('ready-to-show', ()=>{
         AboutWindow.show();
-    })
+    });
     AboutWindow.on('closed', function () {
        AboutWindow = null;
     });
@@ -37,11 +37,11 @@ function CreatePreferencesWindow(){
         modal: true,
         show: false
     });
-    var theUrl = 'file://' + __dirname + '/src/scripts/html/preferences.html'
+    var theUrl = 'file://' + __dirname + '/src/scripts/html/preferences.html';
     PreferenceWindow.loadURL(theUrl);
     PreferenceWindow.once('ready-to-show', ()=>{
         PreferenceWindow.show();
-    })
+    });
     PreferenceWindow.on('closed', function(){
         PreferenceWindow = null;
     })
@@ -57,11 +57,11 @@ function CreateUpdateWindow(){
         modal: true,
         show: false
     });
-    var theUrl = 'file://' + __dirname + '/src/scripts/html/updates.html'
+    var theUrl = 'file://' + __dirname + '/src/scripts/html/updates.html';
     UpdateWindow.loadURL(theUrl);
     UpdateWindow.once('ready-to-show', ()=>{
         UpdateWindow.show();
-    })
+    });
     UpdateWindow.on('closed', function(){
         UpdateWindow = null;
     })
