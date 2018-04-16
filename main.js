@@ -10,7 +10,9 @@ app.on('ready', function(){
     mainWindow = new BrowserWindow({
         frame: false,
         backgroundColor: "#ff00aa",
-        isResizable: false
+        minHeight:720,
+        minWidth:1280,
+        resizable: false
     });
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
