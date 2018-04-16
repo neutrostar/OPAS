@@ -42,9 +42,10 @@
     width: 142px;
     transition: 0.5s cubic-bezier(1, 0, 0, 1);
 }
+
 #logo img {
 
-    margin: 2.5%;
+    margin: 3.8% 2.5% 2.5% 2.5%;
     width: 84px;
     height: 84px;
     border-radius: 50%;

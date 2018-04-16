@@ -11,50 +11,52 @@
         <link rel = "stylesheet" type ="text/css" href ="../css/student.css">
     </head>
 	<body>
-		<nav class = "navbar navbar-inverse navbar-fixed-top">
-			<ul class = "nav navbar-nav">
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
-						<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Cut</a></li>
-						<li><a href="#">Copy</a></li>
-						<li><a href="#">Paste</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-                        <li><a href="faculty_page.html">Teacher Module</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
-						<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
-					</ul>
-				</li>
-			</ul>
-			<ul class = "nav navbar-nav navbar-right control-options">
-				<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
-			</ul>
-		</nav>
 
-        <div id = "container" style="padding-top: 50px">
+
+        <div id = "container">
+
+            <nav class = "navbar navbar-inverse navbar-fixed-top">
+                <ul class = "nav navbar-nav">
+                    <li class = "dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">File
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
+                            <li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class = "dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Cut</a></li>
+                            <li><a href="#">Copy</a></li>
+                            <li><a href="#">Paste</a></li>
+                        </ul>
+                    </li>
+                    <li class = "dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">View
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="faculty_page.html">Teacher Module</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class = "dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#" onclick="CreateAboutWindow()">About</a></li>
+                            <li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class = "nav navbar-nav navbar-right control-options">
+                    <li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
+                </ul>
+            </nav>
 
             <!--Space for logo, top left-->
             <div id = "logo">
