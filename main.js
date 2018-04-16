@@ -2,9 +2,10 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const {app, BrowserWindow} = electron;
+const {app, BrowserWindow, Menu} = electron;
 
 let mainWindow;
+let addWindow;
 
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
@@ -28,4 +29,49 @@ app.on('ready', function(){
     mainWindow.on('closed', function(){
         app.quit();
     })
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    Menu.setApplicationMenu(mainMenu);
 });
+
+const mainMenuTemplate = [
+    {
+
+    // help menu
+    label: 'Help',
+    submenu:[
+
+      {
+        label:'Contact Us',
+        click(){
+          //file yet to be added
+          ;
+        }
+      },
+      {
+        label:'About',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Updates',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Quit',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+  }
+];
+
+if(process.platform == 'darwin'){
+    mainMenuTemplate.unshift({});
+}
