@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
 		<title>Student Page</title>
 		<script>window.$ = window.jQuery = require('jquery');</script>
 		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src = "../js/menubar.js"></script>
 		<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
 		<link rel = "stylesheet" type ="text/css" href ="../css/opas.css">
-	</head>
+        <link rel = "stylesheet" type ="text/css" href ="../css/student.css">
+    </head>
 	<body>
 		<nav class = "navbar navbar-inverse navbar-fixed-top">
 			<ul class = "nav navbar-nav">
@@ -34,7 +34,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Item 1</a></li>
+                        <li><a href="faculty_page.html">Teacher Module</a></li>
 						<li><a href="#">Item 2</a></li>
 						<li><a href="#">Item 3</a></li>
 					</ul>
@@ -55,6 +55,31 @@
 		</nav>
 		<br><br><br><br><br>
 
-        <p>Student page stuff to be added here</p>
+        <div id = "container" style="padding-top: 50px">
+
+            <div class = "col-lg-2 info">
+
+                <div class ="row">
+                    <div class ="student-name  container">
+                        <span id ="student-name">Linchpin Leprechaun</span>
+                    </div>
+                    <div class = "leftmenu container-fluid">
+                        <ul>
+                            <li><a href = "#">Discussions</a></li>
+                            <li><a href = "#">Assignment</a></li>
+                            <li><a href = "#">Quizzes</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class = "col-lg-8 wall" >
+                Feed comes here
+            </div>
+            <div class = "col-lg-2 events" >
+                Events come here
+            </div>
+        </div>
 	</body>
 </html>
