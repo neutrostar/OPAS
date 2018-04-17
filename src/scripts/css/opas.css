@@ -1,4 +1,5 @@
 .navbar-nav > li > a, .navbar-brand {
+
     padding-top:4px !important;
     padding-bottom:0 !important;
     padding-left: 2px !important;
@@ -7,10 +8,17 @@
     color: white;
     font-size: 12px;
 }
-.navbar {min-height:28px !important;}
+
+.navbar {
+
+    min-height:28px !important;
+}
+
 .shortcut{
+
     color: grey;
 }
 .control-options{
+
     padding-right:20px;
 }

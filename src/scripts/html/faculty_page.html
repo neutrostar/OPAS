@@ -11,51 +11,56 @@
 		<link rel = "stylesheet" type ="text/css" href ="../css/faculty.css">
 	</head>
 	<body>
-		<nav class = "navbar navbar-inverse navbar-fixed-top">
-			<ul class = "nav navbar-nav">
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
-						<li><a href="../../../index.html">Logout  <span class = "shortcut">(Ctrl+L)</span></a></li>
-						<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Cut</a></li>
-						<li><a href="#">Copy</a></li>
-						<li><a href="#">Paste</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
-						<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
-					</ul>
-				</li>
-			</ul>
-			<ul class = "nav navbar-nav navbar-right control-options">
-				<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
-			</ul>
-		</nav>
+
 		<div id = "container-fluid" style="padding-top: 50px">
-			
+
+			<div id = "logo">
+
+				<img src = "../../../res/img/logo.png">
+			</div>
+			<nav class = "navbar navbar-inverse navbar-fixed-top">
+				<ul class = "nav navbar-nav">
+					<li class = "dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
+							<li><a href="../../../index.html">Logout  <span class = "shortcut">(Ctrl+L)</span></a></li>
+							<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
+						</ul>
+					</li>
+					<li class = "dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Cut</a></li>
+							<li><a href="#">Copy</a></li>
+							<li><a href="#">Paste</a></li>
+						</ul>
+					</li>
+					<li class = "dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Item 1</a></li>
+							<li><a href="#">Item 2</a></li>
+							<li><a href="#">Item 3</a></li>
+						</ul>
+					</li>
+					<li class = "dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
+							<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class = "nav navbar-nav navbar-right control-options">
+					<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
+				</ul>
+			</nav>
 			<div class = "col-xs-2 info "  >
 				
 				<div class ="row">
