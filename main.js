@@ -27,9 +27,11 @@ app.on('ready', function(){
     // });
     mainWindow.on('closed', function(){
         app.quit();
-    })
-    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-    Menu.setApplicationMenu(mainMenu);
+    });
+    if(process.platform=='darwin'){
+        const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+        Menu.setApplicationMenu(mainMenu);
+    }
 });
 
 const mainMenuTemplate = [
