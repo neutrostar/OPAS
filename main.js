@@ -10,7 +10,6 @@ let addWindow;
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
         frame: false,
-        backgroundColor: "#ff00aa",
         minHeight:720,
         minWidth:1280,
         resizable: false
