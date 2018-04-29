@@ -10,7 +10,6 @@ let addWindow;
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
         frame: false,
-        backgroundColor: "#ff00aa",
         minHeight:720,
         minWidth:1280,
         resizable: false
@@ -28,9 +27,11 @@ app.on('ready', function(){
     // });
     mainWindow.on('closed', function(){
         app.quit();
-    })
-    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-    Menu.setApplicationMenu(mainMenu);
+    });
+    if(process.platform=='darwin'){
+        const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+        Menu.setApplicationMenu(mainMenu);
+    }
 });
 
 const mainMenuTemplate = [
