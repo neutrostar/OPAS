@@ -36,7 +36,119 @@ app.on('ready', function(){
 const mainMenuTemplate = [
     {
 
-    // help menu
+    // file menu
+    label: 'File',
+    submenu:[
+
+      {
+        label:'Contact Us',
+        click(){
+          //file yet to be added
+          ;
+        }
+      },
+      {
+        label:'About',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Updates',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Quit',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+
+
+
+
+
+    // Edit menu
+    label: 'Edit',
+    submenu:[
+
+      {
+        label:'Contact Us',
+        click(){
+          //file yet to be added
+          ;
+        }
+      },
+      {
+        label:'About',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Updates',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Quit',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+
+
+
+
+
+    // View menu
+    label: 'View',
+    submenu:[
+
+      {
+        label:'Contact Us',
+        click(){
+          //file yet to be added
+          ;
+        }
+      },
+      {
+        label:'About',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Updates',
+        click(){
+          // file yet to be added
+          ;
+        }
+      },
+      {
+        label: 'Quit',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+
+
+
+    // Help menu
     label: 'Help',
     submenu:[
 
@@ -69,6 +181,10 @@ const mainMenuTemplate = [
         }
       }
     ]
+
+
+
+
   }
 ];
 
