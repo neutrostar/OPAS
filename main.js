@@ -47,16 +47,15 @@ app.on('ready', function(){
 
 const mainMenuTemplate = [
     {
-<<<<<<< HEAD
+
     // help menu
     label: 'Help',
     submenu:[
-=======
+
 
       // file menu
       label: 'File',
       submenu:[
->>>>>>> f1ee009ca857f27cb6ff4ebacc61a57f071e98b2
 
         {
           label:'Preferences',
@@ -180,7 +179,7 @@ if(process.platform == 'darwin'){
     mainMenuTemplate.unshift({});
 }
 
-<<<<<<< HEAD
+
 function MakeSplashWindow(){
     splashWindow = new BrowserWindow(({
         frame: false,
@@ -192,7 +191,7 @@ function MakeSplashWindow(){
         protocol: 'file',
         slashes: true
     }));
-=======
+
 
 if(process.env.NODE_ENV !== 'production'){
   mainMenuTemplate.push(
@@ -212,6 +211,6 @@ if(process.env.NODE_ENV !== 'production'){
         ]
     }
   );
->>>>>>> f1ee009ca857f27cb6ff4ebacc61a57f071e98b2
+
 
 }
