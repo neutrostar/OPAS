@@ -4,6 +4,9 @@ const path = require('path');
 
 const {app, BrowserWindow, Menu} = electron;
 
+
+process.env.NODE_ENV = 'Development';
+
 let mainWindow;
 let addWindow;
 
@@ -12,7 +15,8 @@ app.on('ready', function(){
         frame: false,
         minHeight:720,
         minWidth:1280,
-        resizable: false
+        resizable: false,
+        preload: __dirname+'/hello.html'
     });
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
@@ -32,163 +36,157 @@ app.on('ready', function(){
         const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
         Menu.setApplicationMenu(mainMenu);
     }
+
+    mainWindow.getNativeWindowHandle()
 });
 
 const mainMenuTemplate = [
     {
 
-    // file menu
-    label: 'File',
-    submenu:[
+      // file menu
+      label: 'File',
+      submenu:[
 
-      {
-        label:'Contact Us',
-        click(){
-          //file yet to be added
-          ;
+        {
+          label:'Preferences',
+          click(){
+            //file yet to be added
+            ;
+          }
+        },
+        {
+          label: 'Quit',
+          accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+          click(){
+            app.quit();
+          }
         }
-      },
-      {
-        label:'About',
-        click(){
-          // file yet to be added
-          ;
+      ]
+    },
+
+
+
+
+    {
+        // Edit menu
+      label: 'Edit',
+      submenu:[
+
+        {
+          label:'Cut',
+          click(){
+            //file yet to be added
+            ;
+          }
+        },
+        {
+          label:'Copy',
+          click(){
+            // file yet to be added
+            ;
+          }
+        },
+        {
+          label: 'Paste',
+          click(){
+            // file yet to be added
+            ;
+          }
+        },
+      ]
+    },
+    
+
+
+
+
+    {
+      // View menu
+      label: 'View',
+      submenu:[
+
+        {
+          label:'Student Module',
+          click(){
+            //file yet to be added
+            ;
+          }
+        },
+        {
+          label:'Teacher Module',
+          click(){
+            // file yet to be added
+            ;
+          }
+        },
+      ]
+
+    },
+
+    {
+
+      // Help menu
+      label: 'Help',
+      submenu:[
+
+        {
+          label:'Contact Us',
+          click(){
+            //file yet to be added
+            ;
+          }
+        },
+        {
+          label:'About',
+          click(){
+            // file yet to be added
+            ;
+          }
+        },
+        {
+          label: 'Updates',
+          click(){
+            // file yet to be added
+            ;
+          }
+        },
+        {
+          label: 'Quit',
+          accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+          click(){
+            app.quit();
+          }
         }
-      },
-      {
-        label: 'Updates',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Quit',
-        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click(){
-          app.quit();
-        }
-      }
-    ]
+      ]
 
 
 
 
-
-    // Edit menu
-    label: 'Edit',
-    submenu:[
-
-      {
-        label:'Contact Us',
-        click(){
-          //file yet to be added
-          ;
-        }
-      },
-      {
-        label:'About',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Updates',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Quit',
-        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click(){
-          app.quit();
-        }
-      }
-    ]
-
-
-
-
-
-    // View menu
-    label: 'View',
-    submenu:[
-
-      {
-        label:'Contact Us',
-        click(){
-          //file yet to be added
-          ;
-        }
-      },
-      {
-        label:'About',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Updates',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Quit',
-        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click(){
-          app.quit();
-        }
-      }
-    ]
-
-
-
-    // Help menu
-    label: 'Help',
-    submenu:[
-
-      {
-        label:'Contact Us',
-        click(){
-          //file yet to be added
-          ;
-        }
-      },
-      {
-        label:'About',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Updates',
-        click(){
-          // file yet to be added
-          ;
-        }
-      },
-      {
-        label: 'Quit',
-        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click(){
-          app.quit();
-        }
-      }
-    ]
-
-
-
-
-  }
+    }
 ];
 
 if(process.platform == 'darwin'){
     mainMenuTemplate.unshift({});
+}
+
+
+if(process.env.NODE_ENV !== 'production'){
+  mainMenuTemplate.push(
+    {
+      label: 'Developer Tools',
+      submenu:[
+        {
+          role: 'reload'
+        },
+        {
+          label: 'Toggle DevTools',
+          accelerator:process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+          click(item, focusedWindow){
+            focusedWindow.toggleDevTools();
+          }
+        }
+        ]
+    }
+  );
+
 }
