@@ -1,7 +1,3 @@
-const electron = require('electron');
-const {remote} = electron;
-const {BrowserWindow, app} = remote;
-
 let NewAssignmentWindow;
 let ViewAssignmentWIndow
 
