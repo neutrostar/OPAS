@@ -2,16 +2,67 @@
 <html>
 	<head>
 		<title>lab_index</title>
-		<link rel="stylesheet" type="text/css" href="stylesheet1.css">
+		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      	<!--Import materialize.css-->
-    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    	<!--Let browser know website is optimized for mobile-->
-      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../css/materialize.css">
+		<script src="../js/sidenav.js"></script>
+		<link rel="stylesheet" href="../css/opas.css">
+		<link rel="stylesheet" href="../css/student.css">
+		<script src="../js/menubar.js"></script>
+	
+	
 	</head>
 	<body>
+		<!--ToolBar starts here-->
+		<ul>
+			<li class="dropdownz">
+				<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="tiny material-icons">menu</i></a>
+			
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">File</a>
+				<div class="dropdown-contentz">
+					<a href="#" onclick="CreatePreferencesWindow()">Preferences</a>
+					<a href="../../../index.html">Logout</a>
+					<a href="#" onclick="CloseWindow()">Exit</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Edit</a>
+				<div class="dropdown-contentz">
+					<a href="#">Cut</a>
+					<a href="#">Copy</a>
+					<a href="#">Paste</a>
+					<a href="#">Find</a>
+					<a href="#">Replace</a>
+					<a href="#">Undo</a>
+					<a href="#">Redo</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Internal Testing</a>
+				<div class="dropdown-contentz">
+					<a href="faculty_page.html">Teacher Module</a>
+					<a href="student_page.html">Student Module</a>
+					<a href="#">Admin Module</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Help</a>
+				<div class="dropdown-contentz">
+					<a href="#" onclick="CreateAboutWindow()">About</a>
+					<a href="#"  onclick="CreateUpdateWindow()">Updates</a>
+					<a href="#">Report Issue</a>
+				</div>
+			</li>
+			<li style="float:right"><a href="#" onclick = "CloseWindow()"> <i class="tiny material-icons">close</i></a></li>
+		</ul>
+		<!--Tool Bar Ends Here-->
+		<!--Main Page content starts here-->
+		<br>
 		<div class="row">
+			<h2 class = "header">Live Assignments</h2>
 		    <div class="col s12 m4">
 		      <div class="card teal lighten-1">
 		        <div class="card-content white-text">
@@ -23,7 +74,7 @@
 		          </p>
 		        </div>
 		        <div class="card-action white">
-		          <a href="ques_UCS617.html"><font color = "grey">Open Assignment</font></a>
+		          <a href="ques_UCS617.html"><font color = "grey">View Assignment</font></a>
 		        </div>
 		      </div>
 		    </div>
@@ -39,11 +90,81 @@
 		          </p>
 		        </div>
 		        <div class="card-action white">
-		          <a href="#"><font color = "grey">Open Assignment</font></a>
+		          <a href="#"><font color = "grey">View Assignment</font></a>
 		        </div>
 		      </div>
 		    </div>
 	    </div>
+		<!--Upcoming Assignments-->
+		<div class="row">
+			<h2 class = "header">Upcoming Assignments</h2>
+			<div class="col s12 m4">
+				<div class="card teal lighten-1">
+					<div class="card-content white-text">
+						<span class="card-title">UCS617</span>
+						<p>
+							<b>Computer Networks</b><br>
+							Start date : 5/05/2018<br>
+							Deadline : 10/05/2018
+						</p>
+					</div>
+					<div class="card-action white">
+						<font color = "red">VIEW ASSIGNMENT</font>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12 m4">
+				<div class="card teal lighten-1">
+					<div class="card-content white-text">
+						<span class="card-title">UCS633</span>
+						<p>
+							<b>Operating Systems</b><br>
+							Start date : 6/05/2018<br>
+							Deadline : 12/05/2018
+						</p>
+					</div>
+					<div class="card-action white">
+						<font color = "red">VIEW ASSIGNMENT</font>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Previous Assignments-->
+		<div class="row">
+			<h2 class = "header">Past Assignments</h2>
+			<div class="col s12 m4">
+				<div class="card teal lighten-1">
+					<div class="card-content white-text">
+						<span class="card-title">UCS617</span>
+						<p>
+							<b>GPU Computing</b><br>
+							Start date : 5/05/2018<br>
+							Deadline : 10/05/2018
+						</p>
+					</div>
+					<div class="card-action white">
+						<a href="#"><font color = "grey">View Result</font></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12 m4">
+				<div class="card teal lighten-1">
+					<div class="card-content white-text">
+						<span class="card-title">UCS633</span>
+						<p>
+							<b>Natural Language Processing</b><br>
+							Start date : 6/05/2018<br>
+							Deadline : 12/05/2018
+						</p>
+					</div>
+					<div class="card-action white">
+						<a href="#"><font color = "grey">View Assignment</font></a>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<!-- java scripts -->
 		<!-- Compiled and minified JavaScript -->

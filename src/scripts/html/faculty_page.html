@@ -3,181 +3,122 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Faculty Home</title>
+		<link rel="stylesheet" href="../css/materialize.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script>window.$ = window.jQuery = require('jquery');</script>
-		<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
-		<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel = "stylesheet" type ="text/css" href ="../css/opas.css">
 		<link rel = "stylesheet" type ="text/css" href ="../css/faculty.css">
+		<script src="../js/materialize.js"></script>
+		<script src="../js/sidenav.js"></script>
+		
+	
 	</head>
 	<body>
-
-		<div id = "container-fluid" style="padding-top: 50px">
-
-			<div id = "logo">
-
-				<img src = "../../../res/img/logo.png">
-			</div>
-			<nav class = "navbar navbar-inverse navbar-fixed-top">
-				<ul class = "nav navbar-nav">
-					<li class = "dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
-							<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
-							<li><a href="../../../index.html">Logout  <span class = "shortcut">(Ctrl+L)</span></a></li>
-							<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
-						</ul>
-					</li>
-					<li class = "dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
-							<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cut</a></li>
-							<li><a href="#">Copy</a></li>
-							<li><a href="#">Paste</a></li>
-						</ul>
-					</li>
-					<li class = "dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
-							<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Item 1</a></li>
-							<li><a href="#">Item 2</a></li>
-							<li><a href="#">Item 3</a></li>
-						</ul>
-					</li>
-					<li class = "dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
-							<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
-							<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
-						</ul>
-					</li>
-				</ul>
-				<ul class = "nav navbar-nav navbar-right control-options">
-					<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
-				</ul>
-			</nav>
-			<div class = "col-xs-2 info "  >
-				
-				<div class ="row">
-					<div class = "panel panel-default">
-						<div class = "panel-body">
-							<div class = "professor-name  container">
-								<span id ="professor-name">Dr. C. Xavier</span>
-							</div>
-						</div>
-					</div>
+			<ul>
+				<li class="dropdownz">
+					<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="tiny material-icons">menu</i></a>
 					
-							<div class = "leftmenu container-fluid">
-								<ul style="float: left">
-									<li><a href = "#">Discussions</a></li>
-									<li><a href = "#">Assignment</a></li>
-									<li><a href = "#">Quizzes</a></li>
-									<li><a href = "#">Add new members</a></li>
-								</ul>
-							</div>
-						
-				</div>
+				</li>
+				<li class="dropdownz">
+					<a href="javascript:void(0)" class="dropbtnz">File</a>
+					<div class="dropdown-contentz">
+						<a href="#" onclick="CreatePreferencesWindow()">Preferences</a>
+						<a href="../../../index.html">Logout</a>
+						<a href="#" onclick="CloseWindow()">Exit</a>
+					</div>
+				</li>
+				<li class="dropdownz">
+					<a href="javascript:void(0)" class="dropbtnz">Edit</a>
+					<div class="dropdown-contentz">
+						<a href="#">Cut</a>
+						<a href="#">Copy</a>
+						<a href="#">Paste</a>
+						<a href="#">Find</a>
+						<a href="#">Replace</a>
+						<a href="#">Undo</a>
+						<a href="#">Redo</a>
+					</div>
+				</li>
+				<li class="dropdownz">
+					<a href="javascript:void(0)" class="dropbtnz">Internal Testing</a>
+					<div class="dropdown-contentz">
+						<a href="faculty_page.html">Teacher Module</a>
+						<a href="student_page.html">Student Module</a>
+						<a href="#">Admin Module</a>
+					</div>
+				</li>
+				<li class="dropdownz">
+					<a href="javascript:void(0)" class="dropbtnz">Help</a>
+					<div class="dropdown-contentz">
+						<a href="#" onclick="CreateAboutWindow()">About</a>
+						<a href="#"  onclick="CreateUpdateWindow()">Updates</a>
+						<a href="#">Report Issue</a>
+					</div>
+				</li>
+				<li style="float:right"><a href="#" onclick = "CloseWindow()"> <i class="tiny material-icons">close</i></a></li>
+			</ul>
+		<br>
+		<br>
+		<br>
+		<!--Tool Bar Ends Here-->
+		<!--Page Layout Starts from here-->
+		<!-- Page Layout here -->
+		<div class="row">
+			<div class="col s2">
 				
+				<ul id="slide-out" class="sidenav">
+					<li><div class="user-view right-align">
+						<div class="background">
+							<img src="../../../res/img/himym.jpg">
+						</div>
+						<a href="#user" ><img class="circle" src="../../../res/img/deadwing.jpg"></a>
+						<a href="#name"><span class="white-text name ">Professor Mosby</span></a>
+						<a href="#email"><span class="white-text email">jedmosley@gnb.edu</span></a>
+					</div></li>
+					<div class = "left-align">
+						<li><div class="divider"></div></li>
+						
+						<li><a class="waves-effect" href="#!">Announcements</a></li>
+						<li><a class="waves-effect" href="#!">Class Groups</a></li>
+						<li><a class="waves-effect" href="#!">Assignments</a></li>
+						<li><a class="waves-effect" href="#!">Lab Evaluations</a></li>
+						<li><a class="waves-effect" href="#!">Add Members</a></li>
+					</div>
+				</ul>
+			
 			</div>
 			
-			<div class = "col-xs-8 wall" >
-				<div class = "row">
-					<div class = "panel panel-default">
-						<div class = "panel-body">
-							<div class = "container-fluid posting">
-								<form class="post-form">
-									<textarea rows="4" cols="100" placeholder="Write a new post" resize="none" required></textarea><br>
-									<button class ="post-button" type="submit">Post</button>
+			<div class="col s7">
+				<!-- Teal page content  -->
+				<div class="row">
+					<div class="col s12 ">
+						<div class="card">
+							<div class="card-content">
+								<form>
+									<div class="row">
+										<div class="input-field">
+											<textarea id="textarea1" class="materialize-textarea"></textarea>
+											<label for="textarea1">Write an announcement here</label>
+										</div>
+									</div>
 								</form>
 							</div>
-						</div>
-					</div>
-					<div class = "panel panel-default">
-						<div class = "panel-body">
-							<div class="container-fluid">
-								<div class="media">
-									<div class="media-left">
-										<img src="../../../res/img/img_avatar1.png" class="media-object" style="width:45px">
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-										
-										<!-- Nested media object -->
-										<div class="media">
-											<div class="media-left">
-												<img src="../../../res/img/img_avatar2.png" class="media-object" style="width:45px">
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">John Doe <small><i>Posted on February 20, 2016</i></small></h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-												
-												<!-- Nested media object -->
-												<div class="media">
-													<div class="media-left">
-														<img src="../../../res/img/img_avatar3.png" class="media-object" style="width:45px">
-													</div>
-													<div class="media-body">
-														<h4 class="media-heading">John Doe <small><i>Posted on February 21, 2016</i></small></h4>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-													</div>
-												</div>
-											
-											</div>
-											
-											<!-- Nested media object -->
-											<div class="media">
-												<div class="media-left">
-													<img src="../../../res/img/img_avatar4.png" class="media-object" style="width:45px">
-												</div>
-												<div class="media-body">
-													<h4 class="media-heading">Jane Doe <small><i>Posted on February 20, 2016</i></small></h4>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-												</div>
-											</div>
-										
-										</div>
-									</div>
-									
-									<!-- Nested media object -->
-									<div class="media">
-										<div class="media-left">
-											<img src="../../../res/img/img_avatar5.png" class="media-object" style="width:45px">
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Jane Doe <small><i>Posted on February 19, 2016</i></small></h4>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-										</div>
-									</div>
-								
-								
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				</div>
-				
-			</div>
-			<div class = "col-xs-2 events" >
-				<div class = "row">
-					<div class = "container-fluid eventContainer">
-						<div class = "panel panel-default">
-							<div class = "panel-body">
-								Events come here<br><br><br><br>
-								No current events
+							<div class="card-action">
+								<div class = "col s6 offset-s4"></div>
+								<button class = "waves-effect waves-light btn" type = "submit">Post<i class = "material-icons right">send</i></button>
 							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
+		
+		</div>
+		<div class="col s3">
+			<!-- Grey navigation panel -->
+			
+		</div>
 		<script src = "../js/menubar.js"></script>
+		
 	</body>
 </html>

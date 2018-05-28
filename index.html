@@ -4,56 +4,58 @@
     <meta charset="UTF-8">
     <title>OPAS</title>
 	<script>window.$ = window.jQuery = require('jquery');</script>
-	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.3.4/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.3.4/css/font-awesome.min.css">-->
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/form.css">
-	<link rel = "stylesheet" type ="text/css" href ="https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="src/scripts/css/materialize.css">
 	<link rel = "stylesheet" type ="text/css" href ="src/scripts/css/opas.css">
 	<script src = "src/scripts/js/menubar.js"></script>
+	
+
+
 </head>
 <body>
-	<nav class = "navbar navbar-inverse navbar-fixed-top">
-			<ul class = "nav navbar-nav">
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">File
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#" onclick="CreatePreferencesWindow()">Preferences  <span class = "shortcut">(Ctrl+S)</span></a></li>
-						<li><a href="#" onclick="CloseWindow()">Exit <span class = "shortcut">(Ctrl+W)</span></a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Cut</a></li>
-						<li><a href="#">Copy</a></li>
-						<li><a href="#">Paste</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">View
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="src/scripts/html/student_page.html">Student Module</a></li>
-						<li><a href="src/scripts/html/faculty_page.html">Teacher Module</a></li>
-						<li><a href="#">Item 3</a></li>
-					</ul>
-				</li>
-				<li class = "dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#" onclick="CreateAboutWindow()">About</a></li>
-						<li><a href="#" onclick="CreateUpdateWindow()">Updates</a></li>
-					</ul>
-				</li>
-			</ul>
-		<ul class = "nav navbar-nav navbar-right control-options">
-			<li><a href = "#"><span class = "glyphicon glyphicon-remove" onclick = "CloseWindow()"></span></a></li>
+	<!--<div class = "navbar">-->
+		<ul>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">File</a>
+				<div class="dropdown-contentz">
+					<a href="#" onclick="CreatePreferencesWindow()">Preferences</a>
+					<a href="#">Logout</a>
+					<a href="#" onclick="CloseWindow()">Exit</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Edit</a>
+				<div class="dropdown-contentz">
+					<a href="#">Cut</a>
+					<a href="#">Copy</a>
+					<a href="#">Paste</a>
+					<a href="#">Find</a>
+					<a href="#">Replace</a>
+					<a href="#">Undo</a>
+					<a href="#">Redo</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Internal Testing</a>
+				<div class="dropdown-contentz">
+					<a href="src/scripts/html/faculty_page.html">Teacher Module</a>
+					<a href="src/scripts/html/student_page.html">Student Module</a>
+					<a href="#">Admin Module</a>
+				</div>
+			</li>
+			<li class="dropdownz">
+				<a href="javascript:void(0)" class="dropbtnz">Help</a>
+				<div class="dropdown-contentz">
+					<a href="#" onclick="CreateAboutWindow()">About</a>
+					<a href="#"  onclick="CreateUpdateWindow()">Updates</a>
+					<a href="#">Report Issue</a>
+				</div>
+			</li>
+			<li style="float:right"><a href="#" onclick = "CloseWindow()"><i class="tiny material-icons">close</i></a></li>
 		</ul>
-	</nav>
+	<!--</div>-->
 	<div id="pageContainer">
 		<div id="formContainer">
 			<div id="logo"><img src="res/img/logo.png"/></div>
