@@ -5,11 +5,14 @@
 		
 		<!--Import Google Icon Font-->
       	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script>window.$ = window.jQuery = require('jquery');</script>
 		<link rel="stylesheet" href="../css/materialize.css">
+		<script src="../js/menubar.js"></script>
 		<script src="../js/sidenav.js"></script>
 		<link rel="stylesheet" href="../css/opas.css">
 		<link rel="stylesheet" href="../css/student.css">
-		<script src="../js/menubar.js"></script>
+		<script src="../js/materialize.js"></script>
+	
 	</head>
 	<body>
 		<!--ToolBar starts here-->
@@ -61,114 +64,139 @@
 		<br>
 		<!--Tool Bar Ends Here-->
 		<!--Main Page content starts here-->
-		<br>
-		<div class="row">
-			<h2 class = "header">Live Assignments</h2>
-		    <div class="col s12 m4">
-		      <div class="card teal lighten-1">
-		        <div class="card-content white-text">
-		          <span class="card-title">UCS617</span>
-		          <p>
-		          	<b>Image Processing Lab</b><br>
-		          	Start date : 5/05/2018<br>
-		          	Deadline : 10/05/2018 
-		          </p>
-		        </div>
-		        <div class="card-action white">
-		          <a href="ques_UCS617.html"><font color = "grey">View Assignment</font></a>
-		        </div>
-		      </div>
-		    </div>
-
-		    <div class="col s12 m4">
-		      <div class="card teal lighten-1">
-		        <div class="card-content white-text">
-		          <span class="card-title">UCS633</span>
-		          <p>
-		          	<b>Data Analytics Lab</b><br>
-		          	Start date : 6/05/2018<br>
-		          	Deadline : 12/05/2018 
-		          </p>
-		        </div>
-		        <div class="card-action white">
-		          <a href="#"><font color = "grey">View Assignment</font></a>
-		        </div>
-		      </div>
-		    </div>
-	    </div>
-		<!--Upcoming Assignments-->
-		<div class="row">
-			<h2 class = "header">Upcoming Assignments</h2>
-			<div class="col s12 m4">
-				<div class="card teal lighten-1">
-					<div class="card-content white-text">
-						<span class="card-title">UCS617</span>
-						<p>
-							<b>Computer Networks</b><br>
-							Start date : 5/05/2018<br>
-							Deadline : 10/05/2018
-						</p>
-					</div>
-					<div class="card-action white">
-						<font color = "red">VIEW ASSIGNMENT</font>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col s12 m4">
-				<div class="card teal lighten-1">
-					<div class="card-content white-text">
-						<span class="card-title">UCS633</span>
-						<p>
-							<b>Operating Systems</b><br>
-							Start date : 6/05/2018<br>
-							Deadline : 12/05/2018
-						</p>
-					</div>
-					<div class="card-action white">
-						<font color = "red">VIEW ASSIGNMENT</font>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Previous Assignments-->
-		<div class="row">
-			<h2 class = "header">Past Assignments</h2>
-			<div class="col s12 m4">
-				<div class="card teal lighten-1">
-					<div class="card-content white-text">
-						<span class="card-title">UCS617</span>
-						<p>
-							<b>GPU Computing</b><br>
-							Start date : 5/05/2018<br>
-							Deadline : 10/05/2018
-						</p>
-					</div>
-					<div class="card-action white">
-						<a href="#"><font color = "grey">View Result</font></a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col s12 m4">
-				<div class="card teal lighten-1">
-					<div class="card-content white-text">
-						<span class="card-title">UCS633</span>
-						<p>
-							<b>Natural Language Processing</b><br>
-							Start date : 6/05/2018<br>
-							Deadline : 12/05/2018
-						</p>
-					</div>
-					<div class="card-action white">
-						<a href="#"><font color = "grey">View Assignment</font></a>
-					</div>
-				</div>
-			</div>
-		</div>
 		
+		<div class = "row">
+			<div class = "col s2">
+				<ul id="slide-out" class="sidenav">
+					<li><div class="user-view right-align">
+						<div class="background">
+							<img src="../../../res/img/himym.jpg">
+						</div>
+						<a href="#user" ><img class="circle" src="../../../res/img/deadwing.jpg"></a>
+						<a href="#name"><span class="white-text name ">Edmond Dantes</span></a>
+						<a href="#email"><span class="white-text email">edmond@montecristo.edu</span></a>
+					</div></li>
+					<div class = "left-align">
+						<li><div class="divider"></div></li>
+						
+						<li><a class="waves-effect" href="student_page.html">Announcements</a></li>
+						<li><a class="waves-effect" href="#!">My Groups</a></li>
+						<li><a class="waves-effect" href="student_assignment.html">My Assignments</a></li>
+						<li><a class="waves-effect" href="#!">My Lab Evaluations</a></li>
+						<li><a class="waves-effect" href="#!">My Class Notes</a></li>
+						<li><a class="waves-effect" href="#!">Enter New Group Code</a></li>
+					</div>
+				</ul>
+			</div>
+			<div class ="col s7">
+				<div class="row">
+					<h2 class = "subheader">Live Assignments</h2>
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS617</span>
+								<p>
+									<b>Image Processing Lab</b><br>
+									Start date : 5/05/2018<br>
+									Deadline : 10/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<a href="ques_UCS617.html"><font color = "grey">View Assignment</font></a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS633</span>
+								<p>
+									<b>Data Analytics Lab</b><br>
+									Start date : 6/05/2018<br>
+									Deadline : 12/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<a href="#"><font color = "grey">View Assignment</font></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Upcoming Assignments-->
+				<div class="row">
+					<h2 class = "subheader">Upcoming Assignments</h2>
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS617</span>
+								<p>
+									<b>Computer Networks</b><br>
+									Start date : 5/05/2018<br>
+									Deadline : 10/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<font color = "red">VIEW ASSIGNMENT</font>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS633</span>
+								<p>
+									<b>Operating Systems</b><br>
+									Start date : 6/05/2018<br>
+									Deadline : 12/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<font color = "red">VIEW ASSIGNMENT</font>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Previous Assignments-->
+				<div class="row">
+					<h2 class = "subheader">Past Assignments</h2>
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS617</span>
+								<p>
+									<b>GPU Computing</b><br>
+									Start date : 5/05/2018<br>
+									Deadline : 10/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<a href="#"><font color = "grey">View Result</font></a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col s12 m6">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS633</span>
+								<p>
+									<b>Natural Language Processing</b><br>
+									Start date : 6/05/2018<br>
+									Deadline : 12/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<a href="#"><font color = "grey">View Assignment</font></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
 		<!-- java scripts -->
 		<!-- Compiled and minified JavaScript -->
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 	</body>
 </html>
