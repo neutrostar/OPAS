@@ -10,7 +10,9 @@
 		<link rel = "stylesheet" type ="text/css" href ="../css/faculty.css">
 		<script src="../js/materialize.js"></script>
 		<script src="../js/sidenav.js"></script>
-		
+		<script src="../js/createAssignment.js"></script>
+		<script src = "../js/menubar.js"></script>
+	
 	
 	</head>
 	<body>
@@ -85,40 +87,43 @@
 						<li><a class="waves-effect" href="#!">Add Members</a></li>
 					</div>
 				</ul>
-			
-			</div>
-			
-			<div class="col s7">
-				<!-- Teal page content  -->
-				<div class="row">
-					<div class="col s12 ">
-						<div class="card">
-							<div class="card-content">
-								<form>
-									<div class="row">
-										<div class="input-field">
-											<textarea id="textarea1" class="materialize-textarea"></textarea>
-											<label for="textarea1">Write an announcement here</label>
-										</div>
-									</div>
-								</form>
-							</div>
-							<div class="card-action">
-								<div class = "col s6 offset-s4"></div>
-								<button class = "waves-effect waves-light btn" type = "submit">Post<i class = "material-icons right">send</i></button>
-							</div>
-						</div>
+				<div class = "row">
+					<div class = "col s7 offset-s2">
+						<a class="waves-effect waves-light btn" href="#" onclick="CreateAssignmentWindow()">Make New Assignment</a>
 					</div>
 				</div>
 			</div>
-		</div>
+			<div class="col s7">
+				<!-- Teal page content  -->
+				<div class = "row">
+					<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
+					<div class="col s12 m4">
+						<div class="card teal lighten-1">
+							<div class="card-content white-text">
+								<span class="card-title">UCS617</span>
+								<p>
+									<b>Image Processing Lab</b><br>
+									Start date : 5/05/2018<br>
+									Deadline : 10/05/2018
+								</p>
+							</div>
+							<div class="card-action white">
+								<a href="#" onclick="CreateAssignmentWindow()"><font color = "grey">Edit Assignment</font></a>
+								<a href="#" onclick="CreateAssignmentView()"><font color = "grey">View Submissions</font></a>
+							</div>
+						</div>
+				</div>
+				
+			</div>
 		
-		</div>
+			
 		<div class="col s3">
 			<!-- Grey navigation panel -->
-			
-		</div>
-		<script src = "../js/menubar.js"></script>
 		
+		</div>
+		</div>
+	
+		
+	
 	</body>
 </html>

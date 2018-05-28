@@ -1,7 +1,7 @@
 body{
     margin: 0;
 }
-ul {
+ul.title_bar{
     position: fixed;
     width:100%;
     font-size: 15px;
@@ -13,7 +13,7 @@ ul {
     margin-bottom: 50px;
 }
 
-li {
+li.dropdownz{
     float: left;
 }
 
@@ -25,7 +25,7 @@ li a, .dropbtnz {
     text-decoration: none;
 }
 
-li a:hover, .dropdownz:hover .dropbtnz {
+li a.titlelinks:hover, .dropdownz:hover .dropbtnz {
     background-color: red;
 }
 
