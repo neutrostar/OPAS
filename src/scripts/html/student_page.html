@@ -12,6 +12,7 @@
 		<link rel = "stylesheet" type ="text/css" href ="../css/student.css">
 		<script src="../js/materialize.js"></script>
 		<script src="../js/sidenav.js"></script>
+		<script src="../js/createAssignment.js"></script>
 	</head>
 	<body>
 		<div class = "navbar-fixed">
@@ -24,7 +25,7 @@
 					<a href="javascript:void(0)" class="dropbtnz">File</a>
 					<div class="dropdown-contentz">
 						<a href="#" class="titlelinks" onclick="CreatePreferencesWindow()">Preferences</a>
-						<a href="#" class="titlelinks">Logout</a>
+						<a href="../../../index.html" class="titlelinks">Logout</a>
 						<a href="#" class="titlelinks" onclick="CloseWindow()">Exit</a>
 					</div>
 				</li>
@@ -45,7 +46,7 @@
 					<div class="dropdown-contentz">
 						<a href="faculty_page.html" class="titlelinks">Teacher Module</a>
 						<a href="student_page.html" class="titlelinks">Student Module</a>
-						<a href="#" class="titlelinks">Admin Module</a>
+						
 					</div>
 				</li>
 				<li class="dropdownz">
@@ -83,7 +84,7 @@
 						<li><a class="waves-effect" href="student_assignment.html">My Assignments</a></li>
 						<li><a class="waves-effect" href="#!">My Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="#!">My Class Notes</a></li>
-						<li><a class="waves-effect" href="#!">Enter New Group Code</a></li>
+						<li><a class="waves-effect" href="#!" onclick="EnterGroupCode()">Enter New Group Code</a></li>
 					</div>
 				</ul>
 			</div>

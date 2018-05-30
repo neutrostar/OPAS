@@ -10,7 +10,8 @@
 		<link rel = "stylesheet" type ="text/css" href ="../css/faculty.css">
 		<script src="../js/materialize.js"></script>
 		<script src="../js/sidenav.js"></script>
-		
+		<script src="../js/createAssignment.js"></script>
+	
 	
 	</head>
 	<body>
@@ -24,7 +25,7 @@
 					<a href="javascript:void(0)" class="dropbtnz">File</a>
 					<div class="dropdown-contentz">
 						<a href="#" class="titlelinks" onclick="CreatePreferencesWindow()">Preferences</a>
-						<a href="#" class="titlelinks">Logout</a>
+						<a href="../../../index.html" class="titlelinks">Logout</a>
 						<a href="#" class="titlelinks" onclick="CloseWindow()">Exit</a>
 					</div>
 				</li>
@@ -45,7 +46,7 @@
 					<div class="dropdown-contentz">
 						<a href="faculty_page.html" class="titlelinks">Teacher Module</a>
 						<a href="student_page.html" class="titlelinks">Student Module</a>
-						<a href="#" class="titlelinks">Admin Module</a>
+						
 					</div>
 				</li>
 				<li class="dropdownz">
@@ -83,7 +84,7 @@
 						<li><a class="waves-effect" href="faculty_assignment.html">Assignments</a></li>
 						<li><a class="waves-effect" href="#!">Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="#!">Upload Notes</a></li>
-						<li><a class="waves-effect" href="#!">Add Members</a></li>
+						<li><a class="waves-effect" href="#!" onclick = "EnterStudentID()">Add Members</a></li>
 					</div>
 				</ul>
 			
@@ -116,7 +117,7 @@
 						<div class="card">
 							<div class="card-content ">
 								<div class = "row">
-								<div class = "col s3"><img src = "../../../res/img/deadwing.jpg" height = "100px" width="100px" class="circle"><br>
+								<div class = "col s3"><img src = "../../../res/img/deadwing.jpg" height = "75px" width="75px" class="circle"><br>
 									Prof. Mosby
 								</div>
 								<div class="col s8"
@@ -132,12 +133,44 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		
-		</div>
+		
+		
 		<div class="col s3">
 			<!-- Grey navigation panel -->
-			
+			<div class="row">
+				<div class="col s12 m12">
+					<div class="card">
+						<div class="card-content">
+							<span class="card-title">Upcoming Events</span>
+							<table class="striped">
+								<thead>
+									<tr>
+										<th>Event</th>
+										<th>Date</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td>Image Quiz</td>
+										<td>1/6/2018</td>
+									</tr>
+									<tr>
+										<td>GPU Lab Eval</td>
+										<td>3/6/2018</td>
+									</tr>
+									<tr>
+										<td>NLP Lab Eval</td>
+										<td>6/7/2018</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		</div>
 		<script src = "../js/menubar.js"></script>
 		
