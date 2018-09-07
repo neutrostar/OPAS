@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+var Student = require("./models/student");
 
 router.get("/", function(req, res) {
 
@@ -27,12 +28,23 @@ router.get("/faculty_page", function(req, res) {
 
 router.post("/login", function(req, res) {
 
-	console.log(req.body.rollnumber);
-	console.log(req.body.password);
-	res.redirect("/");
+	// Here find operation will be implemented once database is setup
+	// A proxy is implemented here
+
+	// console.log(req.body.rollnumber);
+	// console.log(req.body.password); 
+
+	res.render("student_page", {
+
+		name: "John Doe",
+		rollnumber: "666",
+		mail: "random@random.edu"
+	});
+
+	// res.redirect("/");
 });
 
-router.post("/signup", function(req, res) {
+router.post("/sign_up", function(req, res) {
 
 	res.redirect("/");
 });
