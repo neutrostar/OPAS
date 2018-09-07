@@ -15,37 +15,7 @@
 		<script src="/scripts/createAssignment.js"></script>
 	</head>
 	<body>
-		
-		<% include ./partials/navbar %>
-
-		<br>
-		<!--Tool Bar Ends Here-->
-		<!--Page Layout Starts from here-->
-		<div class="row">
-			
-			<div class="col s2">
-				<!-- Grey navigation panel -->
-				<ul id="slide-out" class="sidenav">
-					<li><div class="user-view right-align">
-						<div class="background">
-							<img src="../../../res/img/himym.jpg">
-						</div>
-						<a href="#user" ><img class="circle" src="../../../res/img/deadwing.jpg"></a>
-						<a href="#name"><span class="white-text name ">Edmond Dantes</span></a>
-						<a href="#email"><span class="white-text email">edmond@montecristo.edu</span></a>
-					</div></li>
-					<div class = "left-align">
-						<li><div class="divider"></div></li>
-						
-						<li><a class="waves-effect" href="student_page.html">Announcements</a></li>
-						<li><a class="waves-effect" href="#!">My Groups</a></li>
-						<li><a class="waves-effect" href="student_assignment.html">My Assignments</a></li>
-						<li><a class="waves-effect" href="#!">My Lab Evaluations</a></li>
-						<li><a class="waves-effect" href="#!">My Class Notes</a></li>
-						<li><a class="waves-effect" href="#!" onclick="EnterGroupCode()">Enter New Group Code</a></li>
-					</div>
-				</ul>
-			</div>
+		<% include ./partials/page_nav %>
 			
 			<div class="col s7">
 				<!-- Teal page content  -->

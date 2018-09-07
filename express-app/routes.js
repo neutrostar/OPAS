@@ -25,4 +25,16 @@ router.get("/faculty_page", function(req, res) {
 	});
 });
 
+router.post("/login", function(req, res) {
+
+	console.log(req.body.rollnumber);
+	console.log(req.body.password);
+	res.redirect("/");
+});
+
+router.post("/signup", function(req, res) {
+
+	res.redirect("/");
+});
+
 module.exports = router;
