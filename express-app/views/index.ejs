@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OPAS</title>
+	<!-- <script>window.$ = window.jQuery = require('jquery');</script> -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.3.4/css/font-awesome.min.css">-->
+	<link rel = "stylesheet" type ="text/css" href ="/stylesheets/form.css">
+	<link rel="stylesheet" href="stylesheets/opas.css">
+	<script type="text/javascript" src="/libs/jquery-3.3.1.min.js"></script>
+	<!-- <script type="text/javascript" src = "scripts/menubar.js"></script> -->
+	
+
+
+</head>
+<body>
+	<% include ./partials/navbar %>
+	
+	<div id="pageContainer">
+		<div id="formContainer">
+			<div id="logo"><img src="res/img/logo.png"/></div>
+			<div id="forms">
+				<form id="forgot">
+					<div class="fadeUp">
+						<div class="formHead">
+							<h1>FORGOT PASSWORD?</h1>
+							<p>Looks like you forgot your password</p>
+						</div>
+						<div class="formDiv">
+							<input type="email" placeholder="Type your email"/>
+						</div>
+						<div class="formDiv">
+							<input type="submit" value="SEND EMAIL"/>
+						</div>
+						<div class="formOther"><a class="backLoginF" href="#">BACK TO LOGIN</a><a href="#">CONTACT STAFF</a></div>
+					</div>
+				</form>
+				<form id="login">
+					<div class="formHead">
+						<h1>WELCOME BACK</h1>
+						<p>Login to continue</p>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Roll Number" name="rollnumber"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Password" name="password"/>
+					</div>
+					<div class="formDiv">
+						<input type="submit" value="LOGIN"/>
+					</div>
+					<div class="formOther"><a class="forgotBtn" href="#">FORGOT PASSWORD?</a><a class="needAccount" href="#">NEED AN ACCOUNT?</a></div>
+				</form>
+				<form id="register">
+					<div class="formHead">
+						<h1>SIGN UP FOR OPAS</h1>
+						<p>Register to gain full access</p>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Full Name" name="fullname"/>
+					</div>
+					<div class="formDiv">
+						<input type="email" placeholder="Email" name="email"/>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Roll Number" name="rollnumber"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Password" name="password"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Re-enter Password" name="repassword"/>
+					</div>
+					<div class="formDiv">
+						<input type="submit" value="REGISTER"/>
+					</div>
+					<div class="formOther"><a class="backLogin" href="#">BACK TO LOGIN</a><a class="regBtn" href="#">WHY REGISTER?</a></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src ="/scripts/form.js"></script>
+</body>
+</html>

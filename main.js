@@ -1,9 +1,8 @@
-const electron = require('electron');
+const app = require('electron').app;
+const BrowserWindow = require('electron').BrowserWindow;
+const Menu = require('electron').Menu;
 const url = require('url');
 const path = require('path');
-
-const {app, BrowserWindow, Menu} = electron;
-
 
 process.env.NODE_ENV = 'Development';
 
@@ -63,10 +62,6 @@ const mainMenuTemplate = [
         }
       ]
     },
-
-
-
-
     {
         // Edit menu
       label: 'Edit',
@@ -79,6 +74,7 @@ const mainMenuTemplate = [
             ;
           }
         },
+// ==============================================================        
         {
           label:'Copy',
           click(){
@@ -95,11 +91,7 @@ const mainMenuTemplate = [
         },
       ]
     },
-    
-
-
-
-
+// ===============================================================    
     {
       // View menu
       label: 'View',
@@ -158,10 +150,6 @@ const mainMenuTemplate = [
           }
         }
       ]
-
-
-
-
     }
 ];
 
@@ -188,5 +176,4 @@ if(process.env.NODE_ENV !== 'production'){
         ]
     }
   );
-
 }
