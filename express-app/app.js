@@ -3,8 +3,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const mongoose = require("mongoose");
+const keys = require("./config/keys");
 
 var app = express();
+
+mongoose.connect(keys.mongodb.dbURI, () => {
+
+	console.log("Connected to MongoDb");
+});
 
 app.use(bodyParser.urlencoded({
 
