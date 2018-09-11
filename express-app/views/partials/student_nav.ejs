@@ -47,9 +47,8 @@
 		<!--Tool Bar Ends Here-->
 		<!--Page Layout Starts from here-->
 		<!-- Page Layout here -->
-		<div class="row">
-			<div class="col s2">
-				
+		<div class = "row">
+			<div class = "col s2">
 				<ul id="slide-out" class="sidenav">
 					<li><div class="user-view right-align">
 						<div class="background">
@@ -63,13 +62,11 @@
 						<li><div class="divider"></div></li>
 						
 						<li><a class="waves-effect" href="/user/<%= user._id %>">Announcements</a></li>
-						<li><a class="waves-effect" href="faculty_class_groups.html">Class Groups</a></li>
-						<li><a class="waves-effect" href="faculty_assignment.html">Assignments</a></li>
-						<li><a class="waves-effect" href="#!">Lab Evaluations</a></li>
-						<li><a class="waves-effect" href="#!">Upload Notes</a></li>
-						<!-- <li><a>Random<%= user.name %></a></li> -->
-						<li><a class="waves-effect" href="#!" onclick = "EnterStudentID()">Add Members</a></li>
+						<li><a class="waves-effect" href="#!">My Groups</a></li>
+						<li><a class="waves-effect" href="/user/<%= user._id %>/assignments">My Assignments</a></li>
+						<li><a class="waves-effect" href="#!">My Lab Evaluations</a></li>
+						<li><a class="waves-effect" href="#!">My Class Notes</a></li>
+						<li><a class="waves-effect" href="#!">Enter New Group Code</a></li>
 					</div>
 				</ul>
-			
 			</div>

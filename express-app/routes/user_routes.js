@@ -30,4 +30,30 @@ router.get("/:id", function(req, res) {
 	});
 });
 
+router.get("/:id/assignments", function(req, res) {
+
+	User.findById(req.params.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			if (foundUser.isFaculty) {
+
+				res.render("faculty_assignment", {
+
+					user: foundUser
+				});
+			} else {
+
+				res.render("student_assignment", {
+
+					user: foundUser
+				});
+			}
+		}
+	});
+});
+
 module.exports = router;

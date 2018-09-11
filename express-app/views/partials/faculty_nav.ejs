@@ -55,16 +55,16 @@
 						<div class="background">
 							<img src="../../../res/img/himym.jpg">
 						</div>
-						<a href="#user" ><img class="circle" src="../../../res/img/deadwing.jpg"></a>
-						<a href="#name"><span class="white-text name ">Professor Mosby</span></a>
-						<a href="#email"><span class="white-text email">jedmosley@gnb.edu</span></a>
+						<a href="#user" ><img class="circle" src="<%= user.image %>"></a>
+						<a href="#name"><span class="white-text name "><%= user.name %></span></a>
+						<a href="#email"><span class="white-text email"><%= user.mail %></span></a>
 					</div></li>
 					<div class = "left-align">
 						<li><div class="divider"></div></li>
 						
-						<li><a class="waves-effect" href="faculty_page.html">Announcements</a></li>
+						<li><a class="waves-effect" href="/user/<%= user._id %>">Announcements</a></li>
 						<li><a class="waves-effect" href="faculty_class_groups.html">Class Groups</a></li>
-						<li><a class="waves-effect" href="faculty_assignment.html">Assignments</a></li>
+						<li><a class="waves-effect" href="/user/<%= user._id %>/assignments">Assignments</a></li>
 						<li><a class="waves-effect" href="#!">Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="#!">Upload Notes</a></li>
 						<li><a class="waves-effect" href="#!" onclick = "EnterStudentID()">Add Members</a></li>
