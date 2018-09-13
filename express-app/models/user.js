@@ -8,7 +8,12 @@ var userSchema = new mongoose.Schema({
 	password: String,
 	rollnumber: String,
 	mail: String,
-	isFaculty: Boolean
+	isFaculty: Boolean,
+	groups: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Group"
+	}]
 });
 
 module.exports = mongoose.model("User", userSchema);

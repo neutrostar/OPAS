@@ -6,15 +6,6 @@ const keys = require("../config/keys");
 
 router.post("/login", function(req, res) {
 
-	// console.log(req.body.password);
-	// if (req.body.rollnumber[0].match(/[a-z]/i)) {
-
-	// 	console.log("Not a number");
-	// } else {
-
-	// 	console.log("Number");
-	// }
-
 	User.findOne({
 
 		rollnumber: req.body.rollnumber
