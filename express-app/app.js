@@ -3,6 +3,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth_routes");
 const userRoutes = require("./routes/user_routes");
+const facultyRoutes = require("./routes/faculty_routes");
+const studentRoutes = require("./routes/student_routes");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 
@@ -27,6 +29,8 @@ app.set("view engine", "ejs");
 
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/student", studentRoutes);
+app.use("/faculty", facultyRoutes);
 
 app.get("/", function(req, res) {
 

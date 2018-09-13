@@ -16,114 +16,13 @@ router.get("/:id", function(req, res) {
 
 			if (foundUser.isFaculty) {
 
-				Announcement.find({}, function(err, allAnnouncements) {
-
-					res.render("faculty_page", {
-
-						user: foundUser,
-						announcement: allAnnouncements
-					});
-				});	
+				res.redirect("/faculty/" + req.params.id);
 			} else {
 
-				Announcement.find({}, function(err, allAnnouncements) {
-
-					res.render("student_page", {
-
-						user: foundUser,
-						announcement: allAnnouncements
-					});
-				});
+				res.redirect("/student/" + req.params.id);
 			}
 		}
-	});
-});
-
-router.get("/:id/assignments", function(req, res) {
-
-	User.findById(req.params.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("faculty_assignment", {
-
-				user: foundUser
-			});
-		}
-	});
-});
-
-router.get("/:id/groups", function(req, res) {
-
-	User.findById(req.params.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("faculty_class_groups", {
-
-				user: foundUser
-			});
-		}
-	});
-});
-
-router.get("/:id/groups/:group_id", function(req, res) {
-
-	User.findById(req.params.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			Group.findById(req.params.group_id).exec(function(err, foundGroup) {
-
-				res.render("faculty_group_info", {
-
-					user: foundUser,
-					group: foundGroup
-				});
-			})
-		}
-	});
-});
-
-router.get("/:id/evaluations", function(req, res) {
-
-	// 
-});
-
-router.get("/:id/notes", function(req, res) {
-
-	// 
-});
-
-router.get("/:id/addmember", function(req, res) {
-
-	User.findById(req.params.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("faculty_addstudent", {
-
-				user: foundUser
-			});
-		}
-	});
-});
-
-router.post("/:id/addmember", function() {
-
-	// 
+	})
 });
 
 module.exports = router;
