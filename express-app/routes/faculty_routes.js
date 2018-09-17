@@ -1,13 +1,14 @@
 const express = require("express");
 var router = express.Router();
-const User = require("../models/user");
+const Student = require("../models/student");
+const Faculty = require("../models/faculty");
 const Group = require("../models/group");
 const Announcement = require("../models/announcement");
 const mongoose = require("mongoose");
 
 router.get("/:id", function(req, res) {
 
-	User.findById(req.params.id).exec(function(err, foundUser) {
+	Faculty.findById(req.params.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -28,7 +29,7 @@ router.get("/:id", function(req, res) {
 
 router.get("/:id/assignments", function(req, res) {
 
-	User.findById(req.params.id).exec(function(err, foundUser) {
+	Faculty.findById(req.params.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -45,7 +46,7 @@ router.get("/:id/assignments", function(req, res) {
 
 router.get("/:id/groups", function(req, res) {
 
-	User.findById(req.params.id).exec(function(err, foundUser) {
+	Faculty.findById(req.params.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -62,7 +63,7 @@ router.get("/:id/groups", function(req, res) {
 
 router.get("/:id/groups/:group_id", function(req, res) {
 
-	User.findById(req.params.id).exec(function(err, foundUser) {
+	Faculty.findById(req.params.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -93,7 +94,7 @@ router.get("/:id/notes", function(req, res) {
 
 router.get("/:id/addmember", function(req, res) {
 
-	User.findById(req.params.id).exec(function(err, foundUser) {
+	Faculty.findById(req.params.id).exec(function(err, foundUser) {
 
 		if (err) {
 
