@@ -1,14 +1,14 @@
-const express = require("express");
+var express = require("express");
+var mongoose = require("mongoose");
+var User = require("../models/user");
+var Group = require("../models/group");
+var Announcement = require("../models/announcement");
+
 var router = express.Router();
-const Student = require("../models/student");
-const Faculty = require("../models/faculty");
-const Group = require("../models/group");
-const Announcement = require("../models/announcement");
-const mongoose = require("mongoose");
 
-router.get("/:id", function(req, res) {
+router.get("/student", function(req, res) {
 
-	Student.findById(req.params.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -27,9 +27,9 @@ router.get("/:id", function(req, res) {
 	});
 });
 
-router.get("/:id/group", function(req, res) {
+router.get("/student/group", function(req, res) {
 
-	Student.findById(req.params.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -44,9 +44,9 @@ router.get("/:id/group", function(req, res) {
 	});
 });
 
-router.get("/:id/assignment", function(req, res) {
+router.get("/student/assignment", function(req, res) {
 
-	Student.findById(req.params.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -61,26 +61,9 @@ router.get("/:id/assignment", function(req, res) {
 	});
 });
 
-router.get("/:id/evaluations", function(req, res) {
+router.get("/student/evaluations", function(req, res) {
 
-	Student.findById(req.params.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("student_page", {
-
-				user:foundUser
-			});
-		}
-	});
-});
-
-router.get("/:id/notes", function(req, res) {
-
-	Student.findById(req.params.id).exec(function(err, foundUser) {
+	Student.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -95,9 +78,26 @@ router.get("/:id/notes", function(req, res) {
 	});
 });
 
-router.get("/:id/change_group", function(req, res) {
+router.get("/student/notes", function(req, res) {
 
-	Student.findById(req.params.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("student_page", {
+
+				user:foundUser
+			});
+		}
+	});
+});
+
+router.get("/student/change_group", function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
@@ -112,10 +112,10 @@ router.get("/:id/change_group", function(req, res) {
 	});
 });
 
-router.post("/:id/change_group", function(req, res) {
+router.post("/student/change_group", function(req, res) {
 
-	// console.log(req.params.id);
-	res.redirect("/student/" + req.params.id);
+	// console.log(req.user.id);
+	res.redirect("/student/" + req.user.id);
 });
 
 module.exports = router;

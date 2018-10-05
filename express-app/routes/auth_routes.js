@@ -1,181 +1,85 @@
-const express = require("express");
-const router = express.Router();
-const Student = require("../models/student");
-const Faculty = require("../models/faculty");
-const mongoose = require("mongoose");
-const keys = require("../config/keys");
+var express = require("express");
+var mongoose = require("mongoose");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+var User = require("../models/user");
+var keys = require("../config/keys");
 
-router.post("/login", function(req, res) {
+var router = express.Router();
 
-	var rollnumber = req.body.rollnumber;
-	var password = req.body.password;
+router.get("/", function(req, res) {
 
-	if (rollnumber[0].match(/[a-z]/i)) {
-
-		Faculty.getFacultyByRollnumber(rollnumber, function(err, faculty) {
-
-			if (err) {
-
-				console.log(err);
-			} else if (!faculty) {
-
-				console.log("Unknown user");
-				res.redirect("/");
-			} else if (password !== faculty.password) {
-
-				console.log("Invalid password");
-				res.redirect("/");
-			} else {
-
-				res.redirect("/faculty/" + faculty._id);
-			}
-		});
-	} else {
-
-		Student.getStudentByRollnumber(rollnumber, function(err, student) {
-
-			if (err) {
-
-				console.log(err);
-			} else if (!student) {
-
-				console.log("Unknown user");
-				res.redirect("/");
-			} else if (password !== student.password) {
-
-				console.log("Invalid password");
-				res.redirect("/");
-			} else {
-
-				res.redirect("/student/" + student._id);
-			}
-		});
-	}
-	// User.findOne({
-
-	// 	rollnumber: req.body.rollnumber
-	// }, function(err, foundUser) {
-
-	// 	if (err) {
-
-	// 		console.log(err);
-	// 	} else if (foundUser.password != req.body.password) {
-
-	// 		console.log("invalid password");
-	// 		res.redirect("/");
-	// 	} else {
-
-	// 		res.redirect("/user/" + foundUser._id);
-	// 	}
-	// });
+	res.render("index");
 });
 
-router.post("/register", function(req, res) {
+// AUTH ROUTES
+// REGISTER
+router.post("/auth/register", function(req, res) {
 
-	if (req.body.rollnumber[0].match(/[a-z]/i)) {
+	console.log(req.body);
+	var newUser = new User({
 
-		// newUser.isFaculty = true;
-		var name = req.body.name;
-		var mail = req.body.name;
-		var rollnumber = req.body.rollnumber;
-		var password = req.body.password;
-		var repassword = req.body.repassword;
+		username: req.body.username,
+		email: req.body.email,
+		name: req.body.name,
+		image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg"
+	});
 
-		Faculty.findOne({rollnumber: {
+	if (req.body.password === req.body.repassword) {
 
-			"$regex": "^" + rollnumber + "\\b",
-			"$options": "i"
-		}}, function(err, user) {
+		User.register(newUser, req.body.password, function(err, newUser) {
 
-			Faculty.findOne({mail: {
+			if (err) {
 
-				"$regex": "^" + mail + "\\b",
-				"$options": "i"
-			}}, function(err, mail) {
+				console.log(err);
+				return res.redirect("/");
+			}
 
-				if (user || mail) {
+			passport.authenticate("local")(req, res, function() {
 
-					res.render("index", {
+				if (newUser.username[0].match(/[a-z]/i)) {
 
-						user: user,
-						mail: mail
-					});
+					res.redirect("/faculty");
 				} else {
 
-					var newFaculty = {
-
-						name: req.body.name,
-						rollnumber: req.body.rollnumber,
-						mail: req.body.mail,
-						password: req.body.password,
-						image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" 
-					}
-
-					Faculty.create(newFaculty, function(err, newlyCreated) {
-
-						if (err) {
-
-							console.log(err);
-						} else {
-
-							res.redirect("/faculty/" + newlyCreated._id);
-						}
-					});
+					res.redirect("/student");
 				}
 			});
 		});
 	} else {
 
-		// newUser.isFaculty = false;
-		var name = req.body.name;
-		var mail = req.body.name;
-		var rollnumber = req.body.rollnumber;
-		var password = req.body.password;
-		var repassword = req.body.repassword;
+		console.log("Passwords do not match");
+		return res.redirect("/");
+	}
+});
 
-		Student.findOne({rollnumber: {
+// LOGIN
+router.post("/auth/login", passport.authenticate("local", {
 
-			"$regex": "^" + rollnumber + "\\b",
-			"$options": "i"
-		}}, function(err, user) {
+	successRedirect: "/auth/redirect",
+	failureRedirect: "/"
+}), function(req, res) {
 
-			Student.findOne({mail: {
+	// 
+});
 
-				"$regex": "^" + mail + "\\b",
-				"$options": "i"
-			}}, function(err, mail) {
+// LOGOUT
+router.get("/auth/logout", function(req, res) {
 
-				if (user || mail) {
+	req.logout();
+	res.redirect("/");
+});
 
-					res.render("index", {
+// REDIRECT
+router.get("/auth/redirect", function(req, res) {
 
-						user: user,
-						mail: mail
-					});
-				} else {
+	if (req.user.username[0].match(/[a-z]/i)) {
 
-					var newStudent = {
+		res.redirect("/faculty");
+	} else {
 
-						name: req.body.name,
-						rollnumber: req.body.rollnumber,
-						mail: req.body.mail,
-						password: req.body.password,
-						image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" 
-					}
-
-					Student.create(newStudent, function(err, newlyCreated) {
-
-						if (err) {
-
-							console.log(err);
-						} else {
-
-							res.redirect("/student/" + newlyCreated._id);
-						}
-					});
-				}
-			});
-		});
+		res.redirect("/student");
 	}
 });
 

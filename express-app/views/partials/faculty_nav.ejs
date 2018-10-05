@@ -8,7 +8,7 @@
 					<a href="javascript:void(0)" class="dropbtnz">File</a>
 					<div class="dropdown-contentz">
 						<a href="#" class="titlelinks" onclick="CreatePreferencesWindow()">Preferences</a>
-						<a href="/" class="titlelinks">Logout</a>
+						<a href="/auth/logout" class="titlelinks">Logout</a>
 					</div>
 				</li>
 				<li class="dropdownz">
@@ -57,7 +57,7 @@
 						</div>
 						<a href="#user" ><img class="circle" src="<%= user.image %>"></a>
 						<a href="#name"><span class="white-text name "><%= user.name %></span></a>
-						<a href="#email"><span class="white-text email"><%= user.mail %></span></a>
+						<a href="#email"><span class="white-text email"><%= user.email %></span></a>
 					</div></li>
 					<div class = "left-align">
 						<li><div class="divider"></div></li>
@@ -68,6 +68,7 @@
 						<li><a class="waves-effect" href="/faculty/<%= user._id %>/evaluations">Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="/faculty/<%= user._id %>/notes">Upload Notes</a></li>
 						<li><a class="waves-effect" href="/faculty/<%= user._id %>/addmember" onclick = "EnterStudentID()">Add Members</a></li>
+						<li><a class="waves-effect" href="/auth/logout">Logout</a></li>
 					</div>
 				</ul>
 			
