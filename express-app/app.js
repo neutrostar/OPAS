@@ -50,6 +50,11 @@ app.use(authRoutes);
 app.use(facultyRoutes);
 app.use(studentRoutes);
 
+app.get("*", function(req, res) {
+
+	res.send("Oops, something went wrong!");
+});
+
 app.listen(3000, () => console.log("Listening to port 3000"));
 
 // module.exports = app;

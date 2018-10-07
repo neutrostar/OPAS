@@ -1,10 +1,17 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
 // Schema setup
-var groupSchema = new mongoose.Schema({
+var GroupSchema = new mongoose.Schema({
 
-	code: String,
-	name: String
+	faculty_id: {
+
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User"
+		},
+
+		group_id: String,
+	}
 });
 
-module.exports = mongoose.model("Group", groupSchema);
+module.exports = mongoose.model("Group", GroupSchema);

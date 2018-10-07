@@ -1,5 +1,6 @@
 var express = require("express");
 var User = require("../models/user");
+var FacultyMain = require("../models/faculty_main");
 var Group = require("../models/group");
 var Announcement = require("../models/announcement");
 var mongoose = require("mongoose");
@@ -13,17 +14,19 @@ router.get("/faculty", function(req, res) {
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
 			// console.log(foundFaculty);
 			Announcement.find({}, function(err, allAnnouncements) {
 
+				console.log(allAnnouncements);
 				res.render("faculty_page", {
 
 					user: foundUser,
 					announcement: allAnnouncements
 				});
-			});	
+			});
 		}
 	});
 });
@@ -31,7 +34,30 @@ router.get("/faculty", function(req, res) {
 router.post("/faculty/announcement", function(req, res) {
 
 	console.log(req.body);
-	res.redirect("/faculty");
+
+	var newAccouncement = new Announcement({
+
+		text: req.body.text,
+		author: {
+
+			id: req.user.id,
+			username: req.user.username,
+			image: req.user.image
+		}
+	});
+
+	Announcement.create(newAccouncement, function(err, newAccouncement) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.redirect("/faculty");
+		}
+	});
+
+	// res.redirect("/faculty");
 });
 
 router.get("/faculty/assignments", isLoggedIn, function(req, res) {

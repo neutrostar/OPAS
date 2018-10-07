@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
 
 // Schema setup
-var announcementSchema = new mongoose.Schema({
+var AnnouncementSchema = new mongoose.Schema({
 
-	date: String,
-	text: String,
 	author: {
 
 		id: {
@@ -13,8 +11,11 @@ var announcementSchema = new mongoose.Schema({
 			ref: "User"
 		},
 
-		username: String
-	}
+		username: String,
+		image: String
+	},
+
+	text: String
 });
 
-module.exports = mongoose.model("Announcement", announcementSchema);
+module.exports = mongoose.model("Announcement", AnnouncementSchema);
