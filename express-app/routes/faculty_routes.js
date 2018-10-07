@@ -8,7 +8,6 @@ var router = express.Router();
 
 router.get("/faculty", isLoggedIn, function(req, res) {
 
-	console.log(req.user);
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -17,8 +16,19 @@ router.get("/faculty", isLoggedIn, function(req, res) {
 			res.redirect("*");
 		} else {
 
-			// console.log(foundFaculty);
-			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
+			Announcement.find({}, function(err, allAnnouncements) {
+
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				allAnnouncements.forEach(function(announcement) {
+
+					console.log(announcement.comments);
+					announcement.populate("Comments");
+				});
 
 				res.render("faculty_page", {
 

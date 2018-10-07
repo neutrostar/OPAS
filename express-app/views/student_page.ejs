@@ -20,11 +20,11 @@
 							<div class="card-action">
 
 								<div class="row">
-								    <form class="col s12">
+								    <form class="col s12" action="/student/<%= announcement.id %>" method="post">
 								      <div class="row">
 								        <div class="input-field col s12">
-								          <textarea id="textarea1" class="materialize-textarea"></textarea>
-								          <label for="textarea1">Add A comment</label>
+								          <textarea id="textarea1" class="materialize-textarea" name="comment"></textarea>
+								          <label for="textarea1">Add a comment</label>
 								          <input class="waves-effect waves-light btn" type="submit" name="post">
 								        </div>
 								      </div>

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
 // Schema setup
 var AnnouncementSchema = new mongoose.Schema({
@@ -17,14 +17,14 @@ var AnnouncementSchema = new mongoose.Schema({
 
 	text: String,
 
-	comments: {
+	comments: [{
 
 		id: {
 
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Comment"
 		}
-	}
+	}]
 });
 
 module.exports = mongoose.model("Announcement", AnnouncementSchema);

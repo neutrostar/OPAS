@@ -6,7 +6,7 @@ var Comment = require("../models/comment");
 
 var router = express.Router();
 
-router.get("/student", function(req, res) {
+router.get("/student", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -29,6 +29,7 @@ router.get("/student", function(req, res) {
 
 router.post("/student/:announcement_id", function(req, res) {
 
+	// console.log(req.body);
 	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
 
 		if (err) {
@@ -39,7 +40,12 @@ router.post("/student/:announcement_id", function(req, res) {
 
 		var newComment = new Comment({
 
-			// 
+			author: {
+
+				id: req.user.id,
+				name: req.user.name
+			},
+			text: req.body.comment
 		});
 
 		Comment.create(newComment, function(err, newComment) {
@@ -50,13 +56,13 @@ router.post("/student/:announcement_id", function(req, res) {
 				res.redirect("*");
 			}
 
-			foundAnnouncement.push(newComment);
+			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
 
 			res.redirect("/student");
-		})
-	})
-})
+		});
+	});
+});
 
 router.get("/student/group", isLoggedIn, function(req, res) {
 
