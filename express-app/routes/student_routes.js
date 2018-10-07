@@ -20,7 +20,7 @@ router.get("/student", function(req, res) {
 				res.render("student_page", {
 
 					user: foundUser,
-					announcement: allAnnouncements
+					announcements: allAnnouncements
 				});
 			});	
 		}
