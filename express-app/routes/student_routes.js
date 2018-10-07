@@ -15,17 +15,13 @@ router.get("/student", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-<<<<<<< HEAD
 			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) { 
 
-=======
-			Announcement.find({}, function(err, allAnnouncements) {
-				
->>>>>>> bce66e55d85c944931e5dfda9e01d60b77e57683
 				console.log(allAnnouncements);
 				res.render("student_page", {
+
 					user: foundUser,
-					announcements: allAnnouncements
+					announcement: allAnnouncements
 				});
 			});	
 		}
