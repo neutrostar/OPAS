@@ -6,7 +6,7 @@ var Comment = require("../models/comment");
 
 var router = express.Router();
 
-router.get("/faculty", function(req, res) {
+router.get("/faculty", isLoggedIn, function(req, res) {
 
 	console.log(req.user);
 	User.findById(req.user.id).exec(function(err, foundUser) {

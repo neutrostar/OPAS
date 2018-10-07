@@ -1,8 +1,8 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var User = require("../models/user");
-var Group = require("../models/group");
 var Announcement = require("../models/announcement");
+var Comment = require("../models/comment");
 
 var router = express.Router();
 
@@ -15,7 +15,7 @@ router.get("/student", function(req, res) {
 			console.log(err);
 		} else {
 
-			Announcement.find({}, function(err, allAnnouncements) {
+			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
 
 				res.render("student_page", {
 
@@ -26,6 +26,37 @@ router.get("/student", function(req, res) {
 		}
 	});
 });
+
+router.post("/student/:announcement_id", function(req, res) {
+
+	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		var newComment = new Comment({
+
+			// 
+		});
+
+		Comment.create(newComment, function(err, newComment) {
+
+			if (err) {
+
+				console.log(err);
+				res.redirect("*");
+			}
+
+			foundAnnouncement.push(newComment);
+			foundAnnouncement.save();
+
+			res.redirect("/student");
+		})
+	})
+})
 
 router.get("/student/group", isLoggedIn, function(req, res) {
 
@@ -60,27 +91,6 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 		}
 	});
 });
-
-// router.get("/student/assignment/view_assignment/:assignment_id", isLoggedIn, function(req, res) {
-
-// 	User.findById(req.user.id).exec(function(err, foundUser) {
-
-// 		if (err) {
-
-// 			console.log(err);
-// 		} else {
-
-// 			Assignment.findById(req.params.assignment_id).exec(function(err, foundGroup) {
-
-// 				res.render("ques1", {
-
-// 					user: foundUser,
-// 					assignment: foundAssignment
-// 				});
-// 			});
-// 		}
-// 	});
-// });
 
 router.get("/student/assignment/view_assignment", isLoggedIn, function(req, res) {
 
