@@ -20,7 +20,7 @@ router.get("/student", function(req, res) {
 				res.render("student_page", {
 
 					user: foundUser,
-					announcement: allAnnouncements
+					announcements: allAnnouncements
 				});
 			});	
 		}
@@ -60,27 +60,6 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 		}
 	});
 });
-
-// router.get("/student/assignment/view_assignment/:assignment_id", isLoggedIn, function(req, res) {
-
-// 	User.findById(req.user.id).exec(function(err, foundUser) {
-
-// 		if (err) {
-
-// 			console.log(err);
-// 		} else {
-
-// 			Assignment.findById(req.params.assignment_id).exec(function(err, foundGroup) {
-
-// 				res.render("ques1", {
-
-// 					user: foundUser,
-// 					assignment: foundAssignment
-// 				});
-// 			});
-// 		}
-// 	});
-// });
 
 router.get("/student/assignment/view_assignment", isLoggedIn, function(req, res) {
 
