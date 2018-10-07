@@ -52,7 +52,11 @@ app.use(studentRoutes);
 
 app.get("*", function(req, res) {
 
-	res.send("Oops, something went wrong!");
+	// res.send("Oops, something went wrong!");
+	res.render("error_page", {
+
+		// 
+	});
 });
 
 app.listen(3000, () => console.log("Listening to port 3000"));

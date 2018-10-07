@@ -15,7 +15,16 @@ var AnnouncementSchema = new mongoose.Schema({
 		image: String
 	},
 
-	text: String
+	text: String,
+
+	comments: {
+
+		id: {
+
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Comment"
+		}
+	}
 });
 
 module.exports = mongoose.model("Announcement", AnnouncementSchema);
