@@ -77,7 +77,7 @@ router.get("/faculty/groups/:group_id", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			Group.findById(req.user.group_id).exec(function(err, foundGroup) {
+			Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 				res.render("faculty_group_info", {
 
