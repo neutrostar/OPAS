@@ -1,8 +1,8 @@
 var express = require("express");
-var User = require("../models/user");
-var Group = require("../models/group");
-var Announcement = require("../models/announcement");
 var mongoose = require("mongoose");
+var User = require("../models/user");
+var Announcement = require("../models/announcement");
+var Comment = require("../models/comment");
 
 var router = express.Router();
 
@@ -17,7 +17,7 @@ router.get("/faculty", function(req, res) {
 		} else {
 
 			// console.log(foundFaculty);
-			Announcement.find({}, function(err, allAnnouncements) {
+			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
 
 				console.log(allAnnouncements);
 				res.render("faculty_page", {
@@ -53,8 +53,37 @@ router.post("/faculty/announcement", function(req, res) {
 			res.redirect("/faculty");
 		}
 	});
+});
 
-	// res.redirect("/faculty");
+router.post("/faculty/:announcement_id", function(req, res) {
+
+	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		var newComment = new Comment({
+
+			// 
+		});
+
+		Comment.create(newComment, function(err, newComment) {
+
+			if (err) {
+
+				console.log(err);
+				res.redirect("*");
+			}
+
+			foundAnnouncement.push(newComment);
+			foundAnnouncement.save();
+
+			res.redirect("/faculty");
+		});
+	});
 });
 
 router.get("/faculty/assignments", isLoggedIn, function(req, res) {
