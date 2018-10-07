@@ -7,18 +7,29 @@
 				<div class = "row">
 				
 				</div>
-				<div class="row">
-					<div class="col s12 ">
-						<div class="card">
-							<div class="card-content">
-								<p>The class on thursday is cancelled and will be taken on next tuesday</p>
-							</div>
-							<div class="card-action">
-								<a href="#">Comment</a>
+				<% announcements.forEach(function(announcement) { %>
+					<div class="row">
+						<div class="col s12 ">
+							<div class="card">
+								<div class="card-content">
+									<p><%= announcement.text %></p><br>
+									<p><%= announcement.author.name %></p>
+								</div>
+								<div class="card-action">
+									<form class="col s12" action="/faculty/<%= announcement.id %>" method="post">
+								      <div class="row">
+								        <div class="input-field col s12">
+								          <textarea id="textarea1" class="materialize-textarea"></textarea>
+								          <label for="textarea1">Add a Comment</label>
+								        </div>
+								        <input class="btn" type="submit" name="post">
+								      </div>
+								    </form>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<% }); %>
 				<div class="row">
 					<div class="col s12 ">
 						<div class="card">
