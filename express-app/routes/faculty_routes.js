@@ -1,6 +1,5 @@
 var express = require("express");
 var User = require("../models/user");
-var FacultyMain = require("../models/faculty_main");
 var Group = require("../models/group");
 var Announcement = require("../models/announcement");
 var mongoose = require("mongoose");
@@ -20,10 +19,11 @@ router.get("/faculty", function(req, res) {
 			// console.log(foundFaculty);
 			Announcement.find({}, function(err, allAnnouncements) {
 
+				console.log(allAnnouncements);
 				res.render("faculty_page", {
 
 					user: foundUser,
-					announcement: allAnnouncements
+					announcements: allAnnouncements
 				});
 			});
 		}
@@ -38,7 +38,7 @@ router.post("/faculty/announcement", function(req, res) {
 		author: {
 
 			id: req.user.id,
-			username: req.user.username,
+			name: req.user.name,
 			image: req.user.image
 		}
 	});
