@@ -27,7 +27,7 @@ router.get("/student", function(req, res) {
 	});
 });
 
-router.get("/student/group", function(req, res) {
+router.get("/student/group", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -44,7 +44,7 @@ router.get("/student/group", function(req, res) {
 	});
 });
 
-router.get("/student/assignment", function(req, res) {
+router.get("/student/assignment", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -61,7 +61,7 @@ router.get("/student/assignment", function(req, res) {
 	});
 });
 
-router.get("/student/evaluations", function(req, res) {
+router.get("/student/evaluations", isLoggedIn, function(req, res) {
 
 	Student.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -78,7 +78,7 @@ router.get("/student/evaluations", function(req, res) {
 	});
 });
 
-router.get("/student/notes", function(req, res) {
+router.get("/student/notes", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -95,7 +95,7 @@ router.get("/student/notes", function(req, res) {
 	});
 });
 
-router.get("/student/change_group", function(req, res) {
+router.get("/student/change_group", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -112,10 +112,20 @@ router.get("/student/change_group", function(req, res) {
 	});
 });
 
-router.post("/student/change_group", function(req, res) {
+router.post("/student/change_group", isLoggedIn, function(req, res) {
 
 	// console.log(req.user.id);
 	res.redirect("/student/" + req.user.id);
 });
+
+function isLoggedIn(req, res, next) {
+
+	if (req.isAuthenticated()) {
+
+		return next();
+	}
+
+	res.redirect("/");
+}
 
 module.exports = router;

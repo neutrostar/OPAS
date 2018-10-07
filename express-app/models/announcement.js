@@ -4,12 +4,17 @@ const mongoose = require("mongoose");
 var announcementSchema = new mongoose.Schema({
 
 	date: String,
-	description: String,
-	group: [{
+	text: String,
+	author: {
 
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Group"
-	}]
+		id: {
+
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User"
+		},
+
+		username: String
+	}
 });
 
 module.exports = mongoose.model("Announcement", announcementSchema);

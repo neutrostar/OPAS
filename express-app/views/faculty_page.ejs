@@ -8,18 +8,20 @@
 					<div class="col s12 ">
 						<div class="card">
 							<div class="card-content">
-								<form>
+								<form action="/faculty/announcement" method="post">
 									<div class="row">
 										<div class="input-field">
-											<textarea id="textarea1" class="materialize-textarea"></textarea>
+											<textarea id="textarea1" class="materialize-textarea" name="announcement"></textarea>
 											<label for="textarea1">Write an announcement here</label>
 										</div>
 									</div>
+
+									<div class="card-action">
+										
+										<div class="col s6 offset-s4"></div>
+										<input class="waves-effect waves-light btn" type="submit" name="post">
+									</div>
 								</form>
-							</div>
-							<div class="card-action">
-								<div class = "col s6 offset-s4"></div>
-								<button class = "waves-effect waves-light btn" type = "submit">Post<i class = "material-icons right">send</i></button>
 							</div>
 						</div>
 					</div>
