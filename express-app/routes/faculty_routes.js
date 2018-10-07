@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get("/faculty", function(req, res) {
 
+	console.log(req.user);
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -19,7 +20,6 @@ router.get("/faculty", function(req, res) {
 			// console.log(foundFaculty);
 			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
 
-				console.log(allAnnouncements);
 				res.render("faculty_page", {
 
 					user: foundUser,
