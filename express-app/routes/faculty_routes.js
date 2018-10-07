@@ -99,7 +99,7 @@ router.get("/faculty/notes", function(req, res) {
 	// 
 });
 
-router.get("/faculty/addmember", isLoggedIn, function(req, res) {
+router.get("/faculty/creategroup", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -108,7 +108,7 @@ router.get("/faculty/addmember", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			res.render("faculty_addstudent", {
+			res.render("faculty_creategroup", {
 
 				user: foundUser
 			});
@@ -119,6 +119,41 @@ router.get("/faculty/addmember", isLoggedIn, function(req, res) {
 router.post("/faculty/addmember", isLoggedIn, function() {
 
 	// 
+});
+
+
+router.get("/faculty/assignments/viewsubmissions", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_assignment_viewsubmissions", {
+
+				user: foundUser
+			});
+		}
+	});
+});
+
+router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_createNewAssignment", {
+
+				user: foundUser
+			});
+		}
+	});
 });
 
 function isLoggedIn(req, res, next) {
