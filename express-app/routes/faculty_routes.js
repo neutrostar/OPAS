@@ -20,7 +20,6 @@ router.get("/faculty", function(req, res) {
 			// console.log(foundFaculty);
 			Announcement.find({}, function(err, allAnnouncements) {
 
-				console.log(allAnnouncements);
 				res.render("faculty_page", {
 
 					user: foundUser,
@@ -32,8 +31,6 @@ router.get("/faculty", function(req, res) {
 });
 
 router.post("/faculty/announcement", function(req, res) {
-
-	console.log(req.body);
 
 	var newAccouncement = new Announcement({
 
@@ -142,9 +139,10 @@ router.get("/faculty/creategroup", isLoggedIn, function(req, res) {
 	});
 });
 
-router.post("/faculty/addmember", isLoggedIn, function() {
+router.post("/faculty/creategroup", isLoggedIn, function(req, res) {
 
-	// 
+	// console.log(req.body);
+	res.redirect("/faculty");
 });
 
 
