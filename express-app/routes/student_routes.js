@@ -16,11 +16,11 @@ router.get("/student", function(req, res) {
 		} else {
 
 			Announcement.find({}, function(err, allAnnouncements) {
-				
-				console.log(allAnnouncements);
+
 				res.render("student_page", {
+
 					user: foundUser,
-					announcements: allAnnouncements
+					announcement: allAnnouncements
 				});
 			});	
 		}
