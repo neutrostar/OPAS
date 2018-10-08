@@ -73,10 +73,14 @@ router.get("/student/group", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			res.render("student_page", {
+			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
 
-				user:foundUser
-			});
+				res.render("student_page", {
+
+					user: foundUser,
+					announcements: allAnnouncements
+				});
+			});	
 		}
 	});
 });
