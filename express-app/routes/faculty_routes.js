@@ -63,7 +63,34 @@ router.post("/faculty/announcement", function(req, res) {
 
 router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, res) {
 
-	console.log("Here!");
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		Announcement.findById(req.params.announcement_id).populate({
+
+			path: "comments",
+			select: "text"
+		}).exec(function(err, foundAnnouncement) {
+
+			console.log(foundAnnouncement);
+			if (err) {
+
+				console.log(err);
+				res.redirect("*");
+			}
+
+			res.render("faculty_announcement", {
+
+				user: foundUser,
+				announcement: foundAnnouncement
+			});
+		});
+	});
 });
 
 router.post("/faculty/announcement/:announcement_id", function(req, res) {
