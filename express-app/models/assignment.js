@@ -21,7 +21,9 @@ var AssignmentSchema = new mongoose.Schema({
 
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Subject"
-		}
+		},
+
+		subject_id: String
 	},
 
 	ques1: {
