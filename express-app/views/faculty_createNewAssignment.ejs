@@ -2,11 +2,11 @@
 	
 	<% include ./partials/faculty_nav %>
 		<div class="row">
-			<form class="col s9 offset-s1">
+			<form class="col s9 offset-s1" method="post" action="/faculty/assignments/create">
 				<div class="row">
 					
 					<div class="input-field col s12">
-						<input id="last_name" type="text" class="validate">
+						<input name="title" id="last_name" type="text" class="validate">
 						<label for="last_name">Assignment Title</label>
 					</div>
 				</div>
@@ -16,19 +16,19 @@
 					<div class="input-field col s12">
 						<p>
 							<label>
-								<input type="checkbox" />
+								<input name="c++" type="checkbox" />
 								<span>C++</span>
 							</label>
 						</p>
 						<p>
 							<label>
-								<input type="checkbox" />
+								<input name="java" type="checkbox" />
 								<span>Java</span>
 							</label>
 						</p>
 						<p>
 							<label>
-								<input type="checkbox" />
+								<input name="python" type="checkbox" />
 								<span>Python</span>
 							</label>
 						</p>
@@ -37,7 +37,7 @@
 					<br>
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="last_name" type="text" class="validate">
+							<input name = "ques1" id="last_name" type="text" class="validate">
 							<label for="last_name">Question 1</label>
 							Upload Test Cases:
 							<div class="file-field input-field">
@@ -67,7 +67,7 @@
 					<br>
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="last_name" type="text" class="validate">
+							<input name = "ques2" id="last_name" type="text" class="validate">
 							<label for="last_name">Question 2</label>
 							Upload Test Cases:
 							<div class="file-field input-field">
@@ -94,39 +94,10 @@
 						
 						</div>
 						<br>
-						<div class="row">
-							<div class="input-field col s12">
-								<input id="last_name" type="text" class="validate">
-								<label for="last_name">Question 3</label>
-								Upload Test Cases:
-								<div class="file-field input-field">
-									<div class="btn">
-										<span>File</span>
-										<input type="file">
-									</div>
-									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text">
-									</div>
-								</div>
-								Upload Answer Cases:
-								<div class="file-field input-field">
-									<div class="btn">
-										<span>File</span>
-										<input type="file">
-									</div>
-									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text">
-									</div>
-								</div>
-								<input placeholder="Max Marks" id="max_marks" type="text" class="validate">
-							
-							
-							</div>
-						</div>
 						<br>
 						<div class="row">
 							<div class="col s5">
-								<a class="waves-effect waves-light btn" href="#">Submit</a>
+								<input class="waves-effect waves-light btn" type="submit" name="post">
 							</div>
 						</div>
 				
