@@ -15,7 +15,13 @@ router.get("/student", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
+			Announcement.find({}, function(err, allAnnouncements) {
+
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
 
 				res.render("student_page", {
 
@@ -27,10 +33,38 @@ router.get("/student", isLoggedIn, function(req, res) {
 	});
 });
 
-router.post("/student/:announcement_id", function(req, res) {
+router.get("/student/announcement/:id", isLoggedIn, function(req, res) {
 
-	// console.log(req.body);
-	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
+
+			console.log(foundAnnouncement);
+			if (err) {
+
+				console.log(err);
+				res.redirect("*");
+			}
+
+			res.render("student_announcement", {
+
+				user: foundUser,
+				announcement: foundAnnouncement
+			});
+		});
+	});
+});
+
+router.post("/student/announcement/:id", function(req, res) {
+
+	console.log(req.body);
+	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
 
 		if (err) {
 
@@ -45,6 +79,7 @@ router.post("/student/:announcement_id", function(req, res) {
 				id: req.user.id,
 				name: req.user.name
 			},
+
 			text: req.body.comment
 		});
 
