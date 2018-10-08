@@ -183,7 +183,7 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/student/assignment/view_assignment", isLoggedIn, function(req, res) {
+router.get("/student/assignment/:assignment_id/view", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
