@@ -3,8 +3,12 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
+var Assignment = require("../models/assignment");
+var Subject = require("../models/subject");
 
 var router = express.Router();
+
+// ================================================================================
 
 router.get("/student", isLoggedIn, function(req, res) {
 
@@ -99,6 +103,8 @@ router.post("/student/announcement/:id", function(req, res) {
 	});
 });
 
+// ================================================================================
+
 router.get("/student/group", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -120,6 +126,31 @@ router.get("/student/group", isLoggedIn, function(req, res) {
 	});
 });
 
+router.get("/student/change_group", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("student_entercode", {
+
+				user:foundUser
+			});
+		}
+	});
+});
+
+router.post("/student/change_group", isLoggedIn, function(req, res) {
+
+	// console.log(req.user.id);
+	res.redirect("/student/" + req.user.id);
+});
+
+// ================================================================================
+
 router.get("/student/assignment", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -129,10 +160,25 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			res.render("student_assignment", {
+			Assignment.find({}).populate("subject").exec(function(err, allAssignments) {
 
-				user: foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("student_assignment", {
+
+					user: foundUser,
+					assignments: allAssignments
+				});
 			});
+
+			// res.render("student_assignment", {
+
+			// 	user: foundUser
+			// });
 		}
 	});
 });
@@ -171,6 +217,7 @@ router.get("/student/assignment/view_assignment/ques", isLoggedIn, function(req,
 	});
 });
 
+// ================================================================================
 
 router.get("/student/evaluations", isLoggedIn, function(req, res) {
 
@@ -189,6 +236,8 @@ router.get("/student/evaluations", isLoggedIn, function(req, res) {
 	});
 });
 
+// ================================================================================
+
 router.get("/student/notes", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -206,28 +255,7 @@ router.get("/student/notes", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/student/change_group", isLoggedIn, function(req, res) {
-
-	User.findById(req.user.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("student_entercode", {
-
-				user:foundUser
-			});
-		}
-	});
-});
-
-router.post("/student/change_group", isLoggedIn, function(req, res) {
-
-	// console.log(req.user.id);
-	res.redirect("/student/" + req.user.id);
-});
+// ================================================================================
 
 function isLoggedIn(req, res, next) {
 
