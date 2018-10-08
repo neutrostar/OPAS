@@ -26,12 +26,6 @@ router.get("/faculty", isLoggedIn, function(req, res) {
 					res.redirect("*");
 				}
 
-				allAnnouncements.forEach(function(announcement) {
-
-					console.log(announcement.comments);
-					announcement.populate("Comments");
-				});
-
 				res.render("faculty_page", {
 
 					user: foundUser,
@@ -69,8 +63,8 @@ router.post("/faculty/announcement", function(req, res) {
 
 router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, res) {
 
-	// 
-})
+	console.log("Here!");
+});
 
 router.post("/faculty/announcement/:announcement_id", function(req, res) {
 
