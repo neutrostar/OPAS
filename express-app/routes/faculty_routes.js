@@ -61,7 +61,7 @@ router.post("/faculty/announcement", function(req, res) {
 	});
 });
 
-router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, res) {
+router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -71,11 +71,7 @@ router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, r
 			res.redirect("*");
 		}
 
-		Announcement.findById(req.params.announcement_id).populate({
-
-			path: "comments",
-			select: "text"
-		}).exec(function(err, foundAnnouncement) {
+		Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
 
 			console.log(foundAnnouncement);
 			if (err) {
@@ -93,7 +89,7 @@ router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, r
 	});
 });
 
-router.post("/faculty/announcement/:announcement_id", function(req, res) {
+router.post("/faculty/announcement/:id", function(req, res) {
 
 	console.log(req.body);
 	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {

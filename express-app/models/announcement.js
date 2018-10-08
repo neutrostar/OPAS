@@ -22,9 +22,9 @@ var AnnouncementSchema = new mongoose.Schema({
 		id: {
 
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "Comment"
+			ref: "comment"
 		}
 	}]
 });
 
-module.exports = mongoose.model("Announcement", AnnouncementSchema);
+module.exports = mongoose.model("announcement", AnnouncementSchema);
