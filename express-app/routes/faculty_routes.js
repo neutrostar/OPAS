@@ -4,6 +4,7 @@ var User = require("../models/user");
 var Group = require("../models/group");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
+var Subject = require("../models/subject");
 var Assignment = require("../models/assignment");
 
 var router = express.Router();
@@ -204,35 +205,51 @@ router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 	console.log(req.body);
 
+	Subject.findOne({
 
-
-	var newAssignment = new Assignment({
-
-		title: req.body.title,
-		author: {
-
-			id: req.user.id,
-			name: req.user.name
-		},
-
-		// subject: {
-
-		// 	id: req.body.subject_id
-		// },
-
-		ques1: req.body.ques1,
-		ques2: req.body.ques2
-	});
-
-	Assignment.create(newAssignment, function(err, newAssignment) {
+		subject_id: req.body.subject
+	}, function(err, foundSubject) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
+			resredirect("*");
 		}
 
-		res.redirect("/faculty");
+		if (!foundSubject) {
+
+			console.log("Subject not found");
+		} else {
+
+			var newAssignment = new Assignment({
+
+				title: req.body.title,
+				author: {
+
+					id: req.user.id,
+					name: req.user.name
+				},
+
+				subject: {
+
+					id: foundSubject._id
+				},
+
+				ques1: req.body.ques1,
+				ques2: req.body.ques2
+			});
+
+			Assignment.create(newAssignment, function(err, newAssignment) {
+
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.redirect("/faculty");
+			});
+		}
 	});
 });
 

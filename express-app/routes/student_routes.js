@@ -3,6 +3,8 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
+var Assignment = require("../models/assignment");
+var Subject = require("../models/subject");
 
 var router = express.Router();
 
@@ -158,10 +160,25 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			res.render("student_assignment", {
+			Assignment.find({}).populate("subject").exec(function(err, allAssignments) {
 
-				user: foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("student_assignment", {
+
+					user: foundUser,
+					assignments: allAssignments
+				});
 			});
+
+			// res.render("student_assignment", {
+
+			// 	user: foundUser
+			// });
 		}
 	});
 });
