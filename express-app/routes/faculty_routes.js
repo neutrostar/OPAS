@@ -198,6 +198,12 @@ router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
 	});
 });
 
+router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
+
+	console.log(req.body);
+	res.redirect("/faculty");
+})
+
 // ========================================================================================
 
 router.get("/faculty/groups", isLoggedIn, function(req, res) {
