@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var User = require("../models/user");
+var Group = require("../models/group");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Assignment = require("../models/assignment");
