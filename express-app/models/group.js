@@ -16,9 +16,9 @@ var GroupSchema = new mongoose.Schema({
 		id: {
 
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "subject"
+			ref: "Subject"
 		}
 	}
 });
 
-module.exports = mongoose.model("group", GroupSchema);
+module.exports = mongoose.model("Group", GroupSchema);

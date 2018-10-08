@@ -7,4 +7,4 @@ var SubjectSchema = new mongoose.Schema({
 	subject_name: String
 });
 
-module.exports = mongoose.model("subject", SubjectSchema);
+module.exports = mongoose.model("Subject", SubjectSchema);

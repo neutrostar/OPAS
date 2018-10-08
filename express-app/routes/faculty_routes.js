@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
+var Assignment = require("../models/assignment");
 
 var router = express.Router();
 
@@ -191,7 +192,7 @@ router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 			res.render("faculty_createNewAssignment", {
 
-				user: foundUser
+				user: foundUser,
 			});
 		}
 	});
@@ -200,8 +201,38 @@ router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
 router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 	console.log(req.body);
-	res.redirect("/faculty");
-})
+
+
+
+	var newAssignment = new Assignment({
+
+		title: req.body.title,
+		author: {
+
+			id: req.user.id,
+			name: req.user.name
+		},
+
+		// subject: {
+
+		// 	id: req.body.subject_id
+		// },
+
+		ques1: req.body.ques1,
+		ques2: req.body.ques2
+	});
+
+	Assignment.create(newAssignment, function(err, newAssignment) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		res.redirect("/faculty");
+	});
+});
 
 // ========================================================================================
 

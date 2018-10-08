@@ -10,34 +10,11 @@
 						<label for="last_name">Assignment Title</label>
 					</div>
 				</div>
+				
 				<br>
 				<div class="row">
-					Languages Allowed: <br>
-					<div class="input-field col s12">
-						<p>
-							<label>
-								<input name="c++" type="checkbox" />
-								<span>C++</span>
-							</label>
-						</p>
-						<p>
-							<label>
-								<input name="java" type="checkbox" />
-								<span>Java</span>
-							</label>
-						</p>
-						<p>
-							<label>
-								<input name="python" type="checkbox" />
-								<span>Python</span>
-							</label>
-						</p>
-						<p>
-					</div>
-					<br>
-					<div class="row">
 						<div class="input-field col s12">
-							<input name = "ques1" id="last_name" type="text" class="validate">
+							<input name = "ques1[title]" id="last_name" type="text" class="validate">
 							<label for="last_name">Question 1</label>
 							Upload Test Cases:
 							<div class="file-field input-field">
@@ -59,7 +36,7 @@
 									<input class="file-path validate" type="text">
 								</div>
 							</div>
-							<input placeholder="Max Marks" id="max_marks" type="text" class="validate">
+							<input name="ques1[marks]" placeholder="Max Marks" id="max_marks" type="text" class="validate">
 							
 							
 						</div>
@@ -67,7 +44,7 @@
 					<br>
 					<div class="row">
 						<div class="input-field col s12">
-							<input name = "ques2" id="last_name" type="text" class="validate">
+							<input name = "ques2[title]" id="last_name" type="text" class="validate">
 							<label for="last_name">Question 2</label>
 							Upload Test Cases:
 							<div class="file-field input-field">
@@ -89,7 +66,7 @@
 									<input class="file-path validate" type="text">
 								</div>
 							</div>
-							<input placeholder="Max Marks" id="max_marks" type="text" class="validate">
+							<input name="ques2[marks]" placeholder="Max Marks" id="max_marks" type="text" class="validate">
 						
 						
 						</div>
