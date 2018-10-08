@@ -190,17 +190,28 @@ router.get("/student/assignment/:assignment_id/view", isLoggedIn, function(req, 
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
-			res.render("ques_UCS617", {
+			Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
 
-				user: foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("ques_UCS617", {
+
+					user: foundUser,
+					assignment: foundAssignment
+				});
 			});
 		}
 	});
 });
 
-router.get("/student/assignment/view_assignment/ques", isLoggedIn, function(req, res) {
+router.get("/student/assignment/:assignment_id/view/ques", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -209,9 +220,19 @@ router.get("/student/assignment/view_assignment/ques", isLoggedIn, function(req,
 			console.log(err);
 		} else {
 
-			res.render("quest1", {
+			Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
 
-				user: foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("quest1", {
+
+					user: foundUser,
+					assignment: foundAssignment
+				});
 			});
 		}
 	});
