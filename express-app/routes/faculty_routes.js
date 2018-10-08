@@ -146,7 +146,7 @@ router.get("/faculty/assignments", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/faculty/assignments/:assignment_id", isLoggedIn, function(req, res) {
+router.get("/faculty/assignments/:assignment_id/edit", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -155,11 +155,28 @@ router.get("/faculty/assignments/:assignment_id", isLoggedIn, function(req, res)
 			console.log(err);
 		} else {
 
-			res.render("faculty_assignment_viewsubmissions", {
+			res.render("faculty_edit_assignment", {
 
 				user: foundUser
 			});
 		}
+	});
+});
+
+router.get("/faculty/assignments/viewsubmissions", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			res.redirect("*");
+		}
+
+		res.render("faculty_assignment_viewsubmissions", {
+
+			user: foundUser
+		});
 	});
 });
 
