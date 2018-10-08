@@ -7,7 +7,7 @@
 				<div class="row">
 					<h2 class = "subheader">Live Assignments</h2>
 
-					<% assignment.forEach(function(assignment) { %>
+					<% assignments.forEach(function(assignment) { %>
 
 
 						<div class="col s12 m6">
@@ -21,7 +21,7 @@
 									</p>
 								</div>
 								<div class="card-action white">
-									<a href="/student/assignment/view_assignment"><font color = "grey">View Assignment</font></a>
+									<a href="/student/assignment/<%= assignment._id %>/view"><font color = "grey">View Assignment</font></a>
 								</div>
 							</div>
 						</div>
