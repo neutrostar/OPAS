@@ -232,7 +232,8 @@ router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 				subject: {
 
-					id: foundSubject._id
+					id: foundSubject._id,
+					subject_id: foundSubject.subject_id
 				},
 
 				ques1: req.body.ques1,

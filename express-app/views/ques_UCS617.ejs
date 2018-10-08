@@ -1,14 +1,18 @@
 <% include ./partials/student_header %>
 		
 		<% include ./partials/student_nav %>
+
+		
+			
 		<div class="card">
 			<div class="card-action teal lighten-1">
-			 	<a href="/student/assignment/view_assignment/ques"><font color = "white">Question :1&nbsp;&nbsp;&nbsp;&nbsp;kya chal raha h aaj kal???</font></a>
+				 <a href="/student/assignment/view_assignment/ques"><font color = "white">Question :1&nbsp;&nbsp;&nbs;&nbsp;<%= assignment.ques1.title %></font></a>
 			</div>
 		</div>
+
 		<div class="card">
 			<div class="card-action teal lighten-1">
-			 	<a href="/student/assignment/view_assignment/ques"><font color = "white">Question :2&nbsp;&nbsp;&nbsp;&nbsp;or batao kya haal chaal???</font></a>
+			 	<a href="/student/assignment/view_assignment/ques"><font color = "white">Question :2&nbsp;&nbsp;&nbsp;&nbsp;<%= assignment.ques2.title %></font></a>
 			</div>
 		</div>
 		<div class = "center-align">
@@ -18,4 +22,6 @@
 	  			</button>
   			</a>
   		</div>
+
+
 	</body>
