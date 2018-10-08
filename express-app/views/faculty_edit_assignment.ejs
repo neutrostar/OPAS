@@ -1,0 +1,93 @@
+<% include ./partials/faculty_header %>
+	
+	<% include ./partials/faculty_nav %>
+		<div class="row">
+			<form class="col s9 offset-s1" method="post" action="/faculty/assignments/create">
+				<div class="row">
+					
+					<div class="input-field col s12">
+						<input name="title" id="last_name" type="text" class="validate">
+						<label for="last_name"><%= assignment.title %></label>
+					</div>
+
+					<div class="input-field col s12">
+						<input name="subject" id="last_name" type="text" class="validate">
+						<label for="last_name"><%= assignment.subject.subject_id %></label>
+					</div>
+				</div>
+				
+				<br>
+				<div class="row">
+						<div class="input-field col s12">
+							<input name = "ques1[title]" id="last_name" type="text" class="validate">
+							<label for="last_name"><%= assignment.ques1.title %></label>
+							Upload Test Cases:
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							Upload Answer Cases:
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							<input name="ques1[marks]" placeholder="<%= assignment.ques1.marks %>" id="max_marks" type="text" class="validate">
+							
+							
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="input-field col s12">
+							<input name = "ques2[title]" id="last_name" type="text" class="validate">
+							<label for="last_name"><%= assignment.ques2.title %></label>
+							Upload Test Cases:
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							Upload Answer Cases:
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							<input name="ques2[marks]" placeholder="<%= assignment.ques2.marks %>" id="max_marks" type="text" class="validate">
+						
+						
+						</div>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col s5">
+								<input class="waves-effect waves-light btn" type="submit" name="post">
+							</div>
+						</div>
+				
+			</form>
+		</div>
+		
+		
+		<script src = "../js/menubar.js"></script>
+	
+	</body>
+</html>

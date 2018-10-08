@@ -140,11 +140,21 @@ router.get("/faculty/assignments", isLoggedIn, function(req, res) {
 		if (err) {
 
 			console.log(err);
+			res.redirect("*")
 		} else {
 
-			res.render("faculty_assignment", {
+			Assignment.find({
 
-				user: foundUser
+				"author.id": req.user.id
+			}, function(err, foundAssignments) {
+
+				console.log(req.user);
+				console.log(foundAssignments);
+				res.render("faculty_assignment", {
+
+					user: foundUser,
+					assignments: foundAssignments
+				});
 			});
 		}
 	});
@@ -157,17 +167,22 @@ router.get("/faculty/assignments/:assignment_id/edit", isLoggedIn, function(req,
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
-			res.render("faculty_edit_assignment", {
+			Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
+			
+				res.render("faculty_edit_assignment", {
 
-				user: foundUser
+					user: foundUser,
+					assignment: foundAssignment
+				});
 			});
 		}
 	});
 });
 
-router.get("/faculty/assignments/viewsubmissions", isLoggedIn, function(req, res) {
+router.get("/faculty/assignments/:assignment_id/viewsubmissions", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
