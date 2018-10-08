@@ -6,6 +6,8 @@ var Comment = require("../models/comment");
 
 var router = express.Router();
 
+// ========================================================================================
+
 router.get("/faculty", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -65,7 +67,12 @@ router.post("/faculty/announcement", function(req, res) {
 	});
 });
 
-router.post("/faculty/:announcement_id", function(req, res) {
+router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, res) {
+
+	// 
+})
+
+router.post("/faculty/announcement/:announcement_id", function(req, res) {
 
 	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
 
@@ -96,6 +103,8 @@ router.post("/faculty/:announcement_id", function(req, res) {
 	});
 });
 
+// ========================================================================================
+
 router.get("/faculty/assignments", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -112,6 +121,42 @@ router.get("/faculty/assignments", isLoggedIn, function(req, res) {
 		}
 	});
 });
+
+router.get("/faculty/assignments/:assignment_id", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_assignment_viewsubmissions", {
+
+				user: foundUser
+			});
+		}
+	});
+});
+
+router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_createNewAssignment", {
+
+				user: foundUser
+			});
+		}
+	});
+});
+
+// ========================================================================================
 
 router.get("/faculty/groups", isLoggedIn, function(req, res) {
 
@@ -151,17 +196,7 @@ router.get("/faculty/groups/:group_id", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/faculty/evaluations", isLoggedIn, function(req, res) {
-
-	return res.redirect("/faculty");
-});
-
-router.get("/faculty/notes", function(req, res) {
-
-	// 
-});
-
-router.get("/faculty/creategroup", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -178,46 +213,27 @@ router.get("/faculty/creategroup", isLoggedIn, function(req, res) {
 	});
 });
 
-router.post("/faculty/creategroup", isLoggedIn, function(req, res) {
+router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
 	// console.log(req.body);
 	res.redirect("/faculty");
 });
 
+// ========================================================================================
 
-router.get("/faculty/assignments/viewsubmissions", isLoggedIn, function(req, res) {
+router.get("/faculty/evaluations", isLoggedIn, function(req, res) {
 
-	User.findById(req.user.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("faculty_assignment_viewsubmissions", {
-
-				user: foundUser
-			});
-		}
-	});
+	return res.redirect("/faculty");
 });
 
-router.get("/faculty/assignments/create", isLoggedIn, function(req, res) {
+// =======================================================================================
 
-	User.findById(req.user.id).exec(function(err, foundUser) {
+router.get("/faculty/notes", function(req, res) {
 
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("faculty_createNewAssignment", {
-
-				user: foundUser
-			});
-		}
-	});
+	// 
 });
+
+// ========================================================================================
 
 function isLoggedIn(req, res, next) {
 
