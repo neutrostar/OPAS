@@ -10,6 +10,11 @@ var router = express.Router();
 
 router.get("/", function(req, res) {
 
+	if (req.isAuthenticated()) {
+
+		return res.redirect("/auth/redirect");
+	}
+
 	res.render("index");
 });
 
