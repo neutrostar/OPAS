@@ -22,24 +22,33 @@
 										</div>
 									</div>
 
-									<% announcement.comments.forEach(function(comment) { %>
-
-										<p><%= comment.text %></p>
-									<% }); %>
-									
-									<div class="card-action">
-										<a href="/faculty/announcement/<%= announcement.id %>">Leave a comment</a>
-									</div>
-
 									<div class="card-action">
 										
-										<!--  -->
+										<% announcement.comments.forEach(function(comment) { %>
+										<div class="card-action">
+
+											<p><%= comment.text %></p>
+
+										</div>
+										<% }); %>
+
 									</div>
 									
-							<div class="card-action">
-								<a href="#">Leave a comment</a>
-								
-							</div>
+									<div class="card-action">
+										<div class="row">
+										    <form class="col s12" action="/faculty/announcement/<%= announcement.id %>" method="post">
+										      <div class="row">
+										        <div class="input-field col s12">
+										          <textarea id="textarea1" class="materialize-textarea" name="comment"></textarea>
+										          <label for="textarea1">Add a comment</label>
+										          <input class="waves-effect waves-light btn" type="submit" name="post">
+										        </div>
+										      </div>
+										    </form>
+										 </div>
+									</div>
+
+
 						</div>
 					</div>
 				</div>

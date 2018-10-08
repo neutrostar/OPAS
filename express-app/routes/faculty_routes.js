@@ -95,6 +95,7 @@ router.get("/faculty/announcement/:announcement_id", isLoggedIn, function(req, r
 
 router.post("/faculty/announcement/:announcement_id", function(req, res) {
 
+	console.log(req.body);
 	Announcement.findById(req.params.announcement_id, function(err, foundAnnouncement) {
 
 		if (err) {
@@ -105,7 +106,13 @@ router.post("/faculty/announcement/:announcement_id", function(req, res) {
 
 		var newComment = new Comment({
 
-			// 
+			author: {
+
+				id: req.user.id,
+				name: req.user.name
+			},
+
+			text: req.body.comment
 		});
 
 		Comment.create(newComment, function(err, newComment) {
@@ -116,7 +123,7 @@ router.post("/faculty/announcement/:announcement_id", function(req, res) {
 				res.redirect("*");
 			}
 
-			foundAnnouncement.push(newComment);
+			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
 
 			res.redirect("/faculty");
