@@ -94,7 +94,6 @@ router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 
 router.post("/faculty/announcement/:id", function(req, res) {
 
-	console.log(req.body);
 	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
 
 		console.log(foundAnnouncement);
@@ -126,7 +125,7 @@ router.post("/faculty/announcement/:id", function(req, res) {
 			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
 
-			res.redirect("/faculty");
+			res.redirect("/faculty/" + req.params.id);
 		});
 	});
 });

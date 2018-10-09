@@ -47,7 +47,7 @@ router.get("/student/announcement/:id", isLoggedIn, function(req, res) {
 			res.redirect("*");
 		}
 
-		Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
+		Announcement.findById(req.params.id, function(err, foundAnnouncement) {
 
 			console.log(foundAnnouncement);
 			if (err) {
@@ -98,7 +98,7 @@ router.post("/student/announcement/:id", function(req, res) {
 			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
 
-			res.redirect("/student");
+			res.redirect("/student/" + req.params.id);
 		});
 	});
 });
@@ -160,8 +160,9 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 			console.log(err);
 		} else {
 
-			Assignment.find({}).populate("subject").exec(function(err, allAssignments) {
+			Assignment.find({}, function(err, allAssignments) {
 
+				console.log(allAssignments);
 				if (err) {
 
 					console.log(err);
@@ -174,11 +175,6 @@ router.get("/student/assignment", isLoggedIn, function(req, res) {
 					assignments: allAssignments
 				});
 			});
-
-			// res.render("student_assignment", {
-
-			// 	user: foundUser
-			// });
 		}
 	});
 });

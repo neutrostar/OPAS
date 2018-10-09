@@ -23,7 +23,20 @@ var AnnouncementSchema = new mongoose.Schema({
 
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Comment"
-		}
+		},
+
+		author: {
+
+			id: {
+
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "User"
+			},
+
+			name: String
+		},
+
+		text: String,
 	}]
 });
 
