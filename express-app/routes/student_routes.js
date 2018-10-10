@@ -238,16 +238,27 @@ router.get("/student/assignment/:assignment_id/view/ques", isLoggedIn, function(
 
 router.get("/student/evaluations", isLoggedIn, function(req, res) {
 
-	Student.findById(req.user.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
-			res.render("student_page", {
+			Announcement.find({}, function(err, allAnnouncements) {
 
-				user:foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("student_page", {
+
+					user: foundUser,
+					announcements: allAnnouncements
+				});
 			});
 		}
 	});
@@ -262,11 +273,22 @@ router.get("/student/notes", isLoggedIn, function(req, res) {
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
-			res.render("student_page", {
+			Announcement.find({}, function(err, allAnnouncements) {
 
-				user:foundUser
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				}
+
+				res.render("student_page", {
+
+					user: foundUser,
+					announcements: allAnnouncements
+				});
 			});
 		}
 	});

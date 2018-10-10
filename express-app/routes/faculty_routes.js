@@ -342,7 +342,7 @@ router.get("/faculty/evaluations", isLoggedIn, function(req, res) {
 
 router.get("/faculty/notes", function(req, res) {
 
-	// 
+	return res.redirect("/");
 });
 
 // ========================================================================================
