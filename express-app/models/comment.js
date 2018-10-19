@@ -13,9 +13,10 @@ var CommentSchema = new mongoose.Schema({
 			ref: "User"
 		},
 
-		name: String
+		name: String,
+		image: String
 	}
 
 });
 
-module.exports = mongoose.model("Comment", CommentSchema);
+module.exports = mongoose.model("comment", CommentSchema);

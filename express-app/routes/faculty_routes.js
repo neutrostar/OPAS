@@ -13,27 +13,18 @@ var router = express.Router();
 
 router.get("/faculty", isLoggedIn, function(req, res) {
 
-	User.findById(req.user.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).populate("announcements").exec(function(err, foundUser) {
 
+		// console.log(foundUser);
 		if (err) {
 
 			console.log(err);
 			res.redirect("*");
 		} else {
 
-			Announcement.find({}, function(err, allAnnouncements) {
+			res.render("faculty_page", {
 
-				if (err) {
-
-					console.log(err);
-					res.redirect("*");
-				}
-
-				res.render("faculty_page", {
-
-					user: foundUser,
-					announcements: allAnnouncements
-				});
+				user: foundUser
 			});
 		}
 	});
@@ -41,32 +32,45 @@ router.get("/faculty", isLoggedIn, function(req, res) {
 
 router.post("/faculty/announcement", function(req, res) {
 
-	var newAccouncement = new Announcement({
-
-		text: req.body.text,
-		author: {
-
-			id: req.user.id,
-			name: req.user.name,
-			image: req.user.image
-		}
-	});
-
-	Announcement.create(newAccouncement, function(err, newAccouncement) {
+	User.findById(req.user.id, function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
+			res.redirect("*");
 		} else {
 
-			res.redirect("/faculty");
+			var newAccouncement = new Announcement({
+
+				text: req.body.text,
+				author: {
+
+					id: req.user.id,
+					name: req.user.name,
+					image: req.user.image
+				}
+			});
+
+			Announcement.create(newAccouncement, function(err, newAccouncement) {
+
+				if (err) {
+
+					console.log(err);
+					res.redirect("*");
+				} else {
+
+					foundUser.announcements.push(newAccouncement);
+					foundUser.save();
+					res.redirect("/faculty");
+				}
+			});
 		}
 	});
 });
 
 router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 
-	User.findById(req.user.id).exec(function(err, foundUser) {
+	User.findById(req.user.id, function(err, foundUser) {
 
 		if (err) {
 
@@ -76,7 +80,7 @@ router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 
 		Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
 
-			console.log(foundAnnouncement);
+			// console.log(foundAnnouncement);
 			if (err) {
 
 				console.log(err);
@@ -90,13 +94,37 @@ router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 			});
 		});
 	});
+	// User.findById(req.user.id).exec(function(err, foundUser) {
+
+	// 	if (err) {
+
+	// 		console.log(err);
+	// 		res.redirect("*");
+	// 	}
+
+	// 	Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
+
+	// 		console.log(foundAnnouncement);
+	// 		if (err) {
+
+	// 			console.log(err);
+	// 			res.redirect("*");
+	// 		}
+
+	// 		res.render("faculty_announcement", {
+
+	// 			user: foundUser,
+	// 			announcement: foundAnnouncement
+	// 		});
+	// 	});
+	// });
 });
 
-router.post("/faculty/announcement/:id", function(req, res) {
+router.post("/faculty/announcement/:id/new", function(req, res) {
 
 	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
 
-		console.log(foundAnnouncement);
+		// console.log(foundAnnouncement);
 		if (err) {
 
 			console.log(err);
@@ -125,7 +153,7 @@ router.post("/faculty/announcement/:id", function(req, res) {
 			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
 
-			res.redirect("/faculty/" + req.params.id);
+			res.redirect("/faculty/announcement/" + req.params.id);
 		});
 	});
 });

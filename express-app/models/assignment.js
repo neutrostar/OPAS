@@ -12,18 +12,14 @@ var AssignmentSchema = new mongoose.Schema({
 			ref: "User"
 		},
 
-		name: String
+		name: String,
+		image: String
 	},
 
-	subject: {
+	subjects: {
 
-		id: {
-
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Subject"
-		},
-
-		subject_id: String
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "subject"
 	},
 
 	ques1: {
@@ -39,4 +35,4 @@ var AssignmentSchema = new mongoose.Schema({
 	}
 });
 
-module.exports = mongoose.model("Assignment", AssignmentSchema);
+module.exports = mongoose.model("assignment", AssignmentSchema);

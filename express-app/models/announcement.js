@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 // Schema setup
 var AnnouncementSchema = new mongoose.Schema({
 
+	text: String,
 	author: {
 
 		id: {
@@ -15,29 +16,11 @@ var AnnouncementSchema = new mongoose.Schema({
 		image: String
 	},
 
-	text: String,
-
 	comments: [{
 
-		id: {
-
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Comment"
-		},
-
-		author: {
-
-			id: {
-
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "User"
-			},
-
-			name: String
-		},
-
-		text: String,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "comment"
 	}]
 });
 
-module.exports = mongoose.model("Announcement", AnnouncementSchema);
+module.exports = mongoose.model("announcement", AnnouncementSchema);
