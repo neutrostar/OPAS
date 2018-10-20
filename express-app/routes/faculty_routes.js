@@ -94,30 +94,6 @@ router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
 			});
 		});
 	});
-	// User.findById(req.user.id).exec(function(err, foundUser) {
-
-	// 	if (err) {
-
-	// 		console.log(err);
-	// 		res.redirect("*");
-	// 	}
-
-	// 	Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
-
-	// 		console.log(foundAnnouncement);
-	// 		if (err) {
-
-	// 			console.log(err);
-	// 			res.redirect("*");
-	// 		}
-
-	// 		res.render("faculty_announcement", {
-
-	// 			user: foundUser,
-	// 			announcement: foundAnnouncement
-	// 		});
-	// 	});
-	// });
 });
 
 router.post("/faculty/announcement/:id/new", function(req, res) {
@@ -175,8 +151,6 @@ router.get("/faculty/assignments", isLoggedIn, function(req, res) {
 				"author.id": req.user.id
 			}, function(err, foundAssignments) {
 
-				console.log(req.user);
-				console.log(foundAssignments);
 				res.render("faculty_assignment", {
 
 					user: foundUser,
@@ -300,13 +274,15 @@ router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 router.get("/faculty/groups", isLoggedIn, function(req, res) {
 
-	User.findById(req.user.id).exec(function(err, foundUser) {
+	User.findById(req.user.id).populate("groups").exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
+			return res.redirect("*");
 		} else {
 
+			console.log(foundUser);
 			res.render("faculty_class_groups", {
 
 				user: foundUser
@@ -315,7 +291,7 @@ router.get("/faculty/groups", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/faculty/groups/:group_id", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/view/:group_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -355,7 +331,7 @@ router.get("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
 router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
-	// console.log(req.body);
+	console.log(req.body);
 	res.redirect("/faculty");
 });
 

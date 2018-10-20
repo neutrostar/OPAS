@@ -4,21 +4,20 @@ var mongoose = require("mongoose");
 var GroupSchema = new mongoose.Schema({
 
 	group_id: String,
-	faculty: {
+	group_name: String,
+	group_pass: String,
 
-		id: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "User"
-		}
-	},
 	subject: {
 
-		id: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "subject"
+	},
 
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Subject"
-		}
-	}
+	announcements: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "announcement"
+	}]
 });
 
-module.exports = mongoose.model("Group", GroupSchema);
+module.exports = mongoose.model("group", GroupSchema);
