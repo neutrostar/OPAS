@@ -344,9 +344,39 @@ router.get("/faculty/evaluations", isLoggedIn, function(req, res) {
 
 // =======================================================================================
 
-router.get("/faculty/notes", function(req, res) {
+router.get("/faculty/notes", isLoggedIn, function(req, res) {
 
-	return res.redirect("/");
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_notes", {
+
+				user: foundUser
+			});
+		}
+	});
+});
+
+
+router.get("/faculty/notes/newUpload", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("faculty_newNotes", {
+
+				user: foundUser
+			});
+		}
+	});
 });
 
 // ========================================================================================
