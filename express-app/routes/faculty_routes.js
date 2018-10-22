@@ -331,8 +331,52 @@ router.get("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
 router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
-	console.log(req.body);
-	res.redirect("/faculty");
+	// console.log(req.body);
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findOne({
+
+			group_name: req.body.group_name
+		}, function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			if (foundGroup) {
+
+				console.log(foundGroup);
+				return res.redirect("/faculty/groups/creategroup");
+			}
+		});
+
+		var newGroup = new Group({
+
+			group_name: req.body.group_name,
+			group_pass: req.body.passkey
+		});
+
+		Group.create(newGroup, function(err, newGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			foundUser.groups.push(newGroup);
+			foundUser.save();
+			return res.redirect("/faculty/groups");
+		});
+	});
 });
 
 // ========================================================================================
