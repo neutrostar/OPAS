@@ -8,16 +8,10 @@ var UserSchema = new mongoose.Schema({
 	email: String,
 	name: String,
 	image: String,
-	announcements: [{
+	assignments: [{
 
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "announcement"
-	}],
-
-	groups: [{
-
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "group"
+		ref: "assignments"
 	}]
 });
 
