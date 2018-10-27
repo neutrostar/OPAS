@@ -66,6 +66,10 @@ function CreateUpdateWindow(){
         UpdateWindow = null;
     })
 }
+
+function OpenOPASGithub(){
+    require("shell").openExternal("https://github.com/neutrostar/OPAS");
+}
 //Closing the window
 function CloseWindow(){
     remote.getCurrentWindow().close();
