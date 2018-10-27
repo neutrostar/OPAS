@@ -150,7 +150,19 @@ router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", func
 
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
 		Announcement.findById(req.params.announcement_id).exec(function(err, foundAnnouncement) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
 
 			var newComment = new Comment({
 
@@ -165,9 +177,15 @@ router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", func
 
 			Comment.create(newComment, function(err, newComment) {
 
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
 				foundAnnouncement.comments.push(newComment);
 				foundAnnouncement.save();
-				return res.redirect("/faculty/groups/:group_id/announcements/:announcement_id");
+				return res.redirect("/faculty/groups/" + req.params.group_id + "/announcements/" + req.params.announcement_id);
 			});
 		});
 	});
