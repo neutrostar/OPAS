@@ -69,7 +69,7 @@
 							<li><a class="waves-effect" href="/faculty/groups/<%= group._id %>/home"><%= group.group_name %></a></li>
 						<% }); %>
 
-						<li><a class="waves-effect" href="/faculty/groups/:group_id/assignments">Assignments</a></li>
+						<li><a class="waves-effect" href="/faculty/groups/<%= currentGroup._id %>/assignments">Assignments</a></li>
 						<li><a class="waves-effect" href="/faculty/evaluations">Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="/faculty/notes">Upload Notes</a></li>
 						<li><a class="waves-effect" href="/auth/logout">Logout</a></li>

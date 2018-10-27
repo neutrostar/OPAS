@@ -5,7 +5,7 @@
 			<div class="col s7">
 				<div class = "row">
 						
-					<% if (assignments) { %>
+					<% if (assignments.length != 0) { %>
 
 						<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
 
@@ -13,7 +13,11 @@
 							<div class="col s12 m6">
 								<div class="card teal lighten-1">
 									<div class="card-content white-text">
-										<span class="card-title"><%= assignment.subject.subject_id %></span>
+
+										<% if (assignment.subject) { %>
+
+											<span class="card-title"><%= assignment.subject.subject_id %></span>
+										<% } %>	
 										<p>
 											<b><%= assignment.title %></b><br>
 											Start date : 5/05/2018<br>
@@ -22,7 +26,7 @@
 									</div>
 									<div class="card-action white">
 										<a href="/faculty/assignments/<%= assignment.id %>/edit"><font color = "grey">Edit Assignment</font></a>
-										<a href="/faculty/assignments/<%= assignment.id %>/viewsubmissions" onclick="CreateAssignmentView()"><font color = "grey">View Submissions</font></a>
+										<a href="/faculty/assignments/<%= assignment.id %>/viewsubmissions"><font color = "grey">View Submissions</font></a>
 									</div>
 								</div>
 						    </div>
@@ -36,7 +40,7 @@
 			    </div>
 		
 			<div class = "col s7 offset-s12">
-				<a href="/faculty/assignments/create" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">add</i></a>
+				<a href="/faculty/groups/<%= currentGroup._id %>/assignments/create" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">add</i></a>
 			</div>
 				<!-- Grey navigation panel -->
 			

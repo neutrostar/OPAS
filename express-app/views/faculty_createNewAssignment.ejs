@@ -2,7 +2,7 @@
 	
 	<% include ./partials/faculty_nav %>
 		<div class="row">
-			<form class="col s9 offset-s1" method="post" action="/faculty/assignments/create">
+			<form class="col s9 offset-s1" method="post" action="/faculty/groups/<%= currentGroup._id %>/assignments/create">
 				<div class="row">
 					
 					<div class="input-field col s12">
