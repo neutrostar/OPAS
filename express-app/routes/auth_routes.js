@@ -81,7 +81,7 @@ router.get("/auth/redirect", function(req, res) {
 
 	if (req.user.username[0].match(/[a-z]/i)) {
 
-		res.redirect("/faculty");
+		res.redirect("/faculty/groups");
 	} else {
 
 		res.redirect("/student");

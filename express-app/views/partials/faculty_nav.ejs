@@ -62,8 +62,13 @@
 					<div class = "left-align">
 						<li><div class="divider"></div></li>
 						
-						<li><a class="waves-effect" href="/faculty">Announcements</a></li>
 						<li><a class="waves-effect" href="/faculty/groups">My Groups</a></li>
+
+						<% groups.forEach(function(group) { %>
+
+							<li><a class="waves-effect" href="/faculty/groups/<%= group._id %>/home"><%= group.group_name %></a></li>
+						<% }); %>
+
 						<li><a class="waves-effect" href="/faculty/assignments">Assignments</a></li>
 						<li><a class="waves-effect" href="/faculty/evaluations">Lab Evaluations</a></li>
 						<li><a class="waves-effect" href="/faculty/notes">Upload Notes</a></li>

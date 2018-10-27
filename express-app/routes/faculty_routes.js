@@ -11,36 +11,27 @@ var router = express.Router();
 
 // ========================================================================================
 
-router.get("/faculty", isLoggedIn, function(req, res) {
+router.post("/faculty/groups/:group_id/home/new", function(req, res) {
 
-	User.findById(req.user.id).populate("announcements").exec(function(err, foundUser) {
+	console.log(req.body);
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
-		// console.log(foundUser);
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
-		} else {
-
-			res.render("faculty_page", {
-
-				user: foundUser
-			});
+			return res.redirect("*");
 		}
-	});
-});
 
-router.post("/faculty/announcement", function(req, res) {
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
-	User.findById(req.user.id, function(err, foundUser) {
+			if (err) {
 
-		if (err) {
+				console.log(err);
+				return res.redirect("*");
+			}
 
-			console.log(err);
-			res.redirect("*");
-		} else {
-
-			var newAccouncement = new Announcement({
+			console.log(foundGroup);
+			var newAnnouncement = new Announcement({
 
 				text: req.body.text,
 				author: {
@@ -51,85 +42,133 @@ router.post("/faculty/announcement", function(req, res) {
 				}
 			});
 
-			Announcement.create(newAccouncement, function(err, newAccouncement) {
+			Announcement.create(newAnnouncement, function(err, newAnnouncement) {
 
-				if (err) {
-
-					console.log(err);
-					res.redirect("*");
-				} else {
-
-					foundUser.announcements.push(newAccouncement);
-					foundUser.save();
-					res.redirect("/faculty");
-				}
+				foundGroup.announcements.push(newAnnouncement);
+				foundGroup.save();
+				return res.redirect("/faculty/groups/" + req.params.group_id + "/home");
 			});
-		}
+		});
 	});
 });
 
-router.get("/faculty/announcement/:id", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/:group_id/home", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id, function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
+			return res.redirect("*");
 		}
 
-		Announcement.findById(req.params.id).populate("comments").exec(function(err, foundAnnouncement) {
+		Group.find({
 
-			// console.log(foundAnnouncement);
+			"users": req.user.id
+		}).exec(function(err, allGroups) {
+
 			if (err) {
 
 				console.log(err);
-				res.redirect("*");
+				return res.redirect("*");
 			}
 
-			res.render("faculty_announcement", {
+			Group.findById(req.params.group_id).populate("announcements").exec(function(err, foundGroup) {
 
-				user: foundUser,
-				announcement: foundAnnouncement
+				console.log(foundGroup);
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				res.render("faculty_page", {
+
+					user: foundUser,
+					groups: allGroups,
+					currentGroup: foundGroup,
+					announcements: foundGroup.announcements
+				});
 			});
 		});
 	});
 });
 
-router.post("/faculty/announcement/:id/new", function(req, res) {
+router.get("/faculty/groups/:group_id/announcements/:announcement_id", function(req, res) {
 
-	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
-		// console.log(foundAnnouncement);
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
+			return res.redirect("*");
 		}
 
-		var newComment = new Comment({
+		console.log(foundUser);
+		Group.find({
 
-			author: {
-
-				id: req.user.id,
-				name: req.user.name
-			},
-
-			text: req.body.comment
-		});
-
-		Comment.create(newComment, function(err, newComment) {
+			"users": req.user.id
+		}).exec(function(err, foundGroups) {
 
 			if (err) {
 
 				console.log(err);
-				res.redirect("*");
+				return res.redirect("*");
 			}
 
-			foundAnnouncement.comments.push(newComment);
-			foundAnnouncement.save();
+			Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
-			res.redirect("/faculty/announcement/" + req.params.id);
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				Announcement.findById(req.params.announcement_id).populate("comments").exec(function(err, foundAnnouncement) {
+
+					if (err) {
+
+						console.log(err);
+						return res.redirect("*");
+					}
+
+					res.render("faculty_announcement", {
+
+						user: foundUser,
+						groups: foundGroups,
+						currentGroup: foundGroup,
+						announcement: foundAnnouncement,
+						comments: foundAnnouncement.comments
+					});
+				});
+			});
+		});
+	});
+});
+
+router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", function(req, res) {
+
+	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+		Announcement.findById(req.params.announcement_id).exec(function(err, foundAnnouncement) {
+
+			var newComment = new Comment({
+
+				author: {
+
+					id: req.user.id,
+					name: req.user.name
+				},
+
+				text: req.body.comment
+			});
+
+			Comment.create(newComment, function(err, newComment) {
+
+				foundAnnouncement.comments.push(newComment);
+				foundAnnouncement.save();
+				return res.redirect("/faculty/groups/:group_id/announcements/:announcement_id");
+			});
 		});
 	});
 });
@@ -274,20 +313,26 @@ router.post("/faculty/assignments/create", isLoggedIn, function(req, res) {
 
 router.get("/faculty/groups", isLoggedIn, function(req, res) {
 
-	User.findById(req.user.id).populate("groups").exec(function(err, foundUser) {
+	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
-			console.log(err);
-			return res.redirect("*");
-		} else {
-
 			console.log(foundUser);
+			return res.redirect("*");
+		}
+
+		Group.find({
+
+			"users": req.user.id
+		}).exec(function(err, foundGroups) {
+
+			// console.log(foundGroups);
 			res.render("faculty_class_groups", {
 
-				user: foundUser
+				user: foundUser,
+				groups: foundGroups
 			});
-		}
+		});
 	});
 });
 
@@ -331,7 +376,6 @@ router.get("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
 router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 
-	// console.log(req.body);
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -339,24 +383,6 @@ router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 			console.log(err);
 			return res.redirect("*");
 		}
-
-		Group.findOne({
-
-			group_name: req.body.group_name
-		}, function(err, foundGroup) {
-
-			if (err) {
-
-				console.log(err);
-				return res.redirect("*");
-			}
-
-			if (foundGroup) {
-
-				console.log(foundGroup);
-				return res.redirect("/faculty/groups/creategroup");
-			}
-		});
 
 		var newGroup = new Group({
 
@@ -372,10 +398,11 @@ router.post("/faculty/groups/creategroup", isLoggedIn, function(req, res) {
 				return res.redirect("*");
 			}
 
-			foundUser.groups.push(newGroup);
-			foundUser.save();
-			return res.redirect("/faculty/groups");
+			newGroup.users.push(foundUser);
+			newGroup.save();
 		});
+
+		return res.redirect("/faculty/groups");
 	});
 });
 

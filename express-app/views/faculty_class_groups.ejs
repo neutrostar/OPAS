@@ -22,26 +22,40 @@
 					</div> -->
 				</div>
 
-				<% user.groups.forEach(function(group) { %>
+				<% if (groups.length != 0) { %>
 
-					<div class="col s12 m4">
-						<div class="card teal lighten-1">
-							<div class="card-content white-text">
-								<span class="card-title"><%= group.group_name %></span>
-								<p>
-									<b><%= group.subject_name %></b>
-								</p>
+					<% groups.forEach(function(group) { %>
 
-								<p>
-									<%= group.group_pass %>
-								</p>
+						<div class="col s12 m4">
+							<div class="card teal lighten-1">
+								<div class="card-content white-text">
+									<span class="card-title"><%= group.group_name %></span>
+									<p>
+										<b><%= group.subject_name %></b>
+									</p>
+
+									<p>
+										<%= group.group_pass %>
+									</p>
+								</div>
+								<div class="card-action white">
+									<a href="/faculty/groups/view/1234"><font color = "grey">View Group</font></a>
+								</div>
 							</div>
-							<div class="card-action white">
-								<a href="/faculty/groups/view/1234"><font color = "grey">View Group</font></a>
+						</div>
+					<% }); %>
+				<% } else { %>
+
+					<div class="col s12 ">
+							<div class="card">
+								<div class="card-content">
+
+								Currently no groups
 							</div>
 						</div>
 					</div>
-				<% }); %>
+				<% } %>
+
 			</div>
 		</div>
 		<div class = "row">

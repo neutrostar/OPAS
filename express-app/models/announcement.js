@@ -9,7 +9,7 @@ var AnnouncementSchema = new mongoose.Schema({
 		id: {
 
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "User"
+			ref: "user"
 		},
 
 		name: String,
