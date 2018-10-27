@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OPAS</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel = "stylesheet" type ="text/css" href ="/stylesheets/form.css">
+	<link rel="stylesheet" href="stylesheets/opas.css">
+	<script type="text/javascript" src="/libs/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+	<% include ./partials/landing_nav %>
+
+				</form>
+				<form id="login" action="/auth/login" method="post">
+					<div class="formHead">
+						<h1>WELCOME BACK</h1>
+						<p>Login to continue</p>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Roll Number/Faculty ID" name="username"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Password" name="password"/>
+					</div>
+					<div class="formDiv">
+						<input type="submit" value="LOGIN"/>
+						<!-- <button type="submit">LOGIN</button> -->
+					</div>
+					<div class="formOther"><a class="forgotBtn" href="#">FORGOT PASSWORD?</a><a class="needAccount" href="#">NEED AN ACCOUNT?</a></div>
+				</form>
+				<form id="register" action="/auth/register" method="post">
+					<div class="formHead">
+						<h1>SIGN UP FOR OPAS</h1>
+						<p>Register to gain full access</p>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Full Name" name="name"/>
+					</div>
+					<div class="formDiv">
+						<input type="email" placeholder="Email" name="email"/>
+					</div>
+					<div class="formDiv">
+						<input type="text" placeholder="Roll Number/Faculty ID" name="username"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Password" name="password"/>
+					</div>
+					<div class="formDiv">
+						<input type="password" placeholder="Re-enter Password" name="repassword"/>
+					</div>
+					<div class="formDiv">
+						<input type="submit" value="REGISTER"/>
+					</div>
+					<div class="formOther"><a class="backLogin" href="#">BACK TO LOGIN</a><a class="regBtn" href="#">WHY REGISTER?</a></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src ="/scripts/form.js"></script>
+</body>
+</html>
