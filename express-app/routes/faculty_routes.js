@@ -11,7 +11,7 @@ var router = express.Router();
 
 // ========================================================================================
 
-router.post("/faculty/groups/:group_id/home/new", function(req, res) {
+router.post("/faculty/groups/:group_id/home/new", isLoggedIn, function(req, res) {
 
 	console.log(req.body);
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -94,7 +94,7 @@ router.get("/faculty/groups/:group_id/home", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/faculty/groups/:group_id/announcements/:announcement_id", function(req, res) {
+router.get("/faculty/groups/:group_id/announcements/:announcement_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -146,7 +146,7 @@ router.get("/faculty/groups/:group_id/announcements/:announcement_id", function(
 	});
 });
 
-router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", function(req, res) {
+router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", isLoggedIn, function(req, res) {
 
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
@@ -193,28 +193,49 @@ router.post("/faculty/groups/:group_id/announcements/:announcement_id/new", func
 
 // ========================================================================================
 
-router.get("/faculty/assignments", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/:group_id/assignments", isLoggedIn, function(req, res) {
+
+	// User.findById(req.user.id).exec(function(err, foundUser) {
+
+	// 	if (err) {
+
+	// 		console.log(err);
+	// 		res.redirect("*")
+	// 	} else {
+
+	// 		Assignment.find({
+
+	// 			"author.id": req.user.id
+	// 		}, function(err, foundAssignments) {
+
+	// 			res.render("faculty_assignment", {
+
+	// 				user: foundUser,
+	// 				assignments: foundAssignments
+	// 			});
+	// 		});
+	// 	}
+	// });
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
-		if (err) {
+		Group.find({
 
-			console.log(err);
-			res.redirect("*")
-		} else {
+			"users": req.user.id
+		}).exec(function(err, foundGroups) {
 
-			Assignment.find({
+			Group.findById(req.params.group_id).populate("assignments").exec(function(foundGroup) {
 
-				"author.id": req.user.id
-			}, function(err, foundAssignments) {
-
+				console.log(foundGroups);
 				res.render("faculty_assignment", {
 
 					user: foundUser,
-					assignments: foundAssignments
+					groups: foundGroups,
+					currentGroup: foundGroup,
+					assignments: foundGroup.assignments
 				});
 			});
-		}
+		});
 	});
 });
 

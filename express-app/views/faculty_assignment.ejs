@@ -4,28 +4,36 @@
 
 			<div class="col s7">
 				<div class = "row">
-					<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
+						
+					<% if (assignments) { %>
 
-					<% assignments.forEach(function(assignment) { %>
-					<div class="col s12 m6">
-						<div class="card teal lighten-1">
-							<div class="card-content white-text">
-								<span class="card-title"><%= assignment.subject.subject_id %></span>
-								<p>
-									<b><%= assignment.title %></b><br>
-									Start date : 5/05/2018<br>
-									Deadline : 10/05/2018
-								</p>
-							</div>
-							<div class="card-action white">
-								<a href="/faculty/assignments/<%= assignment.id %>/edit" onclick="CreateAssignmentWindow()"><font color = "grey">Edit Assignment</font></a>
-								<a href="/faculty/assignments/<%= assignment.id %>/viewsubmissions" onclick="CreateAssignmentView()"><font color = "grey">View Submissions</font></a>
-							</div>
-						</div>
-				    </div>
+						<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
 
-				    <% }); %>
-			     </div>
+						<% assignments.forEach(function(assignment) { %>
+							<div class="col s12 m6">
+								<div class="card teal lighten-1">
+									<div class="card-content white-text">
+										<span class="card-title"><%= assignment.subject.subject_id %></span>
+										<p>
+											<b><%= assignment.title %></b><br>
+											Start date : 5/05/2018<br>
+											Deadline : 10/05/2018
+										</p>
+									</div>
+									<div class="card-action white">
+										<a href="/faculty/assignments/<%= assignment.id %>/edit"><font color = "grey">Edit Assignment</font></a>
+										<a href="/faculty/assignments/<%= assignment.id %>/viewsubmissions" onclick="CreateAssignmentView()"><font color = "grey">View Submissions</font></a>
+									</div>
+								</div>
+						    </div>
+
+					    <% }); %>
+
+					<% } else { %>
+
+						<h3 class = "header"><font color = "teal">Currently no assignments</font></h3>
+					<% } %>
+			    </div>
 		
 			<div class = "col s7 offset-s12">
 				<a href="/faculty/assignments/create" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">add</i></a>
