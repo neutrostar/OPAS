@@ -456,20 +456,28 @@ router.get("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, res
 });
 
 
-router.get("/faculty/notes/newUpload", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/view/:group_id/notes/newUpload", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-		} else {
+			return res.redirect("*");
+		} Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
 
 			res.render("faculty_newNotes", {
 
-				user: foundUser
+				user: foundUser,
+				currentGroup: foundGroup
 			});
-		}
+		});
 	});
 });
 

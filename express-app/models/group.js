@@ -22,6 +22,10 @@ var GroupSchema = new mongoose.Schema({
 
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "assignment"
+	}],
+	notes: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "note"
 	}]
 });
 
