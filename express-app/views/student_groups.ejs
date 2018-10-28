@@ -1,0 +1,87 @@
+<% include ./partials/faculty_header %>
+<!-- Nav Bar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<a class="navbar-brand" href="/faculty/groups">OPAS</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNavDropdown" class="navbar-collapse collapse">
+			
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  My Account
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Account</a>
+						<a class="dropdown-item" href="/auth/logout">Logout</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+		</nav>
+		<!-- Nav Bar ends -->
+		<br>
+		<!-- Side Nav User Info Starts -->	
+<div class = "row">
+		<div class = "col-sm-4">
+			<br><br>
+			<div class = "container">
+					<div class="card">
+					<div class="card-body">
+						<h4 class="card-title text-center"><%= user.name %></h4>
+						<h6 class="card-title text-center"><%= user.email %></h4>
+					
+					</div>
+			</div>
+
+				</div><br><br>
+
+				</div>
+			
+			<div class="col-sm-8">
+				<br><br>
+				<!-- Teal page content  -->
+				
+					<h3>My Class Groups</h2>
+					
+				
+
+				<% if (groups.length != 0) { %>
+
+					<% groups.forEach(function(group) { %>
+							<br>
+							<div class="container">
+									<div class="card" style="width:300px">
+											<div class="card-body">
+											  <h4 class="card-title"><%= group.group_name %></h4>
+											  <p class="card-text"><b><%= group.subject_name %></b></p>
+											  <p class="card-text"><b><%= group.group_pass %></b></p>
+											  <a href="/faculty/groups/view/<%= group._id %>" class="card-link">View Group</a>
+											  
+											</div>
+									</div>
+							</div>
+						
+						
+					<% }); %>
+				<% } else { %>
+
+					<div class="col-sm-12 ">
+							<div class="card">
+								<div class="card-content">
+
+								Currently no groups
+							</div>
+						</div>
+					</div>
+				<% } %>
+				<br>
+				<a href="/student/groups/join" class="justify-content-right"><i class="material-icons">add</i></a>
+
+			</div>
+		</div>
+		
+	</body>
+</html>

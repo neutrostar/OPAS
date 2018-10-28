@@ -1,5 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
+var Group = require("../models/group");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
@@ -7,6 +8,61 @@ var Assignment = require("../models/assignment");
 var Subject = require("../models/subject");
 
 var router = express.Router();
+
+// ================================================================================
+
+router.get("/student/groups", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.find({
+
+			"users": req.user.id
+		}).exec(function(err, foundGroups) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render("student_groups", {
+
+				user: foundUser,
+				groups: foundGroups
+			});
+		});
+	});
+});
+
+router.get("/student/change_group", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+		} else {
+
+			res.render("student_entercode", {
+
+				user:foundUser
+			});
+		}
+	});
+});
+
+router.post("/student/change_group", isLoggedIn, function(req, res) {
+
+	// console.log(req.user.id);
+	res.redirect("/student/" + req.user.id);
+});
 
 // ================================================================================
 
@@ -27,7 +83,7 @@ router.get("/student", isLoggedIn, function(req, res) {
 					res.redirect("*");
 				}
 
-				res.render("student_page", {
+				res.render("student_groups", {
 
 					user: foundUser,
 					announcements: allAnnouncements
@@ -101,52 +157,6 @@ router.post("/student/announcement/:id", function(req, res) {
 			res.redirect("/student/" + req.params.id);
 		});
 	});
-});
-
-// ================================================================================
-
-router.get("/student/group", isLoggedIn, function(req, res) {
-
-	User.findById(req.user.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			Announcement.find({}).populate("Comments").exec(function(err, allAnnouncements) {
-
-				res.render("student_page", {
-
-					user: foundUser,
-					announcements: allAnnouncements
-				});
-			});	
-		}
-	});
-});
-
-router.get("/student/change_group", isLoggedIn, function(req, res) {
-
-	User.findById(req.user.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-		} else {
-
-			res.render("student_entercode", {
-
-				user:foundUser
-			});
-		}
-	});
-});
-
-router.post("/student/change_group", isLoggedIn, function(req, res) {
-
-	// console.log(req.user.id);
-	res.redirect("/student/" + req.user.id);
 });
 
 // ================================================================================
