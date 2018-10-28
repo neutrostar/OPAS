@@ -16,6 +16,12 @@ var GroupSchema = new mongoose.Schema({
 
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "announcement"
+	}],
+
+	assignments: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "assignment"
 	}]
 });
 
