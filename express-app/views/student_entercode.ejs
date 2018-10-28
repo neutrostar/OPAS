@@ -1,32 +1,23 @@
 <% include ./partials/student_header %>
 
 	<% include ./partials/student_nav %>
-
-		<!-- <div class="row">
-			<div class="input-field col s5">
-				<input id="last_name" type="text" class="validate">
-				<label for="last_name">Enter Code</label>
-			</div>
-		</div> -->
-		<!-- <div class="row">
-			<div class="col s5">
-				<a class="waves-effect waves-light btn" href="#">Submit</a>
-			</div>
-		</div> -->
-
-		<form id="add_member" action="/student/<%= user._id %>/change_group" method="post">
-			<div class="row">
-				<div class="input-field col s5">
-					<input id="last_name" type="text" class="validate">
-					<label for="last_name">Enter Code</label>
-				</div>
-			</div>
+	
+	<div class="col-sm-8">
+		<br><br><br>
+		<div class=" container">
+				<form id="add_member" action="/student/<%= user._id %>/change_group" method="post">
 			
-			<div class="row">
-				<div class="formDiv">
-					<input class="waves-effect waves-light btn" type="submit" value="Submit"/>
-				</div>
-			</div>
+					<div class=" form-group">
+							<label for="last_name">Enter Code </label>	<input id="last_name" type="text">
+				
+				</div>	
+					<button type="submit" class="btn btn-primary">Submit</button>
+				
+			
+		
 		</form>
+		</div>
+	</div>
+
 	</body>
 </html>
