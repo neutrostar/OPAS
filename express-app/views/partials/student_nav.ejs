@@ -1,73 +1,65 @@
-		<div class = "navbar-fixed">
+		<!-- <div class = "navbar-fixed">
 			<ul class="title_bar">
 				<li class="dropdownz">
 					<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="tiny material-icons">menu</i></a>
 				
 				</li>
-				<li class="dropdownz">
-					<a href="javascript:void(0)" class="dropbtnz">File</a>
-					<div class="dropdown-contentz">
-						<a href="#" class="titlelinks" onclick="CreatePreferencesWindow()">Preferences</a>
-						<a href="/auth/logout" class="titlelinks">Logout</a>
-					</div>
-				</li>
-				<li class="dropdownz">
-					<a href="javascript:void(0)" class="dropbtnz">Edit</a>
-					<div class="dropdown-contentz">
-						<a href="#" class="titlelinks">Cut</a>
-						<a href="#" class="titlelinks">Copy</a>
-						<a href="#" class="titlelinks">Paste</a>
-						<a href="#" class="titlelinks">Find</a>
-						<a href="#" class="titlelinks">Replace</a>
-						<a href="#" class="titlelinks">Undo</a>
-						<a href="#" class="titlelinks">Redo</a>
-					</div>
-				</li>
-				<li class="dropdownz">
-					<a href="javascript:void(0)" class="dropbtnz">Internal Testing</a>
-					<div class="dropdown-contentz">
-						<a href="faculty_page" class="titlelinks">Teacher Module</a>
-						<a href="student_page" class="titlelinks">Student Module</a>
-						
-					</div>
-				</li>
-				<li class="dropdownz">
-					<a href="javascript:void(0)" class="dropbtnz">Help</a>
-					<div class="dropdown-contentz">
-						<a href="#" onclick="CreateAboutWindow()" class="titlelinks">About</a>
-						<a href="#"  onclick="CreateUpdateWindow()" class="titlelinks">Updates</a>
-						<a href="#" class="titlelinks">Report Issue</a>
-					</div>
-				</li>
-				<li style="float:right"><a href="#" onclick = "CloseWindow()" class="titlelinks"><i class="tiny material-icons">close</i></a></li>
+				
 			</ul>
-		</div>
-
+		</div> -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="/student">OPAS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      My Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Account</a>
+                        <a class="dropdown-item" href="/auth/logout">Logout</a>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
 		<br>
 		<!--Tool Bar Ends Here-->
 		<!--Page Layout Starts from here-->
 		<!-- Page Layout here -->
 		<div class = "row">
-			<div class = "col s2">
-				<ul id="slide-out" class="sidenav">
-					<li><div class="user-view right-align">
-						<div class="background">
-							<img src="../../../res/img/himym.jpg">
-						</div>
-						<a href="/student" ><img class="circle" src="<%= user.image %>"></a>
-						<a href="/student"><span class="white-text name "><%= user.name %></span></a>
-						<a href="/student"><span class="white-text email"><%= user.email %></span></a>
-					</div></li>
-					<div class = "left-align">
-						<li><div class="divider"></div></li>
+			<div class = "col-sm-4">
+				<br><br>
+				<div class = "container">
+						<div class="card">
+						<div class="card-body">
+							<h4 class="card-title text-center"><%= user.name %></h4>
+							<h6 class="card-title text-center"><%= user.email %></h4>
 						
-						<li><a class="waves-effect" href="/student/">Announcements</a></li>
-						<li><a class="waves-effect" href="/student/group">My Group</a></li>
-						<li><a class="waves-effect" href="/student/assignment">My Assignments</a></li>
-						<li><a class="waves-effect" href="/student/evaluations">My Lab Evaluations</a></li>
-						<li><a class="waves-effect" href="/student/notes">My Class Notes</a></li>
-						<li><a class="waves-effect" href="/student/change_group">Change Group ID</a></li>
-						<li><a class="waves-effect" href="/auth/logout">Logout</a></li>
-					</div>
-				</ul>
+						</div>
+				</div>
+
+					</div><br><br>
+			 
+		
+
+						<div class = "container">
+								<div class="list-group">
+						
+										<a class="list-group-item disabled" href="/student/">Announcements</a>
+										<a class="list-group-item disabled" href="/student/group">My Group</a>
+										<a class="list-group-item disabled" href="/student/assignment">My Assignments</a>
+										<a class="list-group-item disabled" href="/student/evaluations">My Lab Evaluations</a>
+										<a class="list-group-item disabled" href="/student/notes">My Class Notes</a>
+										<a class="list-group-item disabled" href="/student/change_group">Enter New Group ID</a>
+										
+									</div>
+						</div>
+					
+			
 			</div>

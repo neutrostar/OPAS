@@ -1,114 +1,36 @@
-<% include ./partials/student_header %>
+ <% include ./partials/student_header %>
 		
 		<% include ./partials/student_nav %>
 			
-			<div class="col s7">
-				<!-- Teal page content  -->
-				<div class = "row">
+			<div class="col-sm-8">
+				<br>
+
+				<div class = "container">
+					<% announcements.forEach(function(announcement) { %>
+						<br>
+						<div class="container">
+							
+							<div class="media border p-3">
+									
+									<div class="media-body">
+									  <h4><%= announcement.text %> </h4>
+									 
+									  <p><%= announcement.author.name %></p>
+									  <div class="media p-3">
+											
+											<div class="media-body">
+													<a href="/student/announcement/<%= announcement.id %>">Leave a comment</a>
+											</div>
+										  </div> 
+									</div>
+								  </div>
+						</div>
+							
+					<% }); %>
+				</div>
 				
-				</div>
-
-				<% announcements.forEach(function(announcement) { %>
-				<div class="row">
-					<div class="col s12 ">
-						<div class="card">
-							<div class="card-content">
-								<p><%= announcement.text %></p>
-								<p><%= announcement.author.name %></p>
-							</div>
-
-							<div class="card-action">
-								<a href="/student/announcement/<%= announcement.id %>">Leave a comment</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<% }); %>
-				<div class="row">
-					<div class="col s12 ">
-						<div class="card">
-							<div class="card-content">
-								<p>The notes for today's lecture have been uploaded</p>
-								<!-- <p><%= user.name %></p> -->
-							</div>
-							<div class="card-action">
-								<a href="#">Comment</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			<div class="col s3">
-				<!-- Grey navigation panel -->
-				<div class="row">
-					<div class="col s12 m12">
-						<div class="card">
-							<div class="card-content">
-								<span class="card-title">Upcoming Events</span>
-								<table class="striped">
-									<thead>
-										<tr>
-											<th>Event</th>
-											<th>Date</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-										<tr>
-											<td>Image Quiz</td>
-											<td>1/6/2018</td>
-										</tr>
-										<tr>
-											<td>GPU Lab Eval</td>
-											<td>3/6/2018</td>
-										</tr>
-										<tr>
-											<td>NLP Lab Eval</td>
-											<td>6/7/2018</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 m12">
-						<div class="card">
-							<div class="card-content">
-								<span class="card-title">Group Rankings</span>
-								<table class="striped">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Score</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-										<tr>
-											<td>Omisha Sharma</td>
-											<td>2340.53</td>
-										</tr>
-										<tr>
-											<td>Purnendu Shukla</td>
-											<td>2323.34</td>
-										</tr>
-										<tr>
-											<td>Siddhant Srivastava</td>
-											<td>1234.89</td>
-										</tr>
-										<tr>
-											<td>Apoorv Shrivastav</td>
-											<td>234.89</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+				
+			
 			</div>
 		
 		
@@ -116,4 +38,4 @@
 		<!--Page Layout ends here-->
   
 	</body>
-</html>
+</html> 
