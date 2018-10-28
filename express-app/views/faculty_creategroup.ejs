@@ -1,40 +1,84 @@
 <% include ./partials/faculty_header %>
 
-		<% include ./partials/faculty_nav %>
-
-		<div class="col s2">
-			<form id="create_group" action="/faculty/groups/creategroup" method="post">
-				<div class="row">
-					<div class="input-field col s11">
-						<input id="Group_Id" type="text" name="group_name" class="validate">
-						<label for="Group_Id">Enter Group Name</label>
+		<!-- Nav Bar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<a class="navbar-brand" href="/faculty/groups">OPAS</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNavDropdown" class="navbar-collapse collapse">
+			
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  My Account
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Account</a>
+						<a class="dropdown-item" href="/auth/logout">Logout</a>
 					</div>
-				</div>
-
-				<!-- <div class="row">
-					<div class="input-field col s11">
-						<input id="Subject_Id" type="text" name="subject_id" class="validate">
-						<label for="Subject_Id">Enter Subject Name</label>
-					</div>
-				</div> -->
+				</li>
 				
-				<div class="row">
-					<div class="input-field col s11">
-						<input id="Subject_Id" type="text" name="passkey" class="validate">
-						<label for="Subject_Id">Enter Pass Key</label>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col s5">
-						<div class="formDiv">
-							<input class="waves-effect waves-light btn" type="submit" value="Submit"/>
-						</div>
-					</div>
-				</div>
-
-
-			</form>
+			</ul>
 		</div>
+		</nav>
+		<br><br>
+		<!-- Nav Bar ends -->
+		<div class = "row">
+				<div class = "col-sm-4">
+					<br><br>
+					<div class = "container">
+							<div class="card">
+							<div class="card-body">
+								<h4 class="card-title text-center"><%= user.name %></h4>
+								<h6 class="card-title text-center"><%= user.email %></h4>
+							
+							</div>
+					</div>
+		
+						</div><br><br>
+		
+						</div>
+						<div class="col-sm-8">
+								<br><br>
+								<!-- Teal page content  -->
+								<form id="create_group" action="/faculty/groups/creategroup" method="post">
+									<div class="row">
+										<div class="input-field col s11">
+											<input id="Group_Id" type="text" name="group_name" class="validate">
+											<label for="Group_Id">Enter Group Name</label>
+										</div>
+									</div>
+					
+									<!-- <div class="row">
+										<div class="input-field col s11">
+											<input id="Subject_Id" type="text" name="subject_id" class="validate">
+											<label for="Subject_Id">Enter Subject Name</label>
+										</div>
+									</div> -->
+									
+									<div class="row">
+										<div class="input-field col-sm-11">
+											<input id="Subject_Id" type="text" name="passkey" class="validate">
+											<label for="Subject_Id">Enter Pass Key</label>
+										</div>
+									</div>
+					
+									<div class="row">
+										<div class="col s5">
+											<div class="formDiv">
+												<input class="waves-effect waves-light btn" type="submit" value="Submit"/>
+											</div>
+										</div>
+									</div>
+					
+					
+								</form>
+								
+									
+							</div>
+						</div>
+
+		
 	</body>
 </html>
