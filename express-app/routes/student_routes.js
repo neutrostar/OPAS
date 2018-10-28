@@ -41,81 +41,118 @@ router.get("/student/groups", isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/student/change_group", isLoggedIn, function(req, res) {
+router.post("/student/groups/join", isLoggedIn, function(req, res) {
 
+	// console.log(req.body);
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
-		if (err) {
+		Group.findOne({
 
-			console.log(err);
-		} else {
+			group_pass: req.body.passkey
+		}).exec(function(err, foundGroup) {
 
-			res.render("student_entercode", {
+			if (foundGroup) {
 
-				user:foundUser
-			});
-		}
-	});
-});
+				foundGroup.users.push(foundUser);
+				foundGroup.save();
+				return res.redirect("/student/groups");
+			} else {
 
-router.post("/student/change_group", isLoggedIn, function(req, res) {
-
-	// console.log(req.user.id);
-	res.redirect("/student/" + req.user.id);
+				console.log("Group not found");
+				return res.redirect("*");
+			}
+		})
+	})
 });
 
 // ================================================================================
 
-router.get("/student", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-		} else {
+			return res.redirect("*");
+		}
 
-			Announcement.find({}, function(err, allAnnouncements) {
+		Group.findById(req.params.group_id).populate("announcements").exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render("student_page", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				announcements: foundGroup.announcements
+			});
+		});
+	});
+});
+
+router.get("/student/groups/view/:group_id/announcement/view/:announcement_id", isLoggedIn, function(req, res) {
+
+	// User.findById(req.user.id).exec(function(err, foundUser) {
+
+	// 	if (err) {
+
+	// 		console.log(err);
+	// 		res.redirect("*");
+	// 	}
+
+	// 	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
+
+	// 		console.log(foundAnnouncement);
+	// 		if (err) {
+
+	// 			console.log(err);
+	// 			res.redirect("*");
+	// 		}
+
+	// 		res.render("student_announcement", {
+
+	// 			user: foundUser,
+	// 			announcement: foundAnnouncement
+	// 		});
+	// 	});
+	// });
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Announcement.findById(req.params.announcement_id).populate("comments").exec(function(err, foundAnnouncement) {
 
 				if (err) {
 
 					console.log(err);
-					res.redirect("*");
+					return res.redirect("*");
 				}
 
-				res.render("student_groups", {
+				res.render("student_announcement", {
 
 					user: foundUser,
-					announcements: allAnnouncements
+					currentGroup: foundGroup,
+					announcement: foundAnnouncement,
+					comments: foundAnnouncement.comments
 				});
-			});	
-		}
-	});
-});
-
-router.get("/student/announcement/:id", isLoggedIn, function(req, res) {
-
-	User.findById(req.user.id).exec(function(err, foundUser) {
-
-		if (err) {
-
-			console.log(err);
-			res.redirect("*");
-		}
-
-		Announcement.findById(req.params.id, function(err, foundAnnouncement) {
-
-			console.log(foundAnnouncement);
-			if (err) {
-
-				console.log(err);
-				res.redirect("*");
-			}
-
-			res.render("student_announcement", {
-
-				user: foundUser,
-				announcement: foundAnnouncement
 			});
 		});
 	});
