@@ -58,7 +58,7 @@
 											  <h4 class="card-title"><%= group.group_name %></h4>
 											  <p class="card-text"><b><%= group.subject_name %></b></p>
 											  <p class="card-text"><b><%= group.group_pass %></b></p>
-											  <a href="/faculty/groups/view/1234" class="card-link">View Group</a>
+											  <a href="/faculty/groups/view/<%= group._id %>" class="card-link">View Group</a>
 											  
 											</div>
 									</div>
@@ -78,7 +78,7 @@
 					</div>
 				<% } %>
 				<br>
-				<a href="/faculty/groups/creategroup" class="justify-content-right"><i class="material-icons">add</i></a>
+				<a href="/faculty/groups/create" class="justify-content-right"><i class="material-icons">add</i></a>
 
 			</div>
 		</div>
