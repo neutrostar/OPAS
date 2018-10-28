@@ -84,7 +84,7 @@ router.get("/auth/redirect", function(req, res) {
 		res.redirect("/faculty/groups");
 	} else {
 
-		res.redirect("/student");
+		res.redirect("/student/groups");
 	}
 });
 
