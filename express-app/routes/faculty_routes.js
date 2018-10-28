@@ -104,7 +104,6 @@ router.get("/faculty/groups/:group_id/announcements/:announcement_id", isLoggedI
 			return res.redirect("*");
 		}
 
-		console.log(foundUser);
 		Group.find({
 
 			"users": req.user.id
@@ -234,25 +233,78 @@ router.get("/faculty/groups/:group_id/assignments", isLoggedIn, function(req, re
 	});
 });
 
-router.get("/faculty/assignments/:assignment_id/edit", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/:group_id/assignments/edit/:assignment_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
-		} else {
+			return res.redirect("*");
+		}
 
-			Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
-			
-				res.render("faculty_edit_assignment", {
+		Group.find({
 
-					user: foundUser,
-					assignment: foundAssignment
+			"users": req.user.id
+		}).exec(function(err, foundGroups) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+					if (err) {
+
+						console.log(err);
+						return res.redirect("*");
+					}
+
+					res.render("faculty_edit_assignment", {
+
+						user: foundUser,
+						groups: foundGroups,
+						currentGroup: foundGroup,
+						assignment: foundAssignment
+					});
 				});
 			});
-		}
+		});
+	});
+});
+
+router.post("/faculty/groups/:group_id/assignments/edit/:assignment_id", function(req, res) {
+
+	Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+		// console.log(foundAssignment);
+		// console.log(req.user);
+		// foundAssignment = {
+
+		// 	title: req.body.title,
+		// 	author: {
+
+		// 		id: req.user.id,
+		// 		name: req.user.name
+		// 	},
+
+		// 	ques1: req.body.ques1,
+		// 	ques2: req.body.ques2
+		// }
+
+		// foundAssignment.save();
+
+		return res.redirect("/faculty/groups/" + req.params.group_id + "/assignments");
 	});
 });
 
@@ -315,56 +367,7 @@ router.get("/faculty/groups/:group_id/assignments/create", isLoggedIn, function(
 
 router.post("/faculty/groups/:group_id/assignments/create", isLoggedIn, function(req, res) {
 
-	console.log(req.body);
-
-	// Subject.findOne({
-
-	// 	subject_id: req.body.subject
-	// }, function(err, foundSubject) {
-
-	// 	if (err) {
-
-	// 		console.log(err);
-	// 		resredirect("*");
-	// 	}
-
-	// 	if (!foundSubject) {
-
-	// 		console.log("Subject not found");
-	// 	} else {
-
-	// 		var newAssignment = new Assignment({
-
-	// 			title: req.body.title,
-	// 			author: {
-
-	// 				id: req.user.id,
-	// 				name: req.user.name
-	// 			},
-
-	// 			subject: {
-
-	// 				id: foundSubject._id,
-	// 				subject_id: foundSubject.subject_id
-	// 			},
-
-	// 			ques1: req.body.ques1,
-	// 			ques2: req.body.ques2
-	// 		});
-
-	// 		Assignment.create(newAssignment, function(err, newAssignment) {
-
-	// 			if (err) {
-
-	// 				console.log(err);
-	// 				res.redirect("*");
-	// 			}
-
-	// 			res.redirect("/faculty");
-	// 		});
-	// 	}
-	// });
-
+	// console.log(req.body);
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 		var newAssignment = new Assignment({

@@ -2,7 +2,7 @@
 	
 	<% include ./partials/faculty_nav %>
 		<div class="row">
-			<form class="col s9 offset-s1" method="post" action="/faculty/assignments/create">
+			<form class="col s9 offset-s1" method="post" action="/faculty/groups/<%= currentGroup._id %>/assignments/edit/<%= assignment._id %>">
 				<div class="row">
 					
 					<div class="input-field col s12">
@@ -12,7 +12,14 @@
 
 					<div class="input-field col s12">
 						<input name="subject" id="last_name" type="text" class="validate">
-						<label for="last_name"><%= assignment.subject.subject_id %></label>
+						<label for="last_name">
+							
+							<% if (assignment.subject) { %>
+								<%= assignment.subject.subject_id %>
+							<% } else { %>
+								No subject
+							<% } %>		
+						</label>
 					</div>
 				</div>
 				
