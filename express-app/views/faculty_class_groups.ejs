@@ -1,52 +1,74 @@
 <% include ./partials/faculty_header %>
-		
-		<% include ./partials/faculty_nav %>
-			<div class = "row">
-			<div class="col s7">
-				<!-- Teal page content  -->
-				<div class = "row">
-					<h2 class = "subheader">My Class Groups</h2>
-					<!-- <div class="col s12 m4">
-						<div class="card teal lighten-1">
-							<div class="card-content white-text">
-								<span class="card-title">UCS617</span>
-								<p>
-									<b>Image Processing</b><br>
-									CAG1 CAG2 CAG3 COE10<br>
-								</p>
-							</div>
-							<div class="card-action white">
-								<a href="/faculty/groups/view/1234"><font color = "grey">View Group</font></a>
-							</div>
-						</div>
-					</div> -->
+<!-- Nav Bar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<a class="navbar-brand" href="/student">OPAS</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNavDropdown" class="navbar-collapse collapse">
+			
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  My Account
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Account</a>
+						<a class="dropdown-item" href="/auth/logout">Logout</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+		</nav>
+		<!-- Nav Bar ends -->
+		<br>
+		<!-- Side Nav User Info Starts -->	
+<div class = "row">
+		<div class = "col-sm-4">
+			<br><br>
+			<div class = "container">
+					<div class="card">
+					<div class="card-body">
+						<h4 class="card-title text-center"><%= user.name %></h4>
+						<h6 class="card-title text-center"><%= user.email %></h4>
+					
+					</div>
+			</div>
+
+				</div><br><br>
+
 				</div>
+			
+			<div class="col-sm-8">
+				<br><br>
+				<!-- Teal page content  -->
+				
+					<h3>My Class Groups</h2>
+					
+				
 
 				<% if (groups.length != 0) { %>
 
 					<% groups.forEach(function(group) { %>
 
-						<div class="col s12 m4">
-							<div class="card teal lighten-1">
-								<div class="card-content white-text">
-									<span class="card-title"><%= group.group_name %></span>
-									<p>
-										<b><%= group.subject_name %></b>
-									</p>
-
-									<p>
-										<%= group.group_pass %>
-									</p>
-								</div>
-								<div class="card-action white">
-									<a href="/faculty/groups/view/1234"><font color = "grey">View Group</font></a>
-								</div>
+							<div class="container">
+									<div class="card" style="width:300px">
+											<div class="card-body">
+											  <h4 class="card-title"><%= group.group_name %></h4>
+											  <p class="card-text"><b><%= group.subject_name %></b></p>
+											  <p class="card-text"><b><%= group.group_pass %></b></p>
+											  <a href="/faculty/groups/view/1234" class="card-link">View Group</a>
+											  
+											</div>
+									</div>
 							</div>
-						</div>
+						
+						
 					<% }); %>
 				<% } else { %>
 
-					<div class="col s12 ">
+					<div class="col-sm-12 ">
 							<div class="card">
 								<div class="card-content">
 
@@ -55,12 +77,13 @@
 						</div>
 					</div>
 				<% } %>
+				<a href="/faculty/groups/creategroup" class="btn-floating btn-large waves-effect waves-teal lighten-1"><i class="material-icons">add</i></a>
 
 			</div>
 		</div>
 		<div class = "row">
 			<div class = "col s7 offset-s10">
-				<a href="/faculty/groups/creategroup" class="btn-floating btn-large waves-effect waves-teal lighten-1"><i class="material-icons">add</i></a>
+				
 			</div>
 		</div>
 	</body>
