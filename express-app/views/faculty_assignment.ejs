@@ -1,8 +1,9 @@
 <% include ./partials/faculty_header %>
 	
 		<% include ./partials/faculty_nav %>
-
-			<div class="col s7">
+			
+			<div class="col-sm-8">
+					<br><br><br>
 				<div class = "row">
 						
 					<% if (assignments.length != 0) { %>
@@ -35,12 +36,18 @@
 
 					<% } else { %>
 
-						<h3 class = "header"><font color = "teal">Currently no assignments</font></h3>
+						<div class="container">
+								<h3><font color = "teal">Currently no assignments</font></h3>
+						</div>
 					<% } %>
 			    </div>
 		
-			<div class = "col s7 offset-s12">
-				<a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/create" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">add</i></a>
+			
+			<br>
+			<div class="container">
+				<form action="/faculty/groups/view/<%= currentGroup._id %>/assignments/create">
+					<button type="submit" class="btn btn-primary">Create new assignment</button>
+				</form
 			</div>
 				<!-- Grey navigation panel -->
 			
