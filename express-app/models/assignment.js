@@ -22,17 +22,23 @@ var AssignmentSchema = new mongoose.Schema({
 		ref: "subject"
 	},
 
-	ques1: {
+	// ques1: {
 
-		title: String,
-		marks: Number
-	},
+	// 	title: String,
+	// 	marks: Number
+	// },
 
-	ques2: {
+	// ques2: {
 
-		title: String,
-		marks: Number
-	}
+	// 	title: String,
+	// 	marks: Number
+	// }
+
+	questions: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "question"
+	}]
 });
 
 module.exports = mongoose.model("assignment", AssignmentSchema);

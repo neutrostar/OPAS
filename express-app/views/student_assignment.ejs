@@ -3,7 +3,9 @@
 		<% include ./partials/student_nav %>
 			
 			<!-- Live Assignments -->
-			<div class ="col s7">
+			<div class ="col-sm-8">
+				<br><br>
+
 				<div class="row">
 					<h2 class = "subheader">Live Assignments</h2>
 
@@ -13,7 +15,13 @@
 						<div class="col s12 m6">
 							<div class="card teal lighten-1">
 								<div class="card-content white-text">
-									<span class="card-title"><%= assignment.subject.subject_id %></span>
+									<span class="card-title">
+
+										<% if (assignment.subject) { %>
+
+											<%= assignment.subject.subject_id %>
+										<% } %>
+									</span>
 									<p>
 										<b><%= assignment.title %></b><br>
 										Start date : 5/05/2018<br>
@@ -21,7 +29,7 @@
 									</p>
 								</div>
 								<div class="card-action white">
-									<a href="/student/assignment/<%= assignment._id %>/view"><font color = "grey">View Assignment</font></a>
+									<a href="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>"><font color = "grey">View Assignment</font></a>
 								</div>
 							</div>
 						</div>
