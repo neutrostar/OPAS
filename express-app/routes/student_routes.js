@@ -97,31 +97,6 @@ router.get("/student/groups/view/:group_id", isLoggedIn, function(req, res) {
 
 router.get("/student/groups/view/:group_id/announcement/view/:announcement_id", isLoggedIn, function(req, res) {
 
-	// User.findById(req.user.id).exec(function(err, foundUser) {
-
-	// 	if (err) {
-
-	// 		console.log(err);
-	// 		res.redirect("*");
-	// 	}
-
-	// 	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
-
-	// 		console.log(foundAnnouncement);
-	// 		if (err) {
-
-	// 			console.log(err);
-	// 			res.redirect("*");
-	// 		}
-
-	// 		res.render("student_announcement", {
-
-	// 			user: foundUser,
-	// 			announcement: foundAnnouncement
-	// 		});
-	// 	});
-	// });
-
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -158,15 +133,14 @@ router.get("/student/groups/view/:group_id/announcement/view/:announcement_id", 
 	});
 });
 
-router.post("/student/announcement/:id", function(req, res) {
+router.post("/student/groups/view/:group_id/announcement/view/:announcement_id/new", function(req, res) {
 
-	console.log(req.body);
-	Announcement.findById(req.params.id, function(err, foundAnnouncement) {
+	Announcement.findById(req.params.announcement_id).exec(function(err, foundAnnouncement) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
+			return res.redirect("*");
 		}
 
 		var newComment = new Comment({
@@ -185,72 +159,80 @@ router.post("/student/announcement/:id", function(req, res) {
 			if (err) {
 
 				console.log(err);
-				res.redirect("*");
+				return res.redirect("*");
 			}
 
 			foundAnnouncement.comments.push(newComment);
 			foundAnnouncement.save();
-
-			res.redirect("/student/" + req.params.id);
+			return res.redirect("/student/groups/view/" + req.params.group_id + "/announcement/view/" + req.params.announcement_id)
 		});
 	});
 });
 
 // ================================================================================
 
-router.get("/student/assignment", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id/assignments", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-		} else {
-
-			Assignment.find({}, function(err, allAssignments) {
-
-				console.log(allAssignments);
-				if (err) {
-
-					console.log(err);
-					res.redirect("*");
-				}
-
-				res.render("student_assignment", {
-
-					user: foundUser,
-					assignments: allAssignments
-				});
-			});
+			return res.render("*");
 		}
+
+		Group.findById(req.params.group_id).populate("assignments").exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.render("*");
+			}
+
+			res.render("student_assignment", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				assignments: foundGroup.assignments
+			});
+		});
 	});
 });
 
-router.get("/student/assignment/:assignment_id/view", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
-		} else {
+			return res.redirect("*");
+		}
 
-			Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
 				if (err) {
 
 					console.log(err);
-					res.redirect("*");
+					return res.redirect("*");
 				}
 
 				res.render("ques_UCS617", {
 
 					user: foundUser,
+					currentGroup: foundGroup,
 					assignment: foundAssignment
 				});
 			});
-		}
+		});
 	});
 });
 
@@ -313,31 +295,31 @@ router.get("/student/evaluations", isLoggedIn, function(req, res) {
 
 // ================================================================================
 
-router.get("/student/notes", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id/notes", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
-		} else {
-
-			Announcement.find({}, function(err, allAnnouncements) {
-
-				if (err) {
-
-					console.log(err);
-					res.redirect("*");
-				}
-
-				res.render("student_page", {
-
-					user: foundUser,
-					announcements: allAnnouncements
-				});
-			});
+			return res.redirect("*");
 		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render("student_notes", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				notes: foundGroup.notes
+			});
+		});
 	});
 });
 
