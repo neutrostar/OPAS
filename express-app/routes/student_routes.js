@@ -228,6 +228,9 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 					return res.redirect("*");
 				}
 
+				console.log(foundAssignment);
+				console.log(foundAssignment.questions);
+
 				res.render("ques_UCS617", {
 
 					user: foundUser,

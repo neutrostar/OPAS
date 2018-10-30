@@ -355,10 +355,10 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 					}
 
 					newAssignment.questions.push(newQuestion);
-				})
-			})
+					newAssignment.save();
+				});
+			});
 			
-			newAssignment.save();
 
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();
