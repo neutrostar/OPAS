@@ -376,7 +376,7 @@ router.get("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", isL
 	});
 });
 
-router.post("/faculty/groups/:group_id/assignments/edit/:assignment_id", function(req, res) {
+router.post("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", function(req, res) {
 
 	Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
