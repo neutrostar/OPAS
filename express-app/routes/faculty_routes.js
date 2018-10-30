@@ -1,14 +1,35 @@
+//Node dependencies
 var express = require("express");
 var mongoose = require("mongoose");
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+//Database Models
 var User = require("../models/user");
 var Group = require("../models/group");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Subject = require("../models/subject");
 var Assignment = require("../models/assignment");
+var Note = require("../models/note");
 
 var router = express.Router();
 
+//MiddleWare
+let fileName;
+var storage = multer.diskStorage({
+	destination: function(req, file, cb){
+		cb(null, './uploads');
+	},
+	filename: function(req, file, cb){
+		filename = Date.now() + file.originalname;
+		cb(null, Date.now()+file.originalname);
+	}
+});
+var upload = multer({storage: storage}).single('notesfile');
+
+//Routes start from below here
 // ========================================================================================
 
 router.get("/faculty/groups", isLoggedIn, function(req, res) {
@@ -438,7 +459,7 @@ router.get("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, res
 			return res.redirect("*");
 		}
 
-		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+		Group.findById(req.params.group_id).populate("notes").exec(function(err, foundGroup) {
 
 			if (err) {
 
@@ -449,14 +470,66 @@ router.get("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, res
 			res.render("faculty_notes", {
 
 				user: foundUser,
-				currentGroup: foundGroup
+				currentGroup: foundGroup,
+				note: foundGroup.notes
 			});
 		});
 	});
 });
 
 
-router.get("/faculty/groups/view/:group_id/notes/newUpload", isLoggedIn, function(req, res) {
+router.post("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, res){
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+			console.log("Reaches station 4");
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+				console.log("REaches station 3");
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			upload(req, res, function(err){
+				if(err){
+
+					console.log(err);
+					return res.end("Error uploading file");
+				}
+				console.log(req.body.notestitle);
+				console.log(filename);
+				// var fileLocation = path.join('./uploads', filename);
+				var newNote = new Note({
+					title: req.body.notestitle,
+					link: filename
+				});
+				
+				
+				
+			
+				Note.create(newNote, function(err, newNote){
+					console.log("Reaches station 1");
+					foundGroup.notes.push(newNote);
+					foundGroup.save();
+					console.log("Tenu suit suit karda");
+					return res.redirect("/faculty/groups/view/"+req.params.group_id + "/notes")
+					
+				})
+				
+			});
+			console.log("Reaches station 2");
+			
+			
+		});
+	});
+});
+
+router.get("/faculty/groups/view/:group_id/notes/:note_name", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -464,7 +537,9 @@ router.get("/faculty/groups/view/:group_id/notes/newUpload", isLoggedIn, functio
 
 			console.log(err);
 			return res.redirect("*");
-		} Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 			if (err) {
 
@@ -472,10 +547,11 @@ router.get("/faculty/groups/view/:group_id/notes/newUpload", isLoggedIn, functio
 				return res.redirect("*");
 			}
 
-			res.render("faculty_newNotes", {
-
-				user: foundUser,
-				currentGroup: foundGroup
+			Note.findById(req.params.note_id).exec(function(err,foundNote){
+				var file = req.params.note_name;
+				var fileLocation = path.join('./uploads', file);
+				console.log(fileLocation);
+				res.download(fileLocation, file);
 			});
 		});
 	});
