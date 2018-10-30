@@ -330,7 +330,10 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 
 				id: req.user.id,
 				name: req.user.name
-			}
+			},
+
+			questions: req.body.questions,
+			languages: req.body.optradio
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {
@@ -340,25 +343,6 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				console.log(err);
 				return res.redirect("*");
 			}
-
-			req.body.questions.forEach(function(question) {
-
-				var newQuestion = new Question(question);
-				newQuestion.languages = req.body.optradio;
-				
-				Question.create(newQuestion, function(err, newQuestion) {
-
-					if (err) {
-
-						console.log(err);
-						return res.redirect("*");
-					}
-
-					newAssignment.questions.push(newQuestion);
-					newAssignment.save();
-				});
-			});
-			
 
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();
