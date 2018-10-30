@@ -21,7 +21,7 @@ var AssignmentSchema = new mongoose.Schema({
 	questions: [{
 
 		title: String,
-		inputs: String
+		input: String
 	}]
 });
 
