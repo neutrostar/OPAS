@@ -22,18 +22,6 @@ var AssignmentSchema = new mongoose.Schema({
 		ref: "subject"
 	},
 
-	// ques1: {
-
-	// 	title: String,
-	// 	marks: Number
-	// },
-
-	// ques2: {
-
-	// 	title: String,
-	// 	marks: Number
-	// }
-
 	questions: [{
 
 		type: mongoose.Schema.Types.ObjectId,
