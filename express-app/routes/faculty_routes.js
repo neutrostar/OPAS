@@ -343,6 +343,9 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 
 			req.body.questions.forEach(function(question) {
 
+				var newQuestion = question;
+				newQuestion.languages = req.body.optradio;
+				
 				Question.create(question, function(err, newQuestion) {
 
 					if (err) {
