@@ -12,6 +12,7 @@
                         <br>
                         <div class="container">
                             <h6><%=ques.title %></h6>
+                            <p>Inputs</p>
                             <p><%=ques.input %></p>
                         </div>
                     <%})};%>
@@ -23,7 +24,7 @@
                 </div>
             </form>
             
-            <form action="*" method = "post">
+            <form action="/faculty/groups/view/<%=currentGroup._id%>/assignments/<%=assignment._id%>?_method=DELETE" method = "post">
                     <div class = "form-group">
                         <input type="submit" value="Delete Assignment" class="btn btn-danger">
                     </div>
