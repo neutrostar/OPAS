@@ -5,16 +5,16 @@
 		<!-- <%= assignment %> -->
 
 		<div class="col-sm-8">
-		<% assignment.questions.forEach(function(question) { %>
+		<% questions.forEach(function(question) { %>
 
 			<br><br><br>
 			<h4>
 				<a href="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/view/<%= question._id %>"><font color = "black">Question : <%= question.title %></font></a>
 			</h4>
 			Language Allowed : 
-			<% assignment.languages.forEach(function(language) { %>
+			<% questions.languages.forEach(function(language) { %>
 			
-				<%= language %>,
+				<%= language %> 
 
 			<% }) %>
 

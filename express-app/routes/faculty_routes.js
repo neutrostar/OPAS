@@ -343,10 +343,10 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 
 			req.body.questions.forEach(function(question) {
 
-				var newQuestion = question;
+				var newQuestion = new Question(question);
 				newQuestion.languages = req.body.optradio;
 				
-				Question.create(question, function(err, newQuestion) {
+				Question.create(newQuestion, function(err, newQuestion) {
 
 					if (err) {
 
@@ -355,9 +355,10 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 					}
 
 					newAssignment.questions.push(newQuestion);
-					newAssignment.save();
 				})
 			})
+			
+			newAssignment.save();
 
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();

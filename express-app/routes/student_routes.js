@@ -220,7 +220,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 				return res.redirect("*");
 			}
 
-			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+			Assignment.findById(req.params.assignment_id).populate("questions").exec(function(err, foundAssignment) {
 
 				if (err) {
 
@@ -232,7 +232,8 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 
 					user: foundUser,
 					currentGroup: foundGroup,
-					assignment: foundAssignment
+					assignment: foundAssignment,
+					questions: foundAssignment.questions
 				});
 			});
 		});
@@ -241,40 +242,42 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 
 router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/view/:question_id", isLoggedIn, function(req, res) {
 
-	// User.findById(req.user.id).exec(function(err, foundUser) {
-
-	// 	if (err) {
-
-	// 		console.log(err);
-	// 	} else {
-
-	// 		Assignment.findById(req.params.assignment_id, function(err, foundAssignment) {
-
-	// 			if (err) {
-
-	// 				console.log(err);
-	// 				res.redirect("*");
-	// 			}
-
-	// 			res.render("quest1", {
-
-	// 				user: foundUser,
-	// 				assignment: foundAssignment
-	// 			});
-	// 		});
-	// 	}
-	// });
-
 	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
 
 		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
 			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
-				// 
-			})
-		})
-	})
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				Question.findById(req.params.question_id).exec(function(err, foundQuestion) {
+
+					res.render("quest1", {
+
+						user: foundUser,
+						question: foundQuestion,
+						languages: foundQuestion.languages
+					});
+				});
+			});
+		});
+	});
 });
 
 // ================================================================================
