@@ -14,14 +14,11 @@ var AssignmentSchema = new mongoose.Schema({
 
 		name: String
 	},
-
-	languages: [String],
-	// questions: [String],
-	// test_input: [String]
+	
 	questions: [{
 
-		title: String,
-		input: String
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "question"
 	}]
 });
 

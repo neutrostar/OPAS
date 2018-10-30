@@ -4,7 +4,8 @@ var mongoose = require("mongoose");
 var QuestionSchema = new mongoose.Schema({
 
 	title: String,
-	marks: Number
+	inputs: String,
+	languages: [String]
 });
 
 module.exports = mongoose.model("question", QuestionSchema);
