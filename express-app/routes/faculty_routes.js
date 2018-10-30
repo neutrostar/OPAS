@@ -385,7 +385,7 @@ router.get("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", isL
 				return res.redirect("*");
 			}
 
-			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+			Assignment.findById(req.params.assignment_id).populate('questions').exec(function(err, foundAssignment) {
 
 				if (err) {
 
@@ -397,7 +397,8 @@ router.get("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", isL
 
 					user: foundUser,
 					currentGroup: foundGroup,
-					assignment: foundAssignment
+					assignment: foundAssignment,
+					question: foundQuestion
 				});
 			});
 		});
@@ -421,7 +422,7 @@ router.get("/faculty/groups/view/:group_id/assignments/:assignment_id", function
 				return res.redirect("*");
 			}
 
-			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+			Assignment.findById(req.params.assignment_id).populate('questions').exec(function(err, foundAssignment) {
 
 				if (err) {
 
@@ -433,7 +434,8 @@ router.get("/faculty/groups/view/:group_id/assignments/:assignment_id", function
 
 					user: foundUser,
 					currentGroup: foundGroup,
-					assignment: foundAssignment
+					assignment: foundAssignment,
+					foundQuestion: foundAssignment.questions
 				});
 			});
 		});
