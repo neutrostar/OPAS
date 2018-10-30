@@ -5,20 +5,42 @@
 			<div class="col-sm-8">
 			<br><br>
 			<div class="container">
-				<div class="card" style="width: 300px";>
-					<div class="card-body">
-					  <h4 class="card-title">Hardcoded Note title</h4>
-					  <p class="card-text">Note Subject</p>
-					  <a href="#" class="card-link">Download Link</a>
-					  
-					</div>
-				  </div>
+					<% if (note) { %>
+
+					
+						<% note.forEach(function(notes) { %>
+							<br>
+			<div class="container">
+				
+				<div class="card" style="width: 300px">
+						
+						<div class="card-body">
+						  <h4 class="card-title"><%= notes.title %></h4><br>
+						  <a href="/faculty/groups/view/<%= currentGroup.id %>/notes/<%= notes.link %>" class="btn btn-primary"> Download</a>				  
+						  	  
+						  
+						</div>
+					  </div>
+			</div>
+							
+						<% }); %>
+						<% } %>
 			</div>
 			<br>
 			<div class="container">
-				<form action="/faculty/groups/view/<%= currentGroup._id %>/notes/newUpload">
-					<button type="submit" class="btn btn-primary">Upload Notes</button>
-				</form
+					<form action="/faculty/groups/view/<%= currentGroup._id %>/notes" method="POST" enctype="multipart/form-data">
+							
+						<div class="form-group">
+							<input type="text" placeholder="Add a title for the notes" name="notestitle">
+
+						</div>
+							<div class="form-group">
+								
+								<label for="exampleFormControlFile1">Upload a new file</label>
+								<input type="file" class="form-control-file" id="exampleFormControlFile1" name="notesfile">
+							</div>
+							<input type="submit" value="Upload" class="btn btn-primary">
+						</form>
 			</div>
 			</div>
 			
