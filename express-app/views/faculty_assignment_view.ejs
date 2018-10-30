@@ -1,4 +1,35 @@
 <% include ./partials/faculty_header %>
 	
         <% include ./partials/faculty_nav %>
-        Reaches here
+        <div class="col-sm-8">
+            <br><br><br>
+            <div class="container">
+                <h4><%= assignment.title %></h4>
+            </div>
+            <div class="container">
+                <%if(assignment.questions){%>
+                    <% assignment.questions.forEach(function(ques){ %>
+                        <br>
+                        <div class="container">
+                            <h6><%=ques.title %></h6>
+                            <p><%=ques.input %></p>
+                        </div>
+                    <%})};%>
+            </div><br>
+            <a href = "#" class=" btn btn-primary">View Submissions</a><br><br>
+            <form action="*" method = "post">
+                <div class = "form-group">
+                    <input type="submit" value="Edit Assignment" class="btn btn-primary">
+                </div>
+            </form>
+            
+            <form action="*" method = "post">
+                    <div class = "form-group">
+                        <input type="submit" value="Delete Assignment" class="btn btn-danger">
+                    </div>
+                </form>
+
+        </div>
+    </div>
+</body>
+</html>
