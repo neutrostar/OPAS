@@ -314,6 +314,7 @@ router.get("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, func
 
 router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, function(req, res) {
 
+	console.log(req.body);
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 		if (err) {
@@ -332,8 +333,7 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 			},
 
 			languages: req.body.optradio,
-			questions: req.body.ques,
-			test_input: req.body.test
+			questions: req.body.questions
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {

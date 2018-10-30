@@ -16,8 +16,13 @@ var AssignmentSchema = new mongoose.Schema({
 	},
 
 	languages: [String],
-	questions: [String],
-	test_input: [String]
+	// questions: [String],
+	// test_input: [String]
+	questions: [{
+
+		title: String,
+		inputs: String
+	}]
 });
 
 module.exports = mongoose.model("assignment", AssignmentSchema);
