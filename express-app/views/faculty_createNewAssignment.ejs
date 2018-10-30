@@ -4,9 +4,9 @@
 		<div class="col-sm-8">
 			<br><br>
 			<div class="container" style="width: 600px">
-					<form>
+					<form action="/faculty/groups/view/<%= currentGroup._id %>/assignments/create" method="post">
 							<div class="form-group">
-								<input type="text" class="form-control" id="title" placeholder="Assignment Title">
+								<input type="text" name="title" class="form-control" id="title" placeholder="Assignment Title">
 							  </div>
 							  <div class="form-group">
 								  Select a language: <br>
@@ -18,12 +18,12 @@
 								  </div>
 								  <div class="form-check">
 									<label class="form-check-label" for="c++">
-									  <input type="checkbox" class="form-check-input" id="c++" name="optradio" value="c++">C++
+									  <input type="checkbox" class="form-check-input" id="c++" name="optradio" value="C++">C++
 									</label>
 								  </div>
 								  <div class="form-check">
 									<label class="form-check-label" for="java">
-									  <input type="checkbox" class="form-check-input" id="java" name="optradio" value="java" >Java
+									  <input type="checkbox" class="form-check-input" id="java" name="optradio" value="Java" >Java
 									</label>
 								  </div>
 							  <button type="submit" class="btn btn-primary">Create new assignment</button>
@@ -33,8 +33,8 @@
 							        <div class="control-group">
 							            <div class="controls">
 							            	<div class="container" style="width: 600px">
-							                <textarea id="Question_Statement" name = "Ques_1" placeholder="Question Statement" rows="3"></textarea>
-							                <textarea id="Question_Inputs" name = "Ques_Input_1" placeholder="Question Inputs" rows="3"></textarea>
+							                <textarea id="Question_Statement" name = "ques[0]" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "test[0]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
 							            </div>
 							        </div>
@@ -46,8 +46,8 @@
 							        <div class="control-group">
 							            <div class="controls">
 							            	<div class="container" style="width: 600px">
-							                <textarea id="Question_Statement" name = "Ques_2" placeholder="Question Statement" rows="3"></textarea>
-							                <textarea id="Question_Inputs" name = "Ques_Input_2" placeholder="Question Inputs" rows="3"></textarea>
+							                <textarea id="Question_Statement" name = "ques[1]" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "test[1]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
 							            </div>
 							        </div>
@@ -59,8 +59,8 @@
 							        <div class="control-group">
 							            <div class="controls">
 							            	<div class="container" style="width: 600px">
-							                <textarea id="Question_Statement" name = "Ques_3" placeholder="Question Statement" rows="3"></textarea>
-							                <textarea id="Question_Inputs" name = "Ques_Input_3" placeholder="Question Inputs" rows="3"></textarea>
+							                <textarea id="Question_Statement" name = "ques[2]" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "test[2]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
 							            </div>
 							        </div>

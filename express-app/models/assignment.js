@@ -12,21 +12,12 @@ var AssignmentSchema = new mongoose.Schema({
 			ref: "User"
 		},
 
-		name: String,
-		image: String
+		name: String
 	},
 
-	subjects: {
-
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "subject"
-	},
-
-	questions: [{
-
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "question"
-	}]
+	languages: [String],
+	questions: [String],
+	test_input: [String]
 });
 
 module.exports = mongoose.model("assignment", AssignmentSchema);

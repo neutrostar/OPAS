@@ -314,8 +314,13 @@ router.get("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, func
 
 router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, function(req, res) {
 
-	// console.log(req.body);
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
 
 		var newAssignment = new Assignment({
 
@@ -326,15 +331,22 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				name: req.user.name
 			},
 
-			ques1: req.body.ques1,
-			ques2: req.body.ques2
+			languages: req.body.optradio,
+			questions: req.body.ques,
+			test_input: req.body.test
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {
 
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();
-			return res.redirect("/faculty/groups/" + req.params.group_id + "/assignments");
+			return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments");
 		});
 	});
 });
