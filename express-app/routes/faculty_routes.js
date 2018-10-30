@@ -388,6 +388,42 @@ router.get("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", isL
 	});
 });
 
+router.get("/faculty/groups/view/:group_id/assignments/:assignment_id", function(req, res){
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				res.render("faculty_assignment_view", {
+
+					user: foundUser,
+					currentGroup: foundGroup,
+					assignment: foundAssignment
+				});
+			});
+		});
+	});
+});
+
 router.post("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", function(req, res) {
 
 	Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
