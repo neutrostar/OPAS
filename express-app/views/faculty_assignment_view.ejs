@@ -7,8 +7,8 @@
                 <h4><%= assignment.title %></h4>
             </div>
             <div class="container">
-                <%if(assignment.questions){%>
-                    <% assignment.questions.forEach(function(ques){ %>
+                <%if(foundQuestion){%>
+                    <% foundQuestion.forEach(function(ques){ %>
                         <br>
                         <div class="container">
                             <h6><%=ques.title %></h6>
