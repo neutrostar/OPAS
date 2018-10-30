@@ -27,85 +27,71 @@
 									</label>
 								  </div>
 							  <button type="submit" class="btn btn-primary">Create new assignment</button>
-
-							  <div class="container">
-								<div class="row">
-									<input type="hidden" name="count" value="1"/>
-							        <div class="control-group" id="fields">
-							            <label class="control-label" for="field1">Questions :</label>
-							            <div class="controls" id="profs"> 
-							                <form class="input-append">
-							                    <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Question Statement" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
-							                </form>
-							            <br>
-							            <small>Press + to add another Question</small>
-							            </div>
-							        </div>
-								</div>
-							</div>
-<!-- 							    <div class="form-horizontal">
+							  
+							  <br>Question 1<br>
+							    <div class="form-horizontal">
 							        <div class="control-group">
 							            <div class="controls">
-							            	<textarea class="control" rows="3" id="Question" placeholder="Question statement"></textarea>
-							                <input type="text" id="Question" placeholder="Question Statement" />
+							            	<div class="container" style="width: 600px">
+							                <textarea id="Question_Statement" name = "Ques_1" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "Ques_Input_1" placeholder="Question Inputs" rows="3"></textarea>
+							            </div>
 							            </div>
 							        </div>
 							    </div>
 
-							    <input type='button' value='Add New Question' id='addButton' />
-							    <input type='button' value='Remove Question' id='removeButton' /> -->
-						</form>
+
+							    <br>Question 2<br>
+							    <div class="form-horizontal">
+							        <div class="control-group">
+							            <div class="controls">
+							            	<div class="container" style="width: 600px">
+							                <textarea id="Question_Statement" name = "Ques_2" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "Ques_Input_2" placeholder="Question Inputs" rows="3"></textarea>
+							            </div>
+							            </div>
+							        </div>
+							    </div>
+
+
+							    <br>Question 3<br>
+							    <div class="form-horizontal">
+							        <div class="control-group">
+							            <div class="controls">
+							            	<div class="container" style="width: 600px">
+							                <textarea id="Question_Statement" name = "Ques_3" placeholder="Question Statement" rows="3"></textarea>
+							                <textarea id="Question_Inputs" name = "Ques_Input_3" placeholder="Question Inputs" rows="3"></textarea>
+							            </div>
+							            </div>
+							        </div>
+							    </div>
+
+					</form>
 			</div>
 		</div>
 	</div>
 	</body>
 
-	<script>
+	<!-- <script>
+		$(document).ready(function () {
 
-		$(document).ready(function(){
-		    var next = 1;
-		    $(".add-more").click(function(e){
-		        e.preventDefault();
-		        var addto = "#field" + next;
-		        var addRemove = "#field" + (next);
-		        next = next + 1;
-		        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text" placeholder="Question Statement">';
-		        var newInput = $(newIn);
-		        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-		        var removeButton = $(removeBtn);
-		        $(addto).after(newInput);
-		        $(addRemove).after(removeButton);
-		        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-		        $("#count").val(next);  
-		        
-		            $('.remove-me').click(function(e){
-		                e.preventDefault();
-		                var fieldNum = this.id.charAt(this.id.length-1);
-		                var fieldID = "#field" + fieldNum;
-		                $(this).remove();
-		                $(fieldID).remove();
-		            });
-		    });  
-		});
-		// $(document).ready(function () {
+            $("#addButton").click(function () {
+                if( ($('.form-horizontal .control-group').length+1) > 10) {
+                    alert("Atmax 10 questions are allowed");
+                    return false;
+                }
+                var id = ($('.form-horizontal .control-group').length + 1).toString();
+                $('.form-horizontal').append('<div class="control-group" id="control-group' + id + '"><label class="control-label" for="Question' + id + '">Question' + id + '</label><div class="controls' + id + '"><textarea id="Question_Statement' + id + '" placeholder="Question Statement"><textarea id="Question_Inputs' + id + '" placeholder="Question Inputs"></div></div>');
+            });
 
-  //           $("#addButton").click(function () {
-  //               if( ($('.form-horizontal .control-group').length+1) > 10) {
-  //                   alert("Atmax 10 questions are allowed");
-  //                   return false;
-  //               }
-  //               var id = ($('.form-horizontal .control-group').length + 1).toString();
-  //               $('.form-horizontal').append('<div class="control-group" id="control-group' + id + '"><label class="control-label" for="Question' + id + '">Question' + id + '</label><div class="controls' + id + '"><input type="text" id="Question' + id + '" placeholder="Question Statement"></div></div>');
-  //           });
+            $("#removeButton").click(function () {
+                if ($('.form-horizontal .control-group').length == 1) {
+                    alert("Atleast one question in the assignment");
+                    return false;
+                }
 
-  //           $("#removeButton").click(function () {
-  //               if ($('.form-horizontal .control-group').length == 1) {
-  //                   alert("Atleast one question in the assignment");
-  //                   return false;
-  //               }
-
-  //               $(".form-horizontal .control-group:last").remove();
-  //           });
-  //       });
-	</script>
+                $(".form-horizontal .control-group:last").remove();
+            });
+        });
+	</script> -->
 </html>
