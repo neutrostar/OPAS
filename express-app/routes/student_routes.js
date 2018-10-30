@@ -238,7 +238,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 	});
 });
 
-router.get("/student/assignment/:assignment_id/view/ques", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/view/:question_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 

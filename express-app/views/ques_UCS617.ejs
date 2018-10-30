@@ -4,14 +4,22 @@
 
 		<!-- <%= assignment %> -->
 
+		<div class="col-sm-8">
 		<% assignment.questions.forEach(function(question) { %>
-		<div class="card">
-			<div class="card-action teal lighten-1">
-				 <a href="/student/assignment/<%= assignment._id %>/view/ques"><font color = "white">Question :1<%= question.title %></font></a>
-			</div>
-		</div>
+
+			<br><br><br>
+			<h4>
+				<a href="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/view/<%= question._id %>"><font color = "black">Question : <%= question.title %></font></a>
+			</h4>
+			Language Allowed : 
+			<% assignment.languages.forEach(function(language) { %>
+			
+				<%= language %>,
+
+			<% }) %>
 
 
 	<% }) %>
+	</div>
 
 	</body>
