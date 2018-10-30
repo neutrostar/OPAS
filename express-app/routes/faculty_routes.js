@@ -330,7 +330,10 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 
 				id: req.user.id,
 				name: req.user.name
-			}
+			},
+
+			questions: req.body.questions,
+			languages: req.body.optradio
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {
@@ -340,7 +343,8 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				console.log(err);
 				return res.redirect("*");
 			}
-
+<<<<<<< HEAD
+			console.log(req.body.questions);
 			req.body.questions.forEach(function(question) {
 
 				var newQuestion = new Question(question);
@@ -359,6 +363,8 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				});
 			});
 			
+=======
+>>>>>>> 63e19183923bdf4cd56c70193da54989287fbeb9
 
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();

@@ -220,7 +220,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 				return res.redirect("*");
 			}
 
-			Assignment.findById(req.params.assignment_id).populate("questions").exec(function(err, foundAssignment) {
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
 				if (err) {
 
@@ -228,14 +228,12 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 					return res.redirect("*");
 				}
 
-				console.log(foundAssignment);
-				console.log(foundAssignment.questions);
-
 				res.render("ques_UCS617", {
 
 					user: foundUser,
 					currentGroup: foundGroup,
 					assignment: foundAssignment,
+					languages: foundAssignment.languages,
 					questions: foundAssignment.questions
 				});
 			});
