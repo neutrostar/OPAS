@@ -5,17 +5,22 @@ var User = require("./models/user");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
+
+var keys = require("./config/keys");
+const methodOverride = require('method-override');
+
+var app = express();
+app.use(methodOverride("_method"));
 var authRoutes = require("./routes/auth_routes");
 var facultyRoutes = require("./routes/faculty_routes");
 var studentRoutes = require("./routes/student_routes");
-var keys = require("./config/keys");
+
 
 mongoose.connect(keys.mongodb.dbURI, {
 
 	useNewUrlParser: true
 }, () => console.log("Connected to MongoDB"));
 
-var app = express();
 
 app.set("view engine", "ejs");
 

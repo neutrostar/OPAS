@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+
 //Database Models
 var User = require("../models/user");
 var Group = require("../models/group");
@@ -516,7 +517,7 @@ router.post("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, re
 					console.log("Reaches station 1");
 					foundGroup.notes.push(newNote);
 					foundGroup.save();
-					console.log("Tenu suit suit karda");
+					
 					return res.redirect("/faculty/groups/view/"+req.params.group_id + "/notes")
 					
 				})
@@ -552,6 +553,43 @@ router.get("/faculty/groups/view/:group_id/notes/:note_name", isLoggedIn, functi
 				var fileLocation = path.join('./uploads', file);
 				console.log(fileLocation);
 				res.download(fileLocation, file);
+			});
+		});
+	});
+});
+
+router.delete("/faculty/groups/view/:group_id/notes/:note_name/", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+			var file = req.params.note_name;
+			var fileLocation = path.join('./uploads', file);
+			fs.unlinkSync(fileLocation, function(err){
+				if(err){
+					console.log('err');
+					return res.send('Cant delete the file');
+				}
+			});
+
+			Note.deleteOne({"link": req.params.note_name}, function(err){
+				if(err){
+					console.log(err);
+					res.redirect('*');
+				}
+				return res.redirect("/faculty/groups/view/"+req.params.group_id + "/notes");
 			});
 		});
 	});

@@ -1,10 +1,12 @@
 var express = require("express");
 var mongoose = require("mongoose");
+const path = require('path');
 var Group = require("../models/group");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Assignment = require("../models/assignment");
+var Note = require('../models/note');
 var Subject = require("../models/subject");
 
 var router = express.Router();
@@ -305,6 +307,34 @@ router.get("/student/groups/view/:group_id/notes", isLoggedIn, function(req, res
 			return res.redirect("*");
 		}
 
+		Group.findById(req.params.group_id).populate("notes").exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+				console.log(foundGroup.notes.title);
+			res.render("student_notes", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				note: foundGroup.notes
+			});
+		});
+	});
+});
+
+router.get("/student/groups/view/:group_id/notes/:note_name", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
 		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 			if (err) {
@@ -313,11 +343,11 @@ router.get("/student/groups/view/:group_id/notes", isLoggedIn, function(req, res
 				return res.redirect("*");
 			}
 
-			res.render("student_notes", {
-
-				user: foundUser,
-				currentGroup: foundGroup,
-				notes: foundGroup.notes
+			Note.findById(req.params.note_id).exec(function(err,foundNote){
+				var file = req.params.note_name;
+				var fileLocation = path.join('./uploads', file);
+				console.log(fileLocation);
+				res.download(fileLocation, file);
 			});
 		});
 	});
