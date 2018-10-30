@@ -13,6 +13,7 @@ var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Subject = require("../models/subject");
 var Assignment = require("../models/assignment");
+var Question = require("../models/question");
 var Note = require("../models/note");
 
 var router = express.Router();
@@ -314,7 +315,6 @@ router.get("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, func
 
 router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, function(req, res) {
 
-	console.log(req.body);
 	Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 		if (err) {
@@ -330,10 +330,7 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 
 				id: req.user.id,
 				name: req.user.name
-			},
-
-			languages: req.body.optradio,
-			questions: req.body.questions
+			}
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {
@@ -343,6 +340,21 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				console.log(err);
 				return res.redirect("*");
 			}
+
+			req.body.questions.forEach(function(question) {
+
+				Question.create(question, function(err, newQuestion) {
+
+					if (err) {
+
+						console.log(err);
+						return res.redirect("*");
+					}
+
+					newAssignment.questions.push(newQuestion);
+					newAssignment.save();
+				})
+			})
 
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();
