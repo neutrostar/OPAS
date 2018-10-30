@@ -78,7 +78,18 @@
 		<div class = "code_here">
 			<p><br><br><b>Enter Your Code Here :</b></p>
 			<div class="code_mirror">
-				<textarea class = "codemirror-testarea"></textarea>
+				<div id="codeeditor"></div>
+				<script>
+
+				var editor = CodeMirror(document.getElementById("codeeditor"), {
+					value: "#test {\n\tposition: absolute;\n\twidth: auto;\n\theight: 50px;\n}",
+					mode: "css",
+					tabSize: 5,
+					lineNumbers: true,
+					firstLineNumber: 50,
+					extraKeys: {"Ctrl-Space": "autocomplete"}
+				});
+				</script>
 			</div>
 		</div>
 		<br>
@@ -103,6 +114,10 @@
 		<script type="text/javascript" src = "/scripts/code_mirror/jquery.min.js"></script>
 		<script type="text/javascript" src = "/plugin/codemirror/lib/codemirror.js"></script>
 		<script type="text/javascript" src = "/scripts/code_mirror/default.js"></script>
+		<script src="/plugin/codemirror/mode/css/css.js"></script>
+		<script src="/plugin/codemirror/addon/hint/show-hint.js"></script>
+		<script src="/plugin/codemirror/addon/hint/css-hint.js"></script>
+		<link rel="stylesheet" href="/plugin/codemirror/addon/hint/show-hint.css">
 		<!-- Compiled and minified JavaScript -->
 	</body>
 </html>
