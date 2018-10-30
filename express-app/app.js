@@ -8,13 +8,11 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var HackerEarth = require('hackerEarth-node');
 var methodOverride = require('method-override');
 
-
 var app = express();
 var authRoutes = require("./routes/auth_routes");
 var facultyRoutes = require("./routes/faculty_routes");
 var studentRoutes = require("./routes/student_routes");
 var keys = require("./config/keys");
-
 
 mongoose.connect(keys.mongodb.dbURI, {
 
