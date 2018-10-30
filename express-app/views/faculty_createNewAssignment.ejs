@@ -13,23 +13,57 @@
 							  </div>	
 							  <div class="form-check">
 									<label class="form-check-label" for="c">
-									  <input type="radio" class="form-check-input" id="c" name="optradio" value="C">C
+									  <input type="checkbox" class="form-check-input" id="c" name="optradio" value="C">C
 									</label>
 								  </div>
 								  <div class="form-check">
 									<label class="form-check-label" for="c++">
-									  <input type="radio" class="form-check-input" id="c++" name="optradio" value="c++">C++
+									  <input type="checkbox" class="form-check-input" id="c++" name="optradio" value="c++">C++
 									</label>
 								  </div>
 								  <div class="form-check">
 									<label class="form-check-label" for="java">
-									  <input type="radio" class="form-check-input" id="java" name="optradio" value="java" >Java
+									  <input type="checkbox" class="form-check-input" id="java" name="optradio" value="java" >Java
 									</label>
 								  </div>
 							  <button type="submit" class="btn btn-primary">Create new assignment</button>
+							  <br>Question 1<br>
+							    <div class="form-horizontal">
+							        <div class="control-group">
+							            <div class="controls">
+							                <input type="text" id="Question" placeholder="Question Statement" />
+							            </div>
+							        </div>
+							    </div>
+
+							    <input type='button' value='Add New Question' id='addButton' />
+							    <input type='button' value='Remove Question' id='removeButton' />
 						</form>
 			</div>
 		</div>
 	</div>
 	</body>
+
+	<script>
+		$(document).ready(function () {
+
+            $("#addButton").click(function () {
+                if( ($('.form-horizontal .control-group').length+1) > 10) {
+                    alert("Atmax 10 questions are allowed");
+                    return false;
+                }
+                var id = ($('.form-horizontal .control-group').length + 1).toString();
+                $('.form-horizontal').append('<div class="control-group" id="control-group' + id + '"><label class="control-label" for="Question' + id + '">Question' + id + '</label><div class="controls' + id + '"><input type="text" id="Question' + id + '" placeholder="Question Statement"></div></div>');
+            });
+
+            $("#removeButton").click(function () {
+                if ($('.form-horizontal .control-group').length == 1) {
+                    alert("Atleast one question in the assignment");
+                    return false;
+                }
+
+                $(".form-horizontal .control-group:last").remove();
+            });
+        });
+	</script>
 </html>
