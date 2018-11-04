@@ -23,6 +23,13 @@ var GroupSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "assignment"
 	}],
+
+	submissions: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "submission"
+	}],
+
 	notes: [{
 		
 		type: mongoose.Schema.Types.ObjectId,
