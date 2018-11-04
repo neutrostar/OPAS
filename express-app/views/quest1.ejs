@@ -2,7 +2,7 @@
 	
 		<% include ./partials/student_nav %>
 
-		
+		<link rel="stylesheet" type="text/css" href="../public/plugin/codemirror/lib/codemirror.css">
 		<div class = "ques_head">
 			<h2><%= question.title %></h2>
 		</div>
@@ -64,7 +64,7 @@
 		
 		<div class = "code_here">
 			<p><br><br><b>Enter Your Code Here :</b></p>
-			<div class="code_mirror">
+			<!-- <div class="code_mirror">
 				<div id="codeeditor"></div>
 				<script>
 
@@ -77,6 +77,10 @@
 					extraKeys: {"Ctrl-Space": "autocomplete"}
 				});
 				</script>
+			</div> -->
+
+			<div class="code_mirror">
+				<textarea class = "codemirror-testarea"></textarea>
 			</div>
 		</div>
 		<br>
@@ -94,9 +98,9 @@
   		<br>
 		<!-- java scripts -->
 		
-		<script type="text/javascript" src = "/scripts/code_mirror/jquery.min.js"></script>
-		<script type="text/javascript" src = "/plugin/codemirror/lib/codemirror.js"></script>
-		<script type="text/javascript" src = "/scripts/code_mirror/default.js"></script>
+		<script type="text/javascript" src = "../public/scripts/code_mirror/jquery.min.js"></script>
+		<script type="text/javascript" src = "../public/plugin/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src = "../public/scripts/code_mirror/default.js"></script>
 		<script src="/plugin/codemirror/mode/css/css.js"></script>
 		<script src="/plugin/codemirror/addon/hint/show-hint.js"></script>
 		<script src="/plugin/codemirror/addon/hint/css-hint.js"></script>
