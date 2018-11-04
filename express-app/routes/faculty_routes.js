@@ -344,27 +344,6 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 				return res.redirect("*");
 			}
 
-			console.log(req.body.questions);
-			req.body.questions.forEach(function(question) {
-
-				var newQuestion = new Question(question);
-				newQuestion.languages = req.body.optradio;
-				
-				Question.create(newQuestion, function(err, newQuestion) {
-
-					if (err) {
-
-						console.log(err);
-						return res.redirect("*");
-					}
-
-					newAssignment.questions.push(newQuestion);
-					newAssignment.save();
-				});
-			});
-			
-
-
 			foundGroup.assignments.push(newAssignment);
 			foundGroup.save();
 			return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments");
@@ -410,7 +389,7 @@ router.get("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", isL
 	});
 });
 
-router.get("/faculty/groups/view/:group_id/assignments/:assignment_id", function(req, res){
+router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id", function(req, res){
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -427,7 +406,7 @@ router.get("/faculty/groups/view/:group_id/assignments/:assignment_id", function
 				return res.redirect("*");
 			}
 
-			Assignment.findById(req.params.assignment_id).populate('questions').exec(function(err, foundAssignment) {
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
 				if (err) {
 
@@ -609,9 +588,6 @@ router.post("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, re
 					title: req.body.notestitle,
 					link: filename
 				});
-				
-				
-				
 			
 				Note.create(newNote, function(err, newNote){
 					console.log("Reaches station 1");

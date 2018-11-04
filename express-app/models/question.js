@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var QuestionSchema = new mongoose.Schema({
 
 	title: String,
-	inputs: String,
+	input: String,
 	languages: [String]
 });
 

@@ -18,7 +18,7 @@ var AssignmentSchema = new mongoose.Schema({
 	questions: [{
 
 		title: String,
-		input: String
+		input: String,
 	}],
 
 	languages: [String]

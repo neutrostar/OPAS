@@ -241,7 +241,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id", isL
 	});
 });
 
-router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/view/:question_id", isLoggedIn, function(req, res) {
+router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/question/view/:question_id", isLoggedIn, function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -267,14 +267,21 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/view/
 					return res.redirect("*");
 				}
 
-				Question.findById(req.params.question_id).exec(function(err, foundQuestion) {
+				var currentQuestion;
+				foundAssignment.questions.forEach(function(question) {
 
-					res.render("quest1", {
+					if (question.id === req.params.question_id) {
 
-						user: foundUser,
-						question: foundQuestion,
-						languages: foundQuestion.languages
-					});
+						currentQuestion = question;
+					}
+				});
+
+				res.render("quest1", {
+
+					user: foundUser,
+					currentGroup: foundGroup,
+					question: currentQuestion,
+					languages: foundAssignment.languages
 				});
 			});
 		});

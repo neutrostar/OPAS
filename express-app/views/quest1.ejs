@@ -4,12 +4,12 @@
 
 		
 		<div class = "ques_head">
-			<h2>Solve Me First</h2>
+			<h2><%= question.title %></h2>
 		</div>
 
 		<nav class = "test">
     		<div class="nav-wrapper teal">
-      			<a href="#" class="brand-logo right">OPAS LOGO</a>
+      			<a href="/student/groups" class="brand-logo right">OPAS LOGO</a>
 			      	<ul id="nav-mobile" class="left hide-on-med-and-down">
 			        <li class = "active"><a href="#">Problem</a></li>
 			        <li><a href="#">Submissions</a></li>
@@ -95,11 +95,7 @@
 		<br>
 		<br>
 		<div class = "center-align">
-			<a href = "/student/assignment/<%= assignment._id %>/view">
-				<button class="btn waves-effect waves-light" type="submit" name="action">Back
-	    			<i class="material-icons right">chevron_left</i>
-	  			</button>
-  			</a>
+			
 			<button class="btn waves-effect waves-light" type="submit" name="action">Run Code
     			<i class="material-icons right">send</i>
   			</button>
