@@ -1,12 +1,14 @@
+// Node Dependencies
 var express = require("express");
 var mongoose = require("mongoose");
 const path = require('path');
+
+// Database models
 var Group = require("../models/group");
 var User = require("../models/user");
 var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Assignment = require("../models/assignment");
-var Question = require("../models/question");
 var Note = require('../models/note');
 var Subject = require("../models/subject");
 

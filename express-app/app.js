@@ -5,7 +5,6 @@ var User = require("./models/user");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-var HackerEarth = require('hackerEarth-node');
 var methodOverride = require('method-override');
 
 var app = express();

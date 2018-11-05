@@ -5,7 +5,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-
 //Database Models
 var User = require("../models/user");
 var Group = require("../models/group");
@@ -13,7 +12,6 @@ var Announcement = require("../models/announcement");
 var Comment = require("../models/comment");
 var Subject = require("../models/subject");
 var Assignment = require("../models/assignment");
-var Question = require("../models/question");
 var Note = require("../models/note");
 
 var router = express.Router();
