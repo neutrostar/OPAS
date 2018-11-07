@@ -2,134 +2,129 @@
 	
 		<% include ./partials/student_nav %>
 
-		<link rel="stylesheet" type="text/css" href="../public/plugin/codemirror/lib/codemirror.css">
-		<div class = "ques_head">
-			<h2><%= question.title %></h2>
-		</div>
-
-		<div class = "ques_description">
-			<p>
-				Complete the function solveMeFirst to compute the sum of two integers.<br>
-				<b>Function prototype:</b><br>
-				
-				<div class = "side_notes">
-					<p>
-						<b>Other Info :</b>
-						<ul>
-							<li><b>Max Score :</b> 100</li>
-							<li><b>Deadline :</b> 10/05/2018</li>
-						</ul>
-					</p>
-				</div>
-
-				int solveMeFirst(int x, int y);<br><br>
-
-				where,
-				<br>
-				<ul class ="browser-default">
-					<li>x is the first integer input.</li>
-					<li>y is the second integer input</li>
-				</ul>
-				<br>
-
-				Return values<br>
-				<ul class ="browser-default">
-					<li>sum of the above two integers</li>
-				</ul>
-			</p>
-			
-			<p>
-				<b>Sample Input</b><br>
-					<div class = "sample_input">
-						x = 2<br>
-						y = 3
-					</div>
-				<br>
-				<br>
-				<b>Sample Output</b><br>
-					<div class = "sample_output">
-						5
-					</div>
-			</p>
-			
-			<p>
-				<b>Explanation</b><br><br>
-				The sum of the two integers  and  is computed as: 2+3 = 5.
-				<br>
-			</p>
-		
-		</div>
-
-		
-		
-		<div class = "code_here">
-			<p><br><br><b>Enter Your Code Here :</b></p>
-			<!-- <div class="code_mirror">
-				<div id="codeeditor"></div>
-				<script>
-
-				var editor = CodeMirror(document.getElementById("codeeditor"), {
-					value: "#test {\n\tposition: absolute;\n\twidth: auto;\n\theight: 50px;\n}",
-					mode: "css",
-					tabSize: 5,
-					lineNumbers: true,
-					firstLineNumber: 50,
-					extraKeys: {"Ctrl-Space": "autocomplete"}
-				});
-				</script>
-			</div> -->
-
-			<div class="code_mirror">
-				<textarea class = "codemirror-testarea"></textarea>
+			<div class = "ques_head">
+				<h2><%= question.title %></h2>
 			</div>
 
-		</div>
-		<br>
-		<br>
-		<div class = "center-align">
+			<div class = "ques_description">
+				<p>
+					Complete the function solveMeFirst to compute the sum of two integers.<br>
+					<b>Function prototype:</b><br>
+
+					int solveMeFirst(int x, int y);<br><br>
+
+					where,
+					<br>
+					<ul class ="browser-default">
+						<li>x is the first integer input.</li>
+						<li>y is the second integer input</li>
+					</ul>
+					<br>
+
+					Return values<br>
+					<ul class ="browser-default">
+						<li>sum of the above two integers</li>
+					</ul>
+				</p>
+				
+				<p>
+					<b>Sample Input</b><br>
+						<div class = "sample_input">
+							x = 2<br>
+							y = 3
+						</div>
+					<br>
+					<br>
+					<b>Sample Output</b><br>
+						<div class = "sample_output">
+							5
+						</div>
+				</p>
+				
+				<p>
+					<b>Explanation</b><br><br>
+					The sum of the two integers  and  is computed as: 2+3 = 5.
+					<br>
+				</p>
 			
-			<button class="btn waves-effect waves-light" type="submit" name="action">Run Code
-    			<i class="material-icons right">send</i>
-  			</button>
-  			<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    			<i class="material-icons right">check</i>
-  			</button>
-  		</div>
-  		<br>
-  		<br>
-  		<div class="row">
-		  <div class="col-sm-12">
-		  	<div class = "side_notes">
-					<p>
-						<b>Result :</b>
-						<ul>
-							<h6>Server Response</h6>
-							<li>Details</li>
-						</ul>
-					</p>
+			</div>
+
+			<div class = "code_here">
+				<p>
+					<br><br>
+					<b>Enter Your Code Here :
+					</b>
+				</p>
+				<!-- <div class="code_mirror">
+					<div id="codeeditor"></div>
+					<script>
+
+					var editor = CodeMirror(document.getElementById("codeeditor"), {
+						value: "#test {\n\tposition: absolute;\n\twidth: auto;\n\theight: 50px;\n}",
+						mode: "css",
+						tabSize: 5,
+						lineNumbers: true,
+						firstLineNumber: 50,
+						extraKeys: {"Ctrl-Space": "autocomplete"}
+					});
+					</script>
+				</div> -->
+
+				<div class="code_mirror">
+					<textarea class = "codemirror-testarea"></textarea>
 				</div>
 
-		  	<!-- <div class="panel panel-default">
-		  		
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Panel title</h3>
-				  </div>
-				  <div class="panel-body">
-				    Panel content
-				  </div>
+			</div>
+			
+			<br><br>
+			
+			<div class = "center-align">
 				
-			</div> -->
-		  </div>
+				<button class="btn waves-effect waves-light" type="submit" name="action">Run Code
+	    			<i class="material-icons right">send</i>
+	  			</button>
+	  			<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	    			<i class="material-icons right">check</i>
+	  			</button>
+	  		</div>
+	  		
+	  		<br><br>
+	  		
+	  		<div class="row">
+				<div class="col-sm-12">
+					<div class = "side_notes">
+						<p>
+							<b>Result :</b>
+							<ul>
+								<h6>Server Response</h6>
+								<li>Details</li>
+							</ul>
+						</p>
+					</div>
+
+			  	<!-- <div class="panel panel-default">
+			  		
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Panel title</h3>
+					  </div>
+					  <div class="panel-body">
+					    Panel content
+					  </div>
+					
+				</div> -->
+				</div>
+			</div>
+			<!-- java scripts -->
 		</div>
-		<!-- java scripts -->
-		
-		<script type="text/javascript" src = "../public/scripts/code_mirror/jquery.min.js"></script>
-		<script type="text/javascript" src = "../public/plugin/codemirror/lib/codemirror.js"></script>
-		<script type="text/javascript" src = "../public/scripts/code_mirror/default.js"></script>
+			
+		<script type="text/javascript" src = "/scripts/code_mirror/jquery.min.js"></script>
+		<script type="text/javascript" src = "/plugin/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src = "/scripts/code_mirror/default.js"></script>
 		<script src="/plugin/codemirror/mode/css/css.js"></script>
 		<script src="/plugin/codemirror/addon/hint/show-hint.js"></script>
 		<script src="/plugin/codemirror/addon/hint/css-hint.js"></script>
+		<script type="text/javascript" src="/scripts/hackerearth.js"></script>
 		<link rel="stylesheet" href="/plugin/codemirror/addon/hint/show-hint.css">
-		<!-- Compiled and minified JavaScript -->
+			<!-- Compiled and minified JavaScript -->
 	</body>
 </html>
