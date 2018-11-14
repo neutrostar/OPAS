@@ -9,6 +9,4 @@ $(function() {
     $('.forgotBtn, .backLoginF').click(function() {
         $('#forgot').toggleClass('forgot');
     });
-
-
 });

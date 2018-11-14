@@ -6,6 +6,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var methodOverride = require('method-override');
+var HackerEarth = require("hackerEarth-node");
 
 var app = express();
 var authRoutes = require("./routes/auth_routes");
