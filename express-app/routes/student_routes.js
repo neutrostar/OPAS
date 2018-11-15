@@ -419,14 +419,15 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 				console.log(err);
 				return res.redirect("*");
 			}
+
 			var currentQuestion;
-				foundAssignment.questions.forEach(function(question) {
+			foundAssignment.questions.forEach(function(question) {
 
-					if (question.id === req.params.question_id) {
+				if (question.id === req.params.question_id) {
 
-						currentQuestion = question;
-					}
-				});
+					currentQuestion = question;
+				}
+			});
 			// console.log(req.body.code);
 			
 			var int_code = req.body.code;
@@ -454,6 +455,12 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 							console.log(output);
 							var newSubmission = new Submission({
 
+								author: {
+
+									id: req.user.id,
+									name: foundUser.name
+								},
+
 								assignment: {
 				
 									id: req.params.assignment_id,
@@ -463,7 +470,9 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 								question: {
 				
 									id: req.params.question_id,
+									title: currentQuestion.title
 								},
+								
 								output: output,
 								filename: filename
 							});
