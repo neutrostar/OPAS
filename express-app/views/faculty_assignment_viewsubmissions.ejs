@@ -2,22 +2,12 @@
 	<body>
 		<% include ./partials/faculty_nav %>
 		<div class = "col-sm-8">
-
-			<h2><%= assignment.title %></h2>
-
-			<% submissions.forEach(function(submission) { %>
-
-				<div>
-					<%= submission %>
-				</div>
-			<% }); %>
-
+			<br>
 			<div class="container">
 			  <h2><%= assignment.title %></h2>          
 			  <table class="table">
 			    <thead>
 			      <tr>
-			        <th>Sudent ID</th>
 			        <th>Student Namename</th>
 			        <th>Question Title</th>
 			        <th>Ouput</th>
@@ -27,11 +17,10 @@
 			    <tbody>
 			    	<% submissions.forEach(function(submission) { %>
 			      <tr>
-			        <td><%= submission.assignment.author.id %></td>
-			        <td><%= submission.assignment.author.name %></td>
+			        <td><%= submission.author.name %></td>
 			        <td><%= submission.question.title %></td>
 			        <td><%= submission.question.output %></td>
-			        <td><a href="/faculty/groups/view/<%= currentGroup.id %>/submissions/<%= submission.filename %>" class="btn btn-dark float-center"> Download</a></td>
+			        <td><a href="/faculty/groups/view/<%= currentGroup.id %>/submissions/<%= submission.filename %>" class="btn btn-dark float-center"> Download </a></td>
 			      </tr>
 			      <% }); %>
 			    </tbody>
