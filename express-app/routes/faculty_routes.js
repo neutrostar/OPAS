@@ -527,11 +527,35 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
 		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
 
 			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}				
+
 				Submission.findById(req.params.submission_id).exec(function(err, foundSubmission) {
+
+					if (err) {
+
+						console.log(err);
+						return res.redirect("*");
+					}
 
 					var file = foundSubmission.filename;
 					var fileLocation = path.join('./submissions', file);
