@@ -278,7 +278,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 					}
 				});
 
-				res.render("quest1", {
+				res.render("student_judge", {
 
 					user: foundUser,
 					currentGroup: foundGroup,

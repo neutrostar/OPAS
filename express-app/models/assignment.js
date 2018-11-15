@@ -20,7 +20,7 @@ var AssignmentSchema = new mongoose.Schema({
 		title: String,
 		input: String,
 	}],
-
+ 
 	languages: [String]
 });
 
