@@ -1,67 +1,60 @@
 <% include ./partials/faculty_header %>
-	
+	<body>
 		<% include ./partials/faculty_nav %>
-
 			<div class="col-sm-8">
-			<br><br>
-			<div class="container">
-					<% if (note) { %>
-
-					
-						<% note.forEach(function(notes) { %>
-							<br>
-			<div class="container">
-				
-				<div class="card" style="width: 300px">
+				<br>
+				<div class="container">
+							<% if (note) { %>
+								<% note.forEach(function(notes) { %>
+									<br>
+					<div class="container">
 						
-						<div class="card-body">
-						  <h4 class="card-title"><%= notes.title %></h4><br>
-						  <a href="/faculty/groups/view/<%= currentGroup.id %>/notes/<%= notes.link %>" class="btn btn-primary"> Download</a>	
-						  <form action="/faculty/groups/view/<%= currentGroup.id %>/notes/<%= notes.link %>?_method=DELETE" method="POST">
-							<button class="btn btn-danger">Delete</button>
-							</form>
-						  
-						  	  
-						  
-						</div>
-					  </div>
-			</div>
-							
-						<% }); %>
-						<% } else {%>
-							<br><br><br>
-							<div class="card">
-									<div class="card-body ">
-	
-											No notes added
-									</div>
-								</div>
-							<% } %>
-			</div>
-			<br>
-			<div class="container">
-					<form action="/faculty/groups/view/<%= currentGroup._id %>/notes" method="POST" enctype="multipart/form-data">
-						<div class="container">
-							Upload a new note
-						</div>
-
-						<div class="form-group">
-								<div class="container">
-							<input type="text" placeholder="Add a title for the notes" name="notestitle" required>
-						</div>
-
-						</div>
-							<div class="form-group">
-									<div class="container">
+						<div class="card">
 								
-								<input type="file" class="form-control-file" id="exampleFormControlFile1" name="notesfile">
-							</div>
-							</div>
-							<div class="container"><input type="submit" value="Upload" class="btn btn-primary"></div>
-						</form>
-			</div>
-			</div>
+								<div class="card-body">
+								 	<div class="card-header"><%= notes.title %></div><br>
+								  	<a href="/faculty/groups/view/<%= currentGroup.id %>/notes/<%= notes.link %>" class="btn btn-dark float-right"> Download</a>	
+								  	<form action="/faculty/groups/view/<%= currentGroup.id %>/notes/<%= notes.link %>?_method=DELETE" method="POST">
+										<button class="btn btn-danger">Delete</button>
+									</form>
+								</div>
+						</div>
+					</div>
+									
+								<% }); %>
+								<% } else {%>
+									<br><br><br>
+									<div class="card">
+											<div class="card-body ">
 			
-		</div>
+													No notes added
+											</div>
+										</div>
+									<% } %>
+				</div>
+				<br>
+				<div class="card">
+					<div class = "card-body">
+						<form action="/faculty/groups/view/<%= currentGroup._id %>/notes" method="POST" enctype="multipart/form-data">
+							<div class="container">
+								Upload a new note
+							</div>
+
+							<div class="form-group">
+								<div class="container">
+									<input type="text" class = "form-control form-control" placeholder="Add a title for the notes" name="notestitle" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="container">
+									<input type="file" class="form-control-file" id="exampleFormControlFile1" name="notesfile">
+								</div>
+							</div>
+								<div class="container"><input type="submit" value="Upload" class="btn btn-dark"></div>
+						</form>
+					</div>
+				</div>
+			</div>
 	</body>
 </html>

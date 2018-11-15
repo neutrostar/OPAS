@@ -2,57 +2,50 @@
 	
 		<% include ./partials/faculty_nav %>
 			
-			<div class="col-sm-9">
-					<br><br><br>
-				<div class = "row">
-						
+			<div class="col-sm-8">
+					<br>	
 					<% if (assignments.length != 0) { %>
 
-						<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
-						<br><br>
-						<% assignments.forEach(function(assignment) { %>
-							<div class="col-sm-12">
-								<div class="card teal lighten-1">
-									<div class="card-content white-text">
-
+						<h2>Ongoing Assignments</h2>
+						<br>
+						<div class = "card-columns">
+							<% assignments.forEach(function(assignment) { %>
+								<div class="card">
+									<div class="card-body">
 										<% if (assignment.subject) { %>
-
-											<span class="card-title"><%= assignment.subject.subject_id %></span>
+											<span class="card-header"><%= assignment.subject.subject_id %></span>
 										<% } %>	
 										<p>
 											<b><%= assignment.title %></b><br>
 											Start date : 5/05/2018<br>
 											Deadline : 10/05/2018
 										</p>
-									</div>
-									<div class="card-action white">
-										<a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>"><font color = "grey">View Assignment</font></a>
-										
+									
+										<div class="card-action white">
+											<a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>"><button type="button" class="btn btn-light">View Assignment</button></a>
+											
+										</div>
 									</div>
 								</div>
 								<br>
+								<% }); %>
 							</div>
-							
-
-					    <% }); %>
-
 					<% } else { %>
-
 						<div class="container">
-								<h3><font color = "teal">Currently no assignments</font></h3>
+							<h3><font color = "teal">Currently no assignments</font></h3>
 						</div>
 					<% } %>
-			    </div>
 		
-			
-			<br>
-			<div class="container">
-				<form action="/faculty/groups/view/<%= currentGroup._id %>/assignments/create">
-					<button type="submit" class="btn btn-primary">Create new assignment</button>
-				</form
-			</div>
-				<!-- Grey navigation panel -->
-			
+				
+				<br>
+				<div class="container">
+					<form action="/faculty/groups/view/<%= currentGroup._id %>/assignments/create">
+						<button type="submit" class="btn btn-primary">Create new assignment</button>
+					</form>
+				</div>
+					<!-- Grey navigation panel -->
+				
+				</div>
 			</div>
 		</div>
 	</body>

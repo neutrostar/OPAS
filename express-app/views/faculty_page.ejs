@@ -5,21 +5,21 @@
 			<div class="col-sm-8">
 				<br><br>				
 				<div class="container">			
-						<form action="/faculty/groups/view/<%= currentGroup._id %>/new" method="post">
-							<div class="form-group">
-									<label for="comment">Write an announcement here:</label>
-									<textarea class="form-control" rows="3" id="textarea1" name="text"></textarea>
-								  </div>
-								<button class="btn btn-primary"  type="submit" name="post">Submit</button>
-							
-						</form>		
+					<form action="/faculty/groups/view/<%= currentGroup._id %>/new" method="post">
+						<div class="form-group">
+							<label for="comment"><h4>Write an announcement here:</h4></label>
+							<textarea class="form-control" rows="3" id="textarea1" name="text"></textarea>
+						</div>			
+			  			<button type="submit" class="btn btn-dark float-right" name="post">Submit</button>
+					</form>	
 				</div>
+							
 
 				<% if (announcements) { %>
 
 					
 									<% announcements.forEach(function(announcement) { %>
-										<br>
+										<br><br>
 						<div class="container">
 							
 							<div class="media border p-3">
@@ -56,6 +56,6 @@
 		
 		
 		</div>
-		
+		<br><br>
 	</body>
 </html>
