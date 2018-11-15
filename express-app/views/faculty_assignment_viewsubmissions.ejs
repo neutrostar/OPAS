@@ -1,6 +1,16 @@
 <% include ./partials/faculty_header %>
 	
 		<% include ./partials/faculty_nav %>
+
+		<%= assignment %>
+
+		<% submissions.forEach(function(submission) { %>
+
+			<div>
+				<%= submission %>
+			</div>
+		<% }); %>
+
 		<div class="row">
 			<ul class="collapsible popout center">
 				<li>

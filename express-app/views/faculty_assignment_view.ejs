@@ -21,14 +21,14 @@
             </div>
             
             <br>
-            <a href = "#" class=" btn btn-dark btn-block">View Submissions</a><br><br>
-            <form action="*" method = "post">
+            <a href = "/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/submission/view" class=" btn btn-dark btn-block">View Submissions</a><br><br>
+            <!-- <form action="*" method = "post">
                 <div class = "form-group">
                     <input type="submit" value="Edit Assignment" class="btn btn-dark btn-block">
                 </div>
-            </form>
+            </form> -->
             
-            <form action="/faculty/groups/view/<%=currentGroup._id%>/assignments/<%=assignment._id%>?_method=DELETE" method = "post">
+            <form action="/faculty/groups/view/<%=currentGroup._id%>/assignments/view/<%=assignment._id%>?_method=DELETE" method = "post">
                 <div class = "form-group">
                     <input type="submit" value="Delete Assignment" class="btn btn-danger btn-block">
                 </div>

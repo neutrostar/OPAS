@@ -13,6 +13,7 @@ var Comment = require("../models/comment");
 var Subject = require("../models/subject");
 var Assignment = require("../models/assignment");
 var Note = require("../models/note");
+var Submission = require("../models/submission");
 
 var router = express.Router();
 
@@ -424,7 +425,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id", fun
 	});
 });
 
-router.delete("/faculty/groups/view/:group_id/assignments/:assignment_id", function(req, res){
+router.delete("/faculty/groups/view/:group_id/assignments/view/:assignment_id", function(req, res){
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
@@ -478,19 +479,60 @@ router.post("/faculty/groups/view/:group_id/assignments/edit/:assignment_id", fu
 	});
 });
 
-router.get("/faculty/assignments/:assignment_id/viewsubmissions", isLoggedIn, function(req, res) {
+router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submission/view", isLoggedIn, function(req, res) {
+
+	// User.findById(req.user.id).exec(function(err, foundUser) {
+
+	// 	if (err) {
+
+	// 		console.log(err);
+	// 		res.redirect("*");
+	// 	}
+
+	// 	res.render("faculty_assignment_viewsubmissions", {
+
+	// 		user: foundUser
+	// 	});
+	// });
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
+			return res.redirect("*");
 		}
 
-		res.render("faculty_assignment_viewsubmissions", {
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
-			user: foundUser
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+				Submission.find({
+
+					"assignment.id": req.params.assignment_id
+				}).exec(function(err, foundSubmissions) {
+
+					if (err) {
+
+						console.log(err);
+						return res.redirect("*");
+					}
+
+					res.render("faculty_assignment_viewsubmissions", {
+
+						user: foundUser,
+						currentGroup: foundGroup,
+						assignment: foundAssignment,
+						submissions: foundSubmissions
+					});
+				});
+			});
 		});
 	});
 });
