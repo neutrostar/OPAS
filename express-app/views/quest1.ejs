@@ -88,11 +88,26 @@
 					});
 					</script>
 				</div>
-				<div class="form-group">
+				<div class="form-group" action="--------" method="post">
 
 					<div class="code_mirror">
 						<textarea id="code_area" class="codemirror-testarea"></textarea>
 					</div>
+
+					<br><br>
+			
+					<div class = "center-align">
+						
+						<button id="compile_button" class="btn waves-effect waves-light" type="submit" name="action">Compile & Run</button>
+			  			<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+
+			  		</div>
+
+			  		<label for="comment">Custom Input:</label>
+  					<textarea class="form-control" rows="5" id="CustomInput"></textarea>
+
+  					<label for="comment">Output:</label>
+  					<textarea class="form-control" rows="5" id="Output"></textarea>
 
 				</div>
 
@@ -100,14 +115,7 @@
 
 			<!-- <div id="code_area" class="sec-widget" data-widget="94ba16cac0c5fdf46ee2b63998af0f09"></div> -->
 			
-			<br><br>
-			
-			<div class = "center-align">
-				
-				<button id="compile_button" class="btn waves-effect waves-light" type="submit" name="action">Compile</button>
-				<button id="run_button" class="btn waves-effect waves-light" type="submit" name="action">Run</button>
-	  			<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-	  		</div>
+
 	  		
 	  		<!-- <br><br>
 
