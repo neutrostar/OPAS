@@ -3,17 +3,7 @@ var mongoose = require("mongoose");
 // Schema setup
 var SubmissionSchema = new mongoose.Schema({
 
-	user: {
 
-		id: {
-
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "user"
-		},
-
-		username: String
-	},
-	
 	assignment: {
 
 		id: {
@@ -25,11 +15,16 @@ var SubmissionSchema = new mongoose.Schema({
 		title: String
 	},
 
-	question: String,
+	question: {
 
-	status: String,
+		id: {
 
-	link: String
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "question"
+		}
+	},
+
+	status: String
 });
 
 module.exports = mongoose.model("submission", SubmissionSchema);

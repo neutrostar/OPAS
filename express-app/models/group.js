@@ -24,12 +24,6 @@ var GroupSchema = new mongoose.Schema({
 		ref: "assignment"
 	}],
 
-	submissions: [{
-
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "submission"
-	}],
-
 	notes: [{
 		
 		type: mongoose.Schema.Types.ObjectId,
