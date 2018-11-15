@@ -280,13 +280,17 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 				});
 
 				var flag = false;
-				User.submissions.forEach(function(submission) {
 
-					if (currentQuestion.id === submission.question.id && foundAssignment.id === submission.assignment.id) {
+				if (User.submissions) {
 
-						flag = true;
-					}
-				});
+					User.submissions.forEach(function(submission) {
+
+						if (currentQuestion.id === submission.question.id && foundAssignment.id === submission.assignment.id) {
+
+							flag = true;
+						}
+					});
+				}
 
 				if (!flag) {
 
