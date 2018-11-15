@@ -2,6 +2,8 @@
 var express = require("express");
 var mongoose = require("mongoose");
 const path = require('path');
+const fs = require('fs');
+const {c, cpp, node, python, java} = require('compile-run');
 
 // Database models
 var Group = require("../models/group");
@@ -285,7 +287,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 
 					User.submissions.forEach(function(submission) {
 
-						if (currentQuestion.id === submission.question.id && foundAssignment.id === submission.assignment.id) {
+						if (currentQuestion.id === submission.question.id && req.user.id === submission.assignment.author.id) {
 
 							flag = true;
 						}
@@ -294,12 +296,16 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 
 				if (!flag) {
 
-					res.render("quest1", {
+					res.render("student_judge", {
 
 						user: foundUser,
 						currentGroup: foundGroup,
 						question: currentQuestion,
-						languages: foundAssignment.languages
+						assignment: foundAssignment,
+						languages: foundAssignment.languages,
+						codes: '',
+						outputs: ''
+						
 					});
 				} else {
 
@@ -311,6 +317,84 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 	});
 });
 
+
+router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/question/view/:question_id/compile", function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+		Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+			// console.log(req.body.code);
+			var currentQuestion;
+				foundAssignment.questions.forEach(function(question) {
+
+					if (question.id === req.params.question_id) {
+
+						currentQuestion = question;
+					}
+				});
+			
+			
+			var int_code = req.body.code;
+			var code = int_code.toString();
+			fs.writeFile('.//codes//a.cpp', code, function(err){
+				if(err){
+					console.log(err);
+				}
+				else{
+					console.log('working');
+					var int_input = req.body.input;
+					var input = int_input.toString();
+					cpp.runFile('.//codes//a.cpp',{stdin: input},(err, result)=>{
+						if(err){
+							console.log(err);
+						}
+						else{
+							console.log(result.stdout.toString());
+							var output = result.stdout.toString();
+							res.render("student_judge", {
+
+								user: foundUser,
+								currentGroup: foundGroup,
+								question: currentQuestion,
+								assignment: foundAssignment,
+								languages: foundAssignment.languages,
+								codes: code,
+								outputs: output
+								
+							});
+						}
+					});
+				}
+			});
+
+			
+
+			
+			// return res.redirect("/student/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id);
+		});
+	});
+});
+});
+
 router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/question/view/:question_id/submit", function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
@@ -320,6 +404,13 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 			console.log(err);
 			return res.redirect("*");
 		}
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
 
 		Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
 
@@ -328,36 +419,82 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 				console.log(err);
 				return res.redirect("*");
 			}
+			var currentQuestion;
+				foundAssignment.questions.forEach(function(question) {
 
-			var newSubmission = new Submission({
+					if (question.id === req.params.question_id) {
 
-				assignment: {
-
-					id: req.params.assignment_id,
-					title: foundAssignment.title
-				},
-
-				question: {
-
-					id: req.params.question_id,
-				}
-			});
-
-			Submission.create(newSubmission, function(err, newSubmission) {
-
-				if (err) {
-
+						currentQuestion = question;
+					}
+				});
+			// console.log(req.body.code);
+			
+			var int_code = req.body.code;
+			var code = int_code.toString();
+			var filename = req.user.id + req.params.assignment_id +'.cpp';
+			fs.writeFile('.//submissions//'+filename, code, function(err){
+				if(err){
 					console.log(err);
-					return res.redirect("*");
 				}
+				else{
+					console.log('working');
+					
+					console.log(filename);
+					var int_input = req.body.input;
+					var input = int_input.toString();
+					// console.log('The input is: ');
+					// console.log(input);
+					cpp.runFile('.//submissions//'+filename,{stdin: input},(err, result)=>{
+						if(err){
+							console.log(err);
+						}
+						else{
+							console.log(result);
+							var output = result.stdout.toString();
+							console.log(output);
+							var newSubmission = new Submission({
 
-				foundUser.submissions.push(newSubmisssion);
-				foundUser.save();
+								assignment: {
+				
+									id: req.params.assignment_id,
+									title: foundAssignment.title
+								},
+				
+								question: {
+				
+									id: req.params.question_id,
+								},
+								output: output,
+								filename: filename
+							});
+							console.log(newSubmission.output);
+							Submission.create(newSubmission, function(err, newSubmission) {
 
-				return res.redirect("/student/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id);
-			});
+								if (err) {
+				
+									console.log(err);
+									return res.redirect("*");
+								}
+				
+								foundUser.submissions.push(newSubmission);
+								foundUser.save();
+				
+								
+							});
+							return res.redirect("/student/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id);
+
+						}
+					})
+				}
+			})
+
+			
+
+			
+			
 		});
 	});
+});
 });
 
 // ================================================================================
