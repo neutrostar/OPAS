@@ -90,7 +90,7 @@
 						});
 						</script>
 					</div>
-					<form action="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/submit" method="POST">
+					<form action="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/compile" method="POST">
 
 						<div class="code_mirror">
 							<textarea id="code_area" class="codemirror-testarea" name="code"><%= codes %></textarea>
@@ -113,7 +113,7 @@
 								<button type="submit" class="btn btn-dark">Compile & Run</button>
 							</div>
 							<div class = "col-sm-4 d-flex justify-content-center">
-				  				<button type="submit" formaction="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/compile" class="btn btn-dark">Submit</button>
+				  				<button type="submit" formaction="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/submit" class="btn btn-dark">Submit</button>
 				  			</div>
 
 				  		</div>

@@ -3,6 +3,16 @@ var mongoose = require("mongoose");
 // Schema setup
 var SubmissionSchema = new mongoose.Schema({
 
+	author: {
+
+		id: {
+
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "user"
+		},
+
+		name: String
+	},
 
 	assignment: {
 
@@ -21,7 +31,9 @@ var SubmissionSchema = new mongoose.Schema({
 
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "question"
-		}
+		},
+
+		title: String
 	},
 
 	output: String,
