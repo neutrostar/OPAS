@@ -1,58 +1,34 @@
 <% include ./partials/faculty_header %>
-	
+	<body>
 		<% include ./partials/faculty_nav %>
-
-		<%= assignment %>
-
-		<% submissions.forEach(function(submission) { %>
-
-			<div>
-				<%= submission %>
+		<div class = "col-sm-8">
+			<br>
+			<div class="container">
+			  <h2><%= assignment.title %></h2>          
+			  <table class="table">
+			    <thead>
+			      <tr>
+			        <th>Student Namename</th>
+			        <th>Question Title</th>
+			        <th>Ouput</th>
+			        <th>Download Code File</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    	<% submissions.forEach(function(submission) { %>
+			      <tr>
+			        <td><%= submission.author.name %></td>
+			        <td><%= submission.question.title %></td>
+			        <td><%= submission.question.output %></td>
+			        <td><a href="/faculty/groups/view/<%= currentGroup.id %>/submissions/<%= submission.filename %>" class="btn btn-dark float-center"> Download </a></td>
+			      </tr>
+			      <% }); %>
+			    </tbody>
+			  </table>
 			</div>
-		<% }); %>
-
-		<div class="row">
-			<ul class="collapsible popout center">
-				<li>
-					<div class="collapsible-header">UCS617 Image Processing</div>
-					<div class="collapsible-body"> <table>
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Question 1</th>
-								<th>Question 2</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apoorv Shrivastav</td>
-								<td>10</td>
-								<td>2</td>
-							</tr>
-							<tr>
-								<td>Omisha Sharma</td>
-								<td>10</td>
-								<td>9.5</td>
-							</tr>
-							<tr>
-								<td>Purnendu Shukla</td>
-								<td>10</td>
-								<td>9.5</td>
-							</tr>
-							<tr>
-								<td>Siddhant Srivastava</td>
-								<td>10</td>
-								<td>9.5</td>
-							</tr>
-						</tbody>
-					</table></div>
-				</li>
-				
-			</ul>
+			
+			
+			<script src = "../js/menubar.js"></script>
 		</div>
-		
-		
-		<script src = "../js/menubar.js"></script>
-	
 	</body>
 </html>
