@@ -90,10 +90,10 @@
 						});
 						</script>
 					</div>
-					<form action="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/submit" method="post">
+					<form action="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/question/view/<%= question._id %>/submit" method="POST">
 
 						<div class="code_mirror">
-							<textarea id="code_area" class="codemirror-testarea"></textarea>
+							<textarea id="code_area" class="codemirror-testarea" name="code"><%= codes %></textarea>
 						</div>
 
 						<br><br>
@@ -101,10 +101,10 @@
 						
 
 				  		<b><label for="comment">Custom Input:</label></b>
-	  					<textarea class="form-control" rows="5" id="CustomInput"></textarea>
+	  					<textarea class="form-control" rows="4" id="CustomInput" name="input"></textarea>
 	  					<br><br>
 	  					<b><label for="comment">Output:</label></b>
-	  					<textarea class="form-control" rows="5" id="Output"></textarea>
+	  					<textarea class="form-control" rows="4" id="Output"><%= outputs %></textarea>
 
 	  					<br><br>
 	  					<div class="d-flex justify-content-center">

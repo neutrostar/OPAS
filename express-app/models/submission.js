@@ -24,7 +24,8 @@ var SubmissionSchema = new mongoose.Schema({
 		}
 	},
 
-	status: String
+	output: String,
+	filename: String
 });
 
 module.exports = mongoose.model("submission", SubmissionSchema);
