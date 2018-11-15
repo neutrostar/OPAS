@@ -2,16 +2,16 @@
 	
 		<% include ./partials/faculty_nav %>
 			
-			<div class="col-sm-8">
+			<div class="col-sm-9">
 					<br><br><br>
 				<div class = "row">
 						
 					<% if (assignments.length != 0) { %>
 
 						<h3 class = "header"><font color = "teal">Ongoing Assignments</font></h3>
-
+						<br><br>
 						<% assignments.forEach(function(assignment) { %>
-							<div class="col s12 m6">
+							<div class="col-sm-12">
 								<div class="card teal lighten-1">
 									<div class="card-content white-text">
 
@@ -30,7 +30,9 @@
 										
 									</div>
 								</div>
-						    </div>
+								<br>
+							</div>
+							
 
 					    <% }); %>
 

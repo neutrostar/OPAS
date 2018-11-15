@@ -560,7 +560,7 @@ router.post("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, re
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
-			console.log("Reaches station 4");
+			//console.log("Reaches station 4");
 			console.log(err);
 			return res.redirect("*");
 		}
@@ -568,7 +568,7 @@ router.post("/faculty/groups/view/:group_id/notes", isLoggedIn, function(req, re
 		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
 
 			if (err) {
-				console.log("REaches station 3");
+				// console.log("REaches station 3");
 				console.log(err);
 				return res.redirect("*");
 			}

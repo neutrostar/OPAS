@@ -27,7 +27,9 @@ var SubmissionSchema = new mongoose.Schema({
 
 	question: String,
 
-	status: String
+	status: String,
+
+	link: String
 });
 
 module.exports = mongoose.model("submission", SubmissionSchema);
