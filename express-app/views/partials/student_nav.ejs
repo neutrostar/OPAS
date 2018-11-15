@@ -1,6 +1,6 @@
 <!-- Nav Bar starts -->
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="/student">OPAS</a>
+        <a class="navbar-brand" href="/student/groups">OPAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
 		<br>
 		<!-- Side Nav User Info Starts -->
 		<div class = "row">
-			<div class = "col-sm-4">
+			<div class = "col-sm-3">
 				<br><br>
 				<div class = "container">
 					<div class="card">
@@ -43,14 +43,62 @@
 				<div class = "container">
 					<div class="list-group">
 							
-						<a class="list-group-item disabled" href="/student/groups">My Groups</a>
-						<a class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>">Announcements</a>
-						<a class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/assignments">Assignments</a>
-						<a class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/submissions">My Submissions</a>
-						<a class="list-group-item disabled" href="/student/evaluations">Lab Evaluations</a>
-						<a class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/notes">Notes</a>
+						<a id = "mygroups" class="list-group-item disabled" href="/student/groups">My Groups</a>
+						<a id  = "announcements" class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>">Announcements</a>
+						<a id  = "assignments" class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/assignments">Assignments</a>
+						<a id  = "submissions" class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/submissions">My Submissions</a>
+						<a id  = "labevaluations" class="list-group-item disabled" href="/student/evaluations">Lab Evaluations</a>
+						<a id  = "notes" class="list-group-item disabled" href="/student/groups/view/<%= currentGroup._id %>/notes">Notes</a>
 										
 					</div>
 				</div>
 			</div>
+
+			<script>
+				$('#mygroups').click(function(){
+					var random = document.querySelector("#mygroups");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+				$('#announcements').click(function(){
+					var random = document.querySelector("#announcements");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+
+				$('#assignments').click(function(){
+					var random = document.querySelector("#assignments");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+
+				$('#submissions').click(function(){
+					var random = document.querySelector("#submissions");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+
+				$('#submissions').click(function(){
+					var random = document.querySelector("#submissions");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+				$('#labevaluations').click(function(){
+					var random = document.querySelector("#labevaluations");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+				$('#notes').click(function(){
+					var random = document.querySelector("#notes");
+					random.classList.remove("list-group-item disabled");
+					random.classList.add("list-group-item active");
+				})
+
+			</script>
 		 
