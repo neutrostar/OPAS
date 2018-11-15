@@ -1,5 +1,24 @@
 <% include ./partials/student_header %>
 	
+	<body>
+
+		<script>
+			SEC_HTTPS = true;
+			SEC_BASE = "compilers.widgets.sphere-engine.com"; 
+			(function(d, s, id) {
+				SEC = window.SEC || (window.SEC = []);
+			  	var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id))
+					return; 
+
+				js = d.createElement(s);
+				js.id = id; 
+				js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);   
+			} (document, "script", "sphere-engine-compilers-jssdk"));
+			SEC.ready = function(e) {"loading" != document.readyState && "interactive" != document.readyState?e():window.addEventListener("load", e)};
+		</script>
+
 		<% include ./partials/student_nav %>
 
 			<div class = "ques_head">
@@ -49,13 +68,13 @@
 			
 			</div>
 
-			<div class = "code_here">
+<!-- 			<div class = "code_here">
 				<p>
 					<br><br>
 					<b>Enter Your Code Here :
 					</b>
 				</p>
-				<!-- <div class="code_mirror">
+				<div class="code_mirror">
 					<div id="codeeditor"></div>
 					<script>
 
@@ -68,26 +87,36 @@
 						extraKeys: {"Ctrl-Space": "autocomplete"}
 					});
 					</script>
-				</div> -->
+				</div>
 
 				<div class="code_mirror">
 					<textarea id="code_area" class="codemirror-testarea"></textarea>
 				</div>
 
-			</div>
+			</div> -->
+
+			<div id="code_area" class="sec-widget" data-widget="94ba16cac0c5fdf46ee2b63998af0f09"></div>
 			
 			<br><br>
 			
-			<div class = "center-align">
+			<!-- <div class = "center-align">
 				
 				<button id="compile_button" class="btn waves-effect waves-light" type="submit" name="action">Compile</button>
 				<button id="run_button" class="btn waves-effect waves-light" type="submit" name="action">Run</button>
 	  			<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-	  		</div>
+	  		</div> -->
 	  		
 	  		<br><br>
+
+	  		<script type="text/javascript">
+	  			
+	  			SEC.ready(function() {
+
+	  				console.log(SEC.widget("widget"));
+	  			});
+	  		</script>
 	  		
-	  		<div class="row">
+	  		<!-- <div class="row">
 				<div class="col-sm-12">
 					<div class = "side_notes">
 						<p>
@@ -99,7 +128,7 @@
 						</p>
 					</div>
 
-			  	<!-- <div class="panel panel-default">
+			  	<div class="panel panel-default">
 			  		
 					  <div class="panel-heading">
 					    <h3 class="panel-title">Panel title</h3>
@@ -108,9 +137,9 @@
 					    Panel content
 					  </div>
 					
-				</div> -->
 				</div>
-			</div>
+				</div>
+			</div> -->
 			<!-- java scripts -->
 		</div>
 			
@@ -120,7 +149,7 @@
 		<script src="/plugin/codemirror/mode/css/css.js"></script>
 		<script src="/plugin/codemirror/addon/hint/show-hint.js"></script>
 		<script src="/plugin/codemirror/addon/hint/css-hint.js"></script>
-		<script type="text/javascript" src="/scripts/hackerearth.js"></script>
+		<!-- <script type="text/javascript" src="/scripts/hackerearth.js"></script> -->
 		<link rel="stylesheet" href="/plugin/codemirror/addon/hint/show-hint.css">
 			<!-- Compiled and minified JavaScript -->
 	</body>

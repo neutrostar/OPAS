@@ -20,24 +20,24 @@ $("#compile_button").click(function() {
 	console.log(editor.getValue());
 	// Gonna send this code to hackerearth
 
-	var hackerearthConfig = {
+	// var hackerearthConfig = {
 
-		time_limit: 1,
-		memory_limit: 323244,
-		source: editor.getValue(),
-		input: "",
-		language: "C++"
-	}
+	// 	time_limit: 1,
+	// 	memory_limit: 323244,
+	// 	source: editor.getValue(),
+	// 	input: "",
+	// 	language: "C++"
+	// }
 
-	hackerearth.compile(hackerearthConfig, (err, res) => {
+	// hackerearth.compile(hackerearthConfig, (err, res) => {
 
-		if (err) {
+	// 	if (err) {
 
-			console.log(err);
-		}
+	// 		console.log(err);
+	// 	}
 
-		console.log(JSON.parse(res));
-	});
+	// 	console.log(JSON.parse(res));
+	// });
 });
 
 $("#run_button").click(function() {
@@ -45,22 +45,22 @@ $("#run_button").click(function() {
 	console.log(editor.getValue());
 	// gonna send this code to hackerearth
 
-	var hackerearthConfig = {
+	// var hackerearthConfig = {
 
-		time_limit: 1,
-		memory_limit: 323244,
-		source: editor.getValue(),
-		input: "",
-		language: "C++"
-	}
+	// 	time_limit: 1,
+	// 	memory_limit: 323244,
+	// 	source: editor.getValue(),
+	// 	input: "",
+	// 	language: "C++"
+	// }
 
-	hackerearth.run(hackerearthConfig, (err, res) => {
+	// hackerearth.run(hackerearthConfig, (err, res) => {
 
-		if (err) {
+	// 	if (err) {
 
-			console.log(err);
-		}
+	// 		console.log(err);
+	// 	}
 
-		console.log(JSON.parse(res));
-	});
+	// 	console.log(JSON.parse(res));
+	// });
 });
