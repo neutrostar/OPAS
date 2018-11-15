@@ -1,36 +1,39 @@
 <% include ./partials/faculty_header %>
-	
+	<body>
         <% include ./partials/faculty_nav %>
         <div class="col-sm-8">
-            <br><br><br>
-            <div class="container">
-                <h4><%= assignment.title %></h4>
-            </div>
-            <div class="container">
+            <br>
+            
+                <h2><%= assignment.title %></h2>
+            
+            <div class="card-columns">
                 <%if(foundQuestion){%>
                     <% foundQuestion.forEach(function(ques){ %>
+                    <div class = "card">
                         <br>
-                        <div class="container">
-                            <h6><%= ques.title %></h6>
-                            <p>Inputs</p>
+                        <div class="card-body">
+                            <h4><%= ques.title %></h4>
+                            <h6><p>Inputs</p></h6>
                             <p><%= ques.input %></p>
                         </div>
-                    <%})};%>
-            </div><br>
-            <a href = "#" class=" btn btn-primary">View Submissions</a><br><br>
+                    </div>
+                <%})};%>
+            </div>
+            
+            <br>
+            <a href = "#" class=" btn btn-dark btn-block">View Submissions</a><br><br>
             <form action="*" method = "post">
                 <div class = "form-group">
-                    <input type="submit" value="Edit Assignment" class="btn btn-primary">
+                    <input type="submit" value="Edit Assignment" class="btn btn-dark btn-block">
                 </div>
             </form>
             
             <form action="/faculty/groups/view/<%=currentGroup._id%>/assignments/<%=assignment._id%>?_method=DELETE" method = "post">
-                    <div class = "form-group">
-                        <input type="submit" value="Delete Assignment" class="btn btn-danger">
-                    </div>
-                </form>
+                <div class = "form-group">
+                    <input type="submit" value="Delete Assignment" class="btn btn-danger btn-block">
+                </div>
+            </form>
 
         </div>
-    </div>
-</body>
+    </body>
 </html>

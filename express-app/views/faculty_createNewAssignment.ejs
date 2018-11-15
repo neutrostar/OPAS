@@ -3,9 +3,10 @@
 	<% include ./partials/faculty_nav %>
 		<div class="col-sm-8">
 			<br><br>
-			<div class="container" style="width: 600px">
+			<div class="container" >
 					<form action="/faculty/groups/view/<%= currentGroup._id %>/assignments/create" method="post">
 							<div class="form-group">
+
 								<input type="text" name="title" class="form-control" id="title" placeholder="Assignment Title">
 							  </div>
 							  <div class="form-group">
@@ -32,7 +33,7 @@
 							    <div class="form-horizontal">
 							        <div class="control-group">
 							            <div class="controls">
-							            	<div class="container" style="width: 600px">
+							            	<div class="container">
 							                <textarea id="Question_Statement" name = "questions[0][title]" placeholder="Question Statement" rows="3"></textarea>
 							                <textarea id="Question_Inputs" name = "questions[0][input]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
@@ -45,7 +46,7 @@
 							    <div class="form-horizontal">
 							        <div class="control-group">
 							            <div class="controls">
-							            	<div class="container" style="width: 600px">
+							            	<div class="container">
 							                <textarea id="Question_Statement" name = "questions[1][title]" placeholder="Question Statement" rows="3"></textarea>
 							                <textarea id="Question_Inputs" name = "questions[1][input]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
@@ -58,14 +59,14 @@
 							    <div class="form-horizontal">
 							        <div class="control-group">
 							            <div class="controls">
-							            	<div class="container" style="width: 600px">
+							            	<div class="container">
 							                <textarea id="Question_Statement" name = "questions[2][title]" placeholder="Question Statement" rows="3"></textarea>
 							                <textarea id="Question_Inputs" name = "questions[2][input]" placeholder="Question Inputs" rows="3"></textarea>
 							            </div>
 							            </div>
 							        </div>
 								</div><br><br>
-								<button type="submit" class="btn btn-primary">Create new assignment</button>
+								<button type="submit" class="btn btn-dark">Create new assignment</button>
 
 					</form>
 			</div>
