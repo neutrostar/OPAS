@@ -290,7 +290,7 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 
 				if (!flag) {
 
-					res.render("student_judge", {
+					res.render("quest1", {
 
 						user: foundUser,
 						currentGroup: foundGroup,
