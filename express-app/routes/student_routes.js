@@ -11,6 +11,7 @@ var Comment = require("../models/comment");
 var Assignment = require("../models/assignment");
 var Note = require('../models/note');
 var Subject = require("../models/subject");
+var Submission = require("../models/submission");
 
 var router = express.Router();
 
@@ -278,13 +279,78 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 					}
 				});
 
-				res.render("quest1", {
+				var flag = false;
+				User.submissions.forEach(function(submission) {
 
-					user: foundUser,
-					currentGroup: foundGroup,
-					question: currentQuestion,
-					languages: foundAssignment.languages
+					if (currentQuestion.id === submission.question.id && foundAssignment.id === submission.assignment.id) {
+
+						flag = true;
+					}
 				});
+
+				if (!flag) {
+
+					res.render("quest1", {
+
+						user: foundUser,
+						currentGroup: foundGroup,
+						question: currentQuestion,
+						languages: foundAssignment.languages
+					});
+				} else {
+
+					console.log("Submission already made");
+					return res.redirect("/student/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id);
+				}
+			});
+		});
+	});
+});
+
+router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/question/view/:question_id/submit", function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			var newSubmission = new Submission({
+
+				assignment: {
+
+					id: req.params.assignment_id,
+					title: foundAssignment.title
+				},
+
+				question: {
+
+					id: req.params.question_id,
+				}
+			});
+
+			Submission.create(newSubmission, function(err, newSubmission) {
+
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}
+
+				foundUser.submissions.push(newSubmisssion);
+				foundUser.save();
+
+				return res.redirect("/student/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id);
 			});
 		});
 	});

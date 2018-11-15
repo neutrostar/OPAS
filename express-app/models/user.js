@@ -7,7 +7,13 @@ var UserSchema = new mongoose.Schema({
 	password: String,
 	email: String,
 	name: String,
-	image: String
+	image: String,
+
+	submissions: [{
+
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "submission"
+	}]
 });
 
 UserSchema.plugin(passportLocalMongoose);
