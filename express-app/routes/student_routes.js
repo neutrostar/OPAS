@@ -293,30 +293,29 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 // ================================================================================
 
 router.get("/student/evaluations", isLoggedIn, function(req, res) {
-
-	User.findById(req.user.id).exec(function(err, foundUser) {
+User.findById(req.user.id).exec(function(err, foundUser) {
 
 		if (err) {
 
 			console.log(err);
-			res.redirect("*");
-		} else {
-
-			Announcement.find({}, function(err, allAnnouncements) {
-
-				if (err) {
-
-					console.log(err);
-					res.redirect("*");
-				}
-
-				res.render("student_page", {
-
-					user: foundUser,
-					announcements: allAnnouncements
-				});
-			});
+			return res.redirect("*");
 		}
+
+		Group.findById(req.params.group_id).populate("announcements").exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render("student_page", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				announcements: foundGroup.announcements
+			});
+		});
 	});
 });
 

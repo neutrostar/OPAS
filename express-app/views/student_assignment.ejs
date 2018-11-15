@@ -5,60 +5,38 @@
 		<% include ./partials/student_nav %>
 			
 			<!-- Live Assignments -->
-			<div class ="col-sm-8">
-				<br><br>
+			<div class ="col-sm-9">
 
-				<div class="row">
-					<h2 class = "subheader">Live Assignments</h2>
+					<br>
+					<h2>Live Assignments</h2><br>
 
+					<div class="card-columns">
 					<% assignments.forEach(function(assignment) { %>
-
-
-						<div class="col s12 m6">
-							<div class="card teal lighten-1">
-								<div class="card-content white-text">
-									<span class="card-title">
+						<div class="card">
+							<div class="card-body">
+									<div class="card-header">
 
 										<% if (assignment.subject) { %>
 
 											<%= assignment.subject.subject_id %>
 										<% } %>
-									</span>
-									<p>
-										<b><%= assignment.title %></b><br>
+										<b><%= assignment.title %></b>
+									</div>
+									<p class = "card-text">
+										<br>
 										Start date : 5/05/2018<br>
 										Deadline : 10/05/2018
 									</p>
-								</div>
 								<div class="card-action white">
-									<a href="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>"><font color = "grey">View Assignment</font></a>
+									<a href="/student/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>"><button type="button" class="btn btn-light">View Assignment</button></a>
 								</div>
 							</div>
 						</div>
 						<br>
-					
-
 					<% }); %>
-					<!-- <div class="col s12 m6">
-						<div class="card teal lighten-1">
-							<div class="card-content white-text">
-								<span class="card-title">UCS633</span>
-								<p>
-									<b>Data Analytics Lab</b><br>
-									Start date : 6/05/2018<br>
-									Deadline : 12/05/2018
-								</p>
-							</div>
-							<div class="card-action white">
-								<a href="/student/assignment/view_assignment"><font color = "grey">View Assignment</font></a>
-							</div>
-						</div>
-					</div> -->
 				</div>
+			</div>	
 				<!--Upcoming Assignments-->
-			
-			</div>
-		</div>
 		<!-- java scripts -->
 		<!-- Compiled and minified JavaScript -->
 	</body>
