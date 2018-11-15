@@ -1,0 +1,178 @@
+<% include ./partials/student_header %>
+	
+	<!-- <body>
+
+		<script>
+			SEC_HTTPS = true;
+			SEC_BASE = "compilers.widgets.sphere-engine.com"; 
+			(function(d, s, id) {
+				SEC = window.SEC || (window.SEC = []);
+			  	var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id))
+					return; 
+
+				js = d.createElement(s);
+				js.id = id; 
+				js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);   
+			} (document, "script", "sphere-engine-compilers-jssdk"));
+			SEC.ready = function(e) {"loading" != document.readyState && "interactive" != document.readyState?e():window.addEventListener("load", e)};
+		</script>
+
+ -->
+ 	<body>
+		<% include ./partials/student_nav %>
+
+			<div class = "col-sm-8">
+				<br>
+				<h2><%= question.title %></h2>
+
+				<div class = >
+					<p>
+						Complete the function solveMeFirst to compute the sum of two integers.<br>
+						<b>Function prototype:</b><br>
+
+						int solveMeFirst(int x, int y);<br><br>
+
+						where,
+						<br>
+						<ul class ="browser-default">
+							<li>x is the first integer input.</li>
+							<li>y is the second integer input</li>
+						</ul>
+						<br>
+
+						Return values<br>
+						<ul class ="browser-default">
+							<li>sum of the above two integers</li>
+						</ul>
+					</p>
+					
+					<p>
+						<b>Sample Input</b><br>
+							<div class = "sample_input">
+								x = 2<br>
+								y = 3
+							</div>
+						<br>
+						<br>
+						<b>Sample Output</b><br>
+							<div class = "sample_output">
+								5
+							</div>
+					</p>
+					
+					<p>
+						<b>Explanation</b><br><br>
+						The sum of the two integers  and  is computed as: 2+3 = 5.
+						<br>
+					</p>
+				
+				</div>
+
+				<div class = "code_here">
+					<p>
+						<br><br>
+						<b>Enter Your Code Here :
+						</b>
+					</p>
+					<div class="code_mirror">
+						<div id="codeeditor"></div>
+						<script>
+
+						var editor = CodeMirror(document.getElementById("codeeditor"), {
+							value: "#test {\n\tposition: absolute;\n\twidth: auto;\n\theight: 50px;\n}",
+							mode: "css",
+							tabSize: 5,
+							lineNumbers: true,
+							firstLineNumber: 50,
+							extraKeys: {"Ctrl-Space": "autocomplete"}
+						});
+						</script>
+					</div>
+					<div class="form-group" action="--------" method="post">
+
+						<div class="code_mirror">
+							<textarea id="code_area" class="codemirror-testarea"></textarea>
+						</div>
+
+						<br><br>
+				
+						
+
+				  		<b><label for="comment">Custom Input:</label></b>
+	  					<textarea class="form-control" rows="5" id="CustomInput"></textarea>
+	  					<br><br>
+	  					<b><label for="comment">Output:</label></b>
+	  					<textarea class="form-control" rows="5" id="Output"></textarea>
+
+	  					<br><br>
+	  					<div class="d-flex justify-content-center">
+	  					
+							<div class = "col-sm-4 d-flex justify-content-center">
+								<button type="button" class="btn btn-dark">Compile & Run</button>
+							</div>
+							<div class = "col-sm-4 d-flex justify-content-center">
+				  				<button type="button" class="btn btn-dark">Submit</button>
+				  			</div>
+
+				  		</div>
+
+					</div>
+
+				</div>
+				<br><br>
+
+				<!-- <div id="code_area" class="sec-widget" data-widget="94ba16cac0c5fdf46ee2b63998af0f09"></div> -->
+				
+
+		  		
+		  		<!-- <br><br>
+
+		  		<script type="text/javascript">
+		  			
+		  			SEC.ready(function() {
+
+		  				console.log(SEC.widget("widget"));
+		  			});
+		  		</script> -->
+		  		
+		  		<!-- <div class="row">
+					<div class="col-sm-12">
+						<div class = "side_notes">
+							<p>
+								<b>Result :</b>
+								<ul>
+									<h6>Server Response</h6>
+									<li>Details</li>
+								</ul>
+							</p>
+						</div>
+
+				  	<div class="panel panel-default">
+				  		
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Panel title</h3>
+						  </div>
+						  <div class="panel-body">
+						    Panel content
+						  </div>
+						
+					</div>
+					</div>
+				</div> -->
+				<!-- java scripts -->
+			</div>
+		</div>
+			
+		<script type="text/javascript" src = "/scripts/code_mirror/jquery.min.js"></script>
+		<script type="text/javascript" src = "/plugin/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src = "/scripts/code_mirror/default.js"></script>
+		<script src="/plugin/codemirror/mode/css/css.js"></script>
+		<script src="/plugin/codemirror/addon/hint/show-hint.js"></script>
+		<script src="/plugin/codemirror/addon/hint/css-hint.js"></script>
+		<!-- <script type="text/javascript" src="/scripts/hackerearth.js"></script> -->
+		<link rel="stylesheet" href="/plugin/codemirror/addon/hint/show-hint.css">
+			<!-- Compiled and minified JavaScript -->
+	</body>
+</html>
