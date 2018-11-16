@@ -472,7 +472,7 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 									id: req.params.question_id,
 									title: currentQuestion.title
 								},
-								
+
 								output: output,
 								filename: filename
 							});
@@ -504,6 +504,36 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 		});
 	});
 });
+});
+
+// ================================================================================
+
+router.get("/student/groups/view/:group_id/submissions", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).populate("submissions").exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render("student_submissions", {
+
+				user: foundUser,
+				currentGroup: foundGroup,
+				submissions: foundUser.submissions
+			});
+		});
+	});
 });
 
 // ================================================================================
