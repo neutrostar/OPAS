@@ -19,8 +19,8 @@
 			      <tr>
 			        <td><%= submission.author.name %></td>
 			        <td><%= submission.question.title %></td>
-			        <td><%= submission.question.output %></td>
-			        <td><a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/submission/view/<%= submission._id %>" class="btn btn-dark float-center"> Download </a></td>
+			        <td><%= submission.output %></td>
+			        <td><a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/submission/view/<%= submission.filename %>" class="btn btn-dark float-center"> Download </a></td>
 			      </tr>
 			      <% }); %>
 			    </tbody>

@@ -288,6 +288,8 @@ router.get("/student/groups/view/:group_id/assignments/view/:assignment_id/quest
 					User.submissions.forEach(function(submission) {
 
 						if (currentQuestion.id === submission.question.id && req.user.id === submission.assignment.author.id) {
+							console.log('Done question');
+							console.log(currentQuestion.title);
 
 							flag = true;
 						}
@@ -429,10 +431,10 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 				}
 			});
 			// console.log(req.body.code);
-			
+			console.log('Running submission route');
 			var int_code = req.body.code;
 			var code = int_code.toString();
-			var filename = req.user.id + req.params.assignment_id +'.cpp';
+			var filename = req.user.id + req.params.question_id + Date.now()+ '.cpp';
 			fs.writeFile('.//submissions//'+filename, code, function(err){
 				if(err){
 					console.log(err);
@@ -441,8 +443,9 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 					console.log('working');
 					
 					console.log(filename);
-					var int_input = req.body.input;
+					var int_input = currentQuestion.input;
 					var input = int_input.toString();
+					console.log(input);
 					// console.log('The input is: ');
 					// console.log(input);
 					cpp.runFile('.//submissions//'+filename,{stdin: input},(err, result)=>{
@@ -594,6 +597,34 @@ router.get("/student/groups/view/:group_id/notes/:note_name", isLoggedIn, functi
 });
 
 // ================================================================================
+
+router.get("/student/groups/view/:group_id/practice", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			res.render('student_practice',{
+				user: foundUser,
+				currentGroup: foundGroup,
+			});
+		});
+	});
+});
+
+//==================================================================================
 
 function isLoggedIn(req, res, next) {
 

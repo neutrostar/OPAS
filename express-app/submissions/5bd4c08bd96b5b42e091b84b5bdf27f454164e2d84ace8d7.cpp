@@ -1,10 +1,13 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-	int t;
+int main() {
+  int t;
   cin>>t;
-  cout<<t;
+  while(t--){
+  int input;
+  cin>>input;
+  cout<<input<<"\n";
+  }
   return 0;
-
 }

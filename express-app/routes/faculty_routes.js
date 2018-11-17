@@ -523,7 +523,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 	});
 });
 
-router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submission/view/:submission_id", function(req, res) {
+router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submission/view/:filename", function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -557,12 +557,12 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 						return res.redirect("*");
 					}
 
-					var file = foundSubmission.filename;
+					var file = req.params.filename;
 					var fileLocation = path.join('./submissions', file);
 					console.log(fileLocation);
 					res.download(fileLocation, file);
 
-					return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id + "/submission/view");
+					// return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id + "/submission/view");
 				});
 			});
 		});
