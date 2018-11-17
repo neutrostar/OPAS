@@ -451,6 +451,7 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 			var code = int_code.toString();
 			var dirname = './/submissions//' + req.params.question_id.toString()+'//';
 			var filename = dirname + req.user.name.toString().replace(/ /g,'') + '.cpp';
+			var serverfile = req.user.name.toString().replace(/ /g,'') + '.cpp';
 			mkdirp(dirname, function(err){
 				if(err){
 					res.redirect('*');
@@ -498,7 +499,7 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 								},
 
 								output: output,
-								filename: filename
+								filename: serverfile
 							});
 							console.log(newSubmission.output);
 							Submission.create(newSubmission, function(err, newSubmission) {

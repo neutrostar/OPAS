@@ -560,7 +560,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 					}
 
 					var file = req.params.filename;
-					var fileLocation = path.join('./submissions', file);
+					var fileLocation = './/submissions//' + ;
 					console.log(fileLocation);
 					res.download(fileLocation, file);
 
@@ -794,16 +794,39 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 					// let finallink;
 					exec(mossscript, function(err, stdout, stderr) {
 					if(err){
-						res.render('*');
+						Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+							Submission.find({
+			
+								"assignment.id": req.params.assignment_id
+							}).exec(function(err, foundSubmissions) {
+			
+								if (err) {
+			
+									console.log(err);
+									return res.redirect("*");
+								}
+			
+								res.render("faculty_assignment_viewsubmissions", {
+			
+									user: foundUser,
+									currentGroup: foundGroup,
+									assignment: foundAssignment,
+									questions: foundAssignment.questions,
+									submissions: foundSubmissions
+								});
+							});
+						});
 					}
-						console.log(stdout);
+					else{	console.log(stdout);
 						var finallink = stdout;
 						// console.log(finallink);
 						var really = finallink.toString();
 						really = really.trim();
 						// really.replace(/\r?\n|\r/g);
 						console.log(really);
-					res.redirect(really);
+					res.redirect(really); 
+					}
 						
 						});
 						// finallink.replace(/ /g,'');
