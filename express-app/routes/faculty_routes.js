@@ -792,7 +792,9 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 					var mossscript = 'perl moss.pl -l cc ' + mosspath;
 					console.log(mossscript);
 					exec(mossscript, function(err, stdout, stderr) {
+						console.log(err);
 						console.log(stdout);
+						console.log(stderr);
 						});
 						
 					res.redirect('http://www.google.com');
