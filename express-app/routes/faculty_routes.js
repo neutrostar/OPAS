@@ -798,7 +798,7 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 						finallink = stdout;
 						
 						});
-						finallink.replace(/ /g,'');
+						// finallink.replace(/ /g,'');
 						console.log(finallink);
 					res.redirect('http://www.google.com');
 
