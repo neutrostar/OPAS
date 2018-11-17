@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const exec = require('child_process').exec;
 
 //Database Models
 var User = require("../models/user");
@@ -515,6 +516,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 						user: foundUser,
 						currentGroup: foundGroup,
 						assignment: foundAssignment,
+						questions: foundAssignment.questions,
 						submissions: foundSubmissions
 					});
 				});
@@ -744,6 +746,61 @@ router.delete("/faculty/groups/view/:group_id/notes/:note_name/", isLoggedIn, fu
 });
 
 // ========================================================================================
+
+router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/questions/view/:question_id/plagiarism", function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+
+			Assignment.findById(req.params.assignment_id).exec(function(err, foundAssignment) {
+
+				if (err) {
+
+					console.log(err);
+					return res.redirect("*");
+				}				
+			var currentQuestion;
+							foundAssignment.questions.forEach(function(question) {
+
+								if (question.id === req.params.question_id) {
+
+									currentQuestion = question;
+								}
+							});
+
+// 				
+					var t1 = req.params.question_id;
+					var filepath = './/submissions//' + t1.toString();
+
+					
+					
+					console.log(filepath);
+					res.send(filepath);
+
+// 					// return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id + "/submission/view");
+// 				
+			});
+		});
+	});
+});
+
+
+
+// =========================================================================================
+
 
 function isLoggedIn(req, res, next) {
 
