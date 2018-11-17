@@ -791,16 +791,23 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 					var mosspath = filepath + '//*.cpp';
 					var mossscript = 'perl moss.pl -l cc ' + mosspath;
 					console.log(mossscript);
-					let finallink;
+					// let finallink;
 					exec(mossscript, function(err, stdout, stderr) {
-					
+					if(err){
+						res.render('*');
+					}
 						console.log(stdout);
-						finallink = stdout;
+						var finallink = stdout;
+						// console.log(finallink);
+						var really = finallink.toString();
+						really = really.trim();
+						// really.replace(/\r?\n|\r/g);
+						console.log(really);
+					res.redirect(really);
 						
 						});
-						finallink.replace(/ /g,'');
-						console.log(finallink);
-					res.redirect('http://www.google.com');
+						// finallink.replace(/ /g,'');
+						
 
 // 					// return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id + "/submission/view");
 // 				
