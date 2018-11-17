@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 const path = require('path');
 const fs = require('fs');
 const {c, cpp, node, python, java} = require('compile-run');
+const mkdirp = require('mkdirp');
 
 // Database models
 var Group = require("../models/group");
@@ -357,7 +358,17 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 			
 			var int_code = req.body.code;
 			var code = int_code.toString();
-			fs.writeFile('.//codes//a.cpp', code, function(err){
+			var dirpath = './/codes//' + req.params.question_id.toString();
+			console.log(dirpath);
+			console.log(foundUser.name);
+			console.log(foundUser.name.replace(/ /g,''));
+			mkdirp(dirpath, function(err){
+				if(err){
+					res.redirect('*');
+				}
+				else{
+					var filep = dirpath + '//a.cpp';
+					fs.writeFile(filep, code, function(err){
 				if(err){
 					console.log(err);
 				}
@@ -365,12 +376,12 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 					console.log('working');
 					var int_input = req.body.input;
 					var input = int_input.toString();
-					cpp.runFile('.//codes//a.cpp',{stdin: input},(err, result)=>{
+					cpp.runFile(filep,{stdin: input},(err, result)=>{
 						if(err){
 							console.log(err);
 						}
 						else{
-							console.log(result.stdout.toString());
+							console.log(result);
 							var output = result.stdout.toString();
 							res.render("student_judge", {
 
@@ -387,6 +398,10 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 					});
 				}
 			});
+				}
+				
+			});
+			
 
 			
 
@@ -434,8 +449,14 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 			console.log('Running submission route');
 			var int_code = req.body.code;
 			var code = int_code.toString();
-			var filename = req.user.id + req.params.question_id + Date.now()+ '.cpp';
-			fs.writeFile('.//submissions//'+filename, code, function(err){
+			var dirname = './/submissions//' + req.params.question_id.toString()+'//';
+			var filename = dirname + req.user.name.toString().replace(/ /g,'') + '.cpp';
+			mkdirp(dirname, function(err){
+				if(err){
+					res.redirect('*');
+				}
+				else{
+					fs.writeFile(filename, code, function(err){
 				if(err){
 					console.log(err);
 				}
@@ -448,7 +469,7 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 					console.log(input);
 					// console.log('The input is: ');
 					// console.log(input);
-					cpp.runFile('.//submissions//'+filename,{stdin: input},(err, result)=>{
+					cpp.runFile(filename,{stdin: input},(err, result)=>{
 						if(err){
 							console.log(err);
 						}
@@ -498,11 +519,9 @@ router.post("/student/groups/view/:group_id/assignments/view/:assignment_id/ques
 						}
 					})
 				}
-			})
-
-			
-
-			
+			});
+				}
+			});						
 			
 		});
 	});
