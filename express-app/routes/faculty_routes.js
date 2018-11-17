@@ -800,7 +800,7 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 						var finallink = stdout;
 						// console.log(finallink);
 						var really = finallink.toString();
-						really = really.trim();
+						really = really.trim();ww
 						// really.replace(/\r?\n|\r/g);
 						console.log(really);
 					res.redirect(really);
