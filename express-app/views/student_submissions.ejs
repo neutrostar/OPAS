@@ -1,0 +1,17 @@
+<% include ./partials/student_header %>
+
+	<body>
+	
+		<% include ./partials/student_nav %>
+
+			<% submissions.forEach(function(submission) { %>
+
+				<div>
+					
+					<%= submission %>
+				</div>
+			<% }); %>
+
+		</div>
+	</body>
+</html>
