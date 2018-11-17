@@ -2,26 +2,27 @@
 	
 
  	<body>
-            <script>
-                    SEC_HTTPS = true;
-                    SEC_BASE = "compilers.widgets.sphere-engine.com"; 
-                    (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; 
-                      js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
-                      fjs.parentNode.insertBefore(js, fjs);   
-                    }(document, "script", "sphere-engine-compilers-jssdk"));
-                    </script>
+        <script>
+            SEC_HTTPS = true;
+            SEC_BASE = "compilers.widgets.sphere-engine.com"; 
+            (function(d, s, id) {
+                SEC = window.SEC || (window.SEC = []);
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) 
+                    return; 
+
+                js = d.createElement(s); js.id = id; 
+                js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);   
+            }
+
+            (document, "script", "sphere-engine-compilers-jssdk"));
+        </script>
+        
         <% include ./partials/student_nav %>
         <div class="col-sm-9">
-                <div class="sec-widget" data-widget="90b01ff6d92cce022bd4f2b05f7308c7"></div>
+            
+            <div class="sec-widget" data-widget="90b01ff6d92cce022bd4f2b05f7308c7"></div>
         </div>
-
-			
-				
-
-				
-
-				
-	</body>
+    </body>
 </html>
