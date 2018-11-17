@@ -788,7 +788,14 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 					
 					
 					console.log(filepath);
-					res.send(filepath);
+					var mosspath = filepath + '//*.cpp';
+					var mossscript = 'perl moss.pl -l cc ' + mosspath;
+					console.log(mossscript);
+					exec(mossscript, function(err, stdout, stderr) {
+						console.log(stdout);
+						});
+						
+					res.redirect('http://www.google.com');
 
 // 					// return res.redirect("/faculty/groups/view/" + req.params.group_id + "/assignments/view/" + req.params.assignment_id + "/submission/view");
 // 				
