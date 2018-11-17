@@ -1,17 +1,33 @@
+
 <% include ./partials/student_header %>
-
 	<body>
-	
 		<% include ./partials/student_nav %>
+		<div class = "col-sm-8">
+			<br>
+			<div class="container">
+			  <h2>My Submissions :</h2>          
+			  <table class="table">
+			    <thead>
+			      <tr>
+			        <th>Assignment Title</th>
+			        <th>Question Title</th>
+			        <th>Ouput</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    	<% submissions.forEach(function(submission) { %>
 
-			<% submissions.forEach(function(submission) { %>
-
-				<div>
-					
-					<%= submission %>
-				</div>
-			<% }); %>
-
+			      <tr>
+			        <td><%= submission.assignment.title %></td>
+			        <td><%= submission.question.title %></td>
+			        <td><%= submission.output %></td>
+			      </tr>
+			      <% }); %>
+			    </tbody>
+			  </table>
+			</div>
+			
+			
 		</div>
 	</body>
 </html>
