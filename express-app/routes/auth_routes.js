@@ -45,10 +45,10 @@ router.post("/auth/register", function(req, res) {
 
 				if (newUser.username[0].match(/[a-z]/i)) {
 
-					res.redirect("/faculty");
+					res.redirect("/faculty/groups");
 				} else {
 
-					res.redirect("/student");
+					res.redirect("/student/groups");
 				}
 			});
 		});
