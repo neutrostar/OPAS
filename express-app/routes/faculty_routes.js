@@ -560,7 +560,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 					}
 
 					var file = req.params.filename;
-					var fileLocation = './/submissions//' + ;
+					var fileLocation = './/submissions//'  ;
 					console.log(fileLocation);
 					res.download(fileLocation, file);
 
@@ -817,15 +817,19 @@ router.post("/faculty/groups/view/:group_id/assignments/view/:assignment_id/ques
 								});
 							});
 						});
+						// res.redirect('*');
+
 					}
-					else{	console.log(stdout);
+					else{	
+						console.log(stdout);
 						var finallink = stdout;
+						console.log(stderr);
 						// console.log(finallink);
 						var really = finallink.toString();
 						really = really.trim();
 						// really.replace(/\r?\n|\r/g);
 						console.log(really);
-					res.redirect(really); 
+						res.redirect(really); 
 					}
 						
 						});
