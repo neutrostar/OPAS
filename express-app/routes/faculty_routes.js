@@ -560,7 +560,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 					}
 
 					var file = req.params.filename;
-					var fileLocation = './/submissions//' + ;
+					var fileLocation = './/submissions//' ;
 					console.log(fileLocation);
 					res.download(fileLocation, file);
 
