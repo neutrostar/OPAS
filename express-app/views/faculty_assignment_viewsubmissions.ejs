@@ -38,13 +38,13 @@
 			        <td><%= submission.author.name %></td>
 			        <td><%= submission.question.title %></td>
 			        <td><%= submission.output %></td>
-			        <td><a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/submission/view/<%= submission.filename %>" class="btn btn-dark float-center"> Download </a></td>
+			        <td><a href="/faculty/groups/view/<%= currentGroup._id %>/assignments/view/<%= assignment._id %>/submission/view/<%= submission._id%>/download/<%= submission.filename %>" class="btn btn-dark float-center"> Download </a></td>
 			      </tr>
 			      <% }); %>
 			    </tbody>
 			  </table>
 			</div>
-			<script src = "../js/menubar.js"></script>
+			
 		</div>
 	</body>
 </html>

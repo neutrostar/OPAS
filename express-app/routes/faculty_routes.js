@@ -80,6 +80,29 @@ router.get("/faculty/groups/create", isLoggedIn, function(req, res) {
 		}
 	});
 });
+router.post("/faculty/groups/join", isLoggedIn, function(req, res) {
+
+	// console.log(req.body);
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		Group.findOne({
+
+			group_pass: req.body.passkey
+		}).exec(function(err, foundGroup) {
+
+			if (foundGroup) {
+
+				foundGroup.users.push(foundUser);
+				foundGroup.save();
+				return res.redirect("/student/groups");
+			} else {
+
+				console.log("Group not found");
+				return res.redirect("*");
+			}
+		})
+	})
+});
 
 router.post("/faculty/groups/create", isLoggedIn, function(req, res) {
 
@@ -256,6 +279,47 @@ router.post("/faculty/groups/view/:group_id/announcements/:announcement_id/new",
 	});
 });
 
+router.delete("/faculty/groups/view/:group_id/announcements/:announcement_id/", isLoggedIn, function(req, res) {
+
+	User.findById(req.user.id).exec(function(err, foundUser) {
+
+		if (err) {
+
+			console.log(err);
+			return res.redirect("*");
+		}
+
+		Group.findById(req.params.group_id).exec(function(err, foundGroup) {
+
+			if (err) {
+
+				console.log(err);
+				return res.redirect("*");
+			}
+			Announcement.findById(req.params.announcement_id).exec(function(err, foundAnnouncement) {
+
+				if (err) {
+		
+					console.log(err);
+					return res.redirect("*");
+				}
+				Announcement.findByIdAndRemove(req.params.announcement_id, function(err){
+					if(err){
+						console.log(err);
+						res.redirect('*');
+					}
+				});
+				return res.redirect("/faculty/groups/view/"+req.params.group_id);
+		
+				
+			});
+			
+
+			
+		});
+	});
+});
+
 // ========================================================================================
 
 router.get("/faculty/groups/view/:group_id/assignments", isLoggedIn, function(req, res) {
@@ -333,7 +397,7 @@ router.post("/faculty/groups/view/:group_id/assignments/create", isLoggedIn, fun
 			},
 
 			questions: req.body.questions,
-			languages: req.body.optradio
+			// languages: req.body.optradio
 		});
 
 		Assignment.create(newAssignment, function(err, newAssignment) {
@@ -525,7 +589,7 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 	});
 });
 
-router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submission/view/:filename", function(req, res) {
+router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submission/view/:submission_id/download/:filename", function(req, res) {
 
 	User.findById(req.user.id).exec(function(err, foundUser) {
 
@@ -560,7 +624,8 @@ router.get("/faculty/groups/view/:group_id/assignments/view/:assignment_id/submi
 					}
 
 					var file = req.params.filename;
-					var fileLocation = './/submissions//' ;
+					var fileLocation = './submissions/' + foundSubmission.question.id+ '/'+ file ;
+					console.log(fileLocation);
 					console.log(fileLocation);
 					res.download(fileLocation, file);
 

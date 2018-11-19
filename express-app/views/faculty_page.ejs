@@ -32,8 +32,15 @@
 											
 											<div class="media-body">
 													<a href="/faculty/groups/view/<%= currentGroup._id %>/announcements/<%= announcement._id %>">View comments</a>
+													<div style="float:right">
+														<form method="POST" action="/faculty/groups/view/<%= currentGroup._id %>/announcements/<%= announcement._id %>?_method=DELETE">
+															<input type="submit" value="Delete Post" class="btn btn-danger">
+														</form>
+													</div>
 											</div>
-										  </div> 
+											
+										  </div>
+										  
 									</div>
 								  </div>
 						</div>

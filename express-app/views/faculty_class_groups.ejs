@@ -45,7 +45,13 @@
 				<!-- Teal page content  -->
 				
 					<h3>My Class Groups</h2>
-					
+						<h3>Add Groups</h3>
+						<form method = "post" action="/faculty/groups/join">
+							<input type=" text" placeholder="Passkey" name="passkey">
+							<button class="btn btn-primary" type="submit">Add Group</button>
+						</form>
+		
+						<br><br>
 				
 
 				<% if (groups.length != 0) { %>
@@ -59,6 +65,11 @@
 											  <!-- <p class="card-text"><b><%= group.subject_name %></b></p> -->
 											  <p class="card-text">Passkey: <b><%= group.group_pass %></b></p>
 											  <a href="/faculty/groups/view/<%= group._id %>" class="card-link">View Group</a>
+											  <!-- <div style="float:right">
+												  <form action=# method="POST">
+													  <input type="submit" value="Delete" class="btn btn-danger">
+												  </form>
+											  </div> -->
 											  
 											</div>
 									</div>
